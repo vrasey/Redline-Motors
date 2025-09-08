@@ -1,16 +1,9 @@
-/* This is a CSS comment */
-*{
-    
-margin:2;
-    
-}
-
 body {
     background-color: LightSlateGray; /* A light blue background */
     font-family: sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: top;
     height: 100vh;
     text-align: center;
 }
