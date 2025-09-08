@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Website</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Hello, World!</h1>
-    <p>Welcome to my first GitHub Pages site. 🚀</p>
-</body>
-</html>
+/* This is a CSS comment */
+
+body {
+    background-color: #f0f8ff; /* A light blue background */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+h1 {
+    color: #333; /* Dark grey color for the heading */
+}
+
+p {
+    color: #555; /* Slightly lighter grey for the paragraph */
+}
