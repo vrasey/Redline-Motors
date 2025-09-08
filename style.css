@@ -9,9 +9,9 @@ body {
 }
 
 h1 {
-    color: #333; /* Dark grey color for the heading */
+    color: FireBrick; /* Dark grey color for the heading */
 }
 
 p {
-    color: #555; /* Slightly lighter grey for the paragraph */
+    color: FireBrick; /* Slightly lighter grey for the paragraph */
 }
