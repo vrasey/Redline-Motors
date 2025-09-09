@@ -6,7 +6,7 @@ body
     font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
     text-align: center;
@@ -32,6 +32,12 @@ body
    padding-top: 50px;
 }
 
+.center-container
+{
+	margin-top: auto;
+	margin-bottom: auto;
+	
+}
 
 h1 
 {
