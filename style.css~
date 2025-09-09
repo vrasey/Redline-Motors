@@ -28,9 +28,16 @@ body
 }
 
 
-.center-container, .top-container
+.top-container
 {
 	max-width: 90%;
+	border: 2px black;
+}
+
+.center-container
+{
+	margin: auto;
+	width: 50%;
 }
 
 h1 
