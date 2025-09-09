@@ -38,6 +38,7 @@ body
 {
 	margin: auto;
 	width: 50%;
+	text-align: bottom;
 }
 
 h1 
@@ -60,24 +61,27 @@ button
 
 @media (max-width: 600px) 
 {@media (max-width: 600px) {
-    /* Reduce font sizes for better readability */
-    h1 {
+
+    h1 
+    {
         font-size: 2.0em;
     }
-    h2 {
+    h2 
+    {
         font-size: 1.2em;
     }
-    p {
+    p 
+    {
         font-size: 0.9em;
     }
 
-    /* Make the logo smaller */
-    .top-anchor img {
+    .top-anchor img 
+    {
         width: 100px;
     }
 
-    /* Adjust button size */
-    button {
+    button 
+    {
         padding: 10px 15px;
     }
 }
