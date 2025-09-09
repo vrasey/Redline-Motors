@@ -53,4 +53,31 @@ button
 {
     max-width: 200px;
     padding: 10px 20px;
-}center;
+}
+
+/* Mobile Scaling Adjustments*/
+@media (max-width: 600px) 
+{
+    h1 
+    {
+        font-size: 2.0em;
+    }
+    h2 
+    {
+        font-size: 1.2em;
+    }
+    p 
+    {
+        font-size: 0.9em;
+    }
+
+    .top-anchor img 
+    {
+        width: 100px;
+    }
+
+    button 
+    {
+        padding: 10px 15px;
+    }
+}
