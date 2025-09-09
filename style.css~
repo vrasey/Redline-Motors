@@ -37,10 +37,10 @@ body
     text-align: center;
 }
 
-/* NEW: Smaller hero for internal pages */
+/* Smaller hero for internal pages */
 .hero-small {
     height: 30vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero_small.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -252,6 +252,7 @@ button
     {
         font-size: 0.9em;
     }
+    
 
     .top-anchor img 
     {
