@@ -29,10 +29,7 @@ body
 
 .top-container 
 {
-	position: absolute;
-	top: anchor(top);
-    padding-top: 50px;
-    justify-self: anchor-center;
+   padding-top: 50px;
 }
 
 
@@ -51,4 +48,4 @@ button
 {
     max-width: 200px;
     padding: 10px 20px;
-}
+}center;
