@@ -3,13 +3,20 @@ body
     background-color: DimGrey;
 }
 
-.container {
+.top-container
+{
+	 text-align: center;
+    padding-top: 50px;
+}
+
+.container 
+{
     font-family: sans-serif;
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center; /* Center items vertically in the container */
-    align-items: center; /* Center items horizontally */
-    height: 100vh; /* Make the container fill the full height of the viewport */
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
     text-align: center;
 }
 
@@ -18,18 +25,23 @@ h1 {
     font-family: 'Montserrat', sans-serif;
 }
 
-h2 {
+h2 
+{
     color: FireBrick;
 }
 
-p {
+p 
+{
     color: FireBrick;
 }
 
-button {
+button 
+{
     max-width: 200px; 
     padding: 10px 20px;
-}body {
+}
+body 
+{
     background-color: DimGrey;
     font-family: sans-serif;
     display: flex;
@@ -39,11 +51,13 @@ button {
     text-align: center;
 }
 
-h1 {
+h1 
+{
     color: FireBrick;
     font-family: 'Montserrat', sans-serif;
 }
 
-p {
+p 
+{
     color: FireBrick;
 }
