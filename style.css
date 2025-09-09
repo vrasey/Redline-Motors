@@ -30,7 +30,7 @@ body
 /* --- Hero Sections --- */
 .hero {
     height: 70vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x1080/000000/FFFFFF?text=Cool+JDM+Car+Background') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('hero_image.jpeg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,7 +40,7 @@ body
 /* NEW: Smaller hero for internal pages */
 .hero-small {
     height: 30vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1920x1080/000000/FFFFFF?text=Carbon+Fiber+Weave') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero_small.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
