@@ -1,6 +1,20 @@
 body 
 {
-    background-color: DimGrey;
+    background-color: Grey;
+}
+
+.top-anchor
+{
+	 position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.top-anchor img
+{
+	width: 150px;
+	height: auto;
 }
 
 .top-container
@@ -9,7 +23,8 @@ body
     padding-top: 50px;
 }
 
-.container 
+
+.center-container 
 {
     font-family: sans-serif;
     display: flex;
