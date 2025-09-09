@@ -1,70 +1,37 @@
+
 body 
 {
-    background-color: Grey;
+    background-color: DimGrey;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
 }
 
-.top-anchor
+.top-anchor 
 {
-	 position: fixed;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
 }
 
-.top-anchor img
+.top-anchor img 
 {
-	width: 150px;
-	height: auto;
+    width: 150px;
+    height: auto;
+    padding: 10px;
 }
 
-.top-container
+.top-container 
 {
-	 text-align: center;
     padding-top: 50px;
 }
 
-
-.center-container 
-{
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
-    text-align: center;
-}
-
-h1 {
-    color: FireBrick;
-    font-family: 'Montserrat', sans-serif;
-}
-
-h2 
-{
-    color: FireBrick;
-}
-
-p 
-{
-    color: FireBrick;
-}
-
-button 
-{
-    max-width: 200px; 
-    padding: 10px 20px;
-}
-body 
-{
-    background-color: DimGrey;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: top;
-    height: 100vh;
-    text-align: center;
-}
 
 h1 
 {
@@ -72,7 +39,13 @@ h1
     font-family: 'Montserrat', sans-serif;
 }
 
-p 
+h2,p 
 {
     color: FireBrick;
+}
+
+button 
+{
+    max-width: 200px;
+    padding: 10px 20px;
 }
