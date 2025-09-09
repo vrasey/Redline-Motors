@@ -27,15 +27,14 @@ body
     padding: 10px;
 }
 
-.top-container 
-{
-   padding-top: 50px;
-}
 
-.center-container
+.center-container, .top-container
 {
+	max-width: 90%;
 	margin-top: auto;
 	margin-bottom: auto;
+	padding: 20px;
+	padding-top: 50px;
 	
 }
 
