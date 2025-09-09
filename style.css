@@ -55,7 +55,7 @@ button
     padding: 10px 20px;
 }
 
-/* Mobile Scaling Adjustments*/
+
 @media (max-width: 600px) 
 {
     h1 
