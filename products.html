@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - Redline Motors</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">REDLINE <span>MOTORS</span></a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Products Hero Section -->
+        <section class="hero-small">
+            <div class="hero-content container">
+                <h1>Explore Our Catalog</h1>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section container">
+            <div class="filter-bar" id="product-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="turbo">Turbos</button>
+                <button class="filter-btn" data-filter="suspension">Suspension</button>
+                <button class="filter-btn" data-filter="exhaust">Exhaust</button>
+                <button class="filter-btn" data-filter="brakes">Brakes</button>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                
+                <div class="product-card" data-category="turbo">
+                    <img src="https://placehold.co/400x300/111111/FF0000?text=Turbocharger" alt="Turbocharger">
+                    <h3>G-Series Turbo Kit</h3>
+                    <p class="description">High-flow turbo for ultimate power gains. Universal fit.</p>
+                    <p class="price">¥180,000</p>
+                    <button class="buy-button" data-product-id="prod_turbo_01">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-category="suspension">
+                    <img src="https://placehold.co/400x300/111111/FF0000?text=Coilovers" alt="Coilovers">
+                    <h3>Spec-R Adjustable Coilovers</h3>
+                    <p class="description">32-way adjustable damping for the perfect stance and handling.</p>
+                    <p class="price">¥125,000</p>
+                    <button class="buy-button" data-product-id="prod_coilover_02">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-category="exhaust">
+                    <img src="https://placehold.co/400x300/111111/FF0000?text=Exhaust" alt="Exhaust">
+                    <h3>Titanium Cat-Back Exhaust</h3>
+                    <p class="description">Lightweight full titanium exhaust system with a deep tone.</p>
+                    <p class="price">¥250,000</p>
+                    <button class="buy-button" data-product-id="prod_exhaust_03">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-category="brakes">
+                    <img src="https://placehold.co/400x300/111111/FF0000?text=Big+Brake+Kit" alt="Big Brake Kit">
+                    <h3>6-Piston Big Brake Kit</h3>
+                    <p class="description">Ultimate stopping power with forged calipers and 2-piece rotors.</p>
+                    <p class="price">¥320,000</p>
+                    <button class="buy-button" data-product-id="prod_brakes_04">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-category="suspension">
+                    <img src="https://placehold.co/400x300/111111/FF0000?text=Sway+Bars" alt="Sway Bars">
+                    <h3>Adjustable Sway Bar Kit</h3>
+                    <p class="description">Front and rear adjustable sway bars to eliminate body roll.</p>
+                    <p class="price">¥65,000</p>
+                    <button class="buy-button" data-product-id="prod_swaybar_05">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-category="turbo">
+                    <img src="https://placehold.co/400x300/111111/FF0000?text=Intercooler" alt="Intercooler">
+                    <h3>Front Mount Intercooler Kit</h3>
+                    <p class="description">Large core intercooler for significantly lower intake temps.</p>
+                    <p class="price">¥95,000</p>
+                    <button class="buy-button" data-product-id="prod_intercooler_06">Add to Cart</button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Redline Motors. All Rights Reserved. Based in Tokyo, Japan.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
