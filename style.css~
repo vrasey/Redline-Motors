@@ -6,10 +6,10 @@ body
 .container {
     font-family: sans-serif;
     display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically in the container */
+    align-items: center; /* Center items horizontally */
+    height: 100vh; /* Make the container fill the full height of the viewport */
     text-align: center;
 }
 
