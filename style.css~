@@ -29,7 +29,10 @@ body
 
 .top-container 
 {
+	position: absolute;
+	top: anchor(top);
     padding-top: 50px;
+    justify-self: anchor-center;
 }
 
 
