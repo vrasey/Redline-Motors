@@ -1,290 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Redline Motors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">REDLINE MOTORS</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#models">Models</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-body 
-{
-    background-color: #202020;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-}
+    <main class="about-content">
+        <h1>Our Story</h1>
+        <p>
+            **Redline Motors** was founded in **1998** with a singular vision: to push the boundaries of automotive performance. Born from a passion for racing and precision engineering, we set out to build cars that not only thrill drivers but also embody the spirit of uncompromising quality.
+        </p>
+        <p>
+            From our humble beginnings in a small garage, we have grown into a recognized leader in high-performance vehicles. Every Redline vehicle is a testament to our commitment to innovation, speed, and design excellence. We don't just build cars; we engineer experiences.
+        </p>
 
-.top-anchor 
-{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
+        <h2>Our Mission</h2>
+        <p>
+            To deliver the most exhilarating and technologically advanced driving machines on the planet, all while maintaining a relentless focus on driver safety and superior craftsmanship.
+        </p>
 
-.top-anchor img 
-{
-    width: 150px;
-    height: auto;
-    padding: 10px;
-}
+        <a href="index.html" class="cta-button">Back to Homepage</a>
+    </main>
 
-/* --- Hero Sections --- */
-.hero {
-    height: 70vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('hero_image.jpeg') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-/* Smaller hero for internal pages */
-.hero-small {
-    height: 30vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero_small.jpg') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.hero-content h1 {
-    font-family: var(--heading-font);
-    font-size: 3.5rem;
-    color: white;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-.cta-button {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 1rem 2.5rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
-    text-decoration: none;
-}
-
-/* --- Products Section --- */
-.products-section {
-    padding: 4rem 0;
-}
-
-.products-section h2 {
-    font-family: var(--heading-font);
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    color: white;
-}
-
-/* NEW: Filter Bar Styles */
-.filter-bar {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    background-color: var(--surface-color);
-    color: var(--text-color);
-    border: 1px solid #333;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: var(--body-font);
-    font-size: 1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.filter-btn:hover {
-    background-color: #333;
-    border-color: #555;
-}
-
-.filter-btn.active {
-    background-color: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-}
-
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.product-card {
-    background-color: var(--surface-color);
-    border: 1px solid #2a2a2a;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex; /* For filtering */
-    flex-direction: column;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-
-.product-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.product-card h3 {
-    font-family: var(--heading-font);
-    color: white;
-    padding: 1rem 1.5rem 0.5rem;
-}
-
-.product-card .description {
-    padding: 0 1.5rem;
-    font-size: 0.9rem;
-    flex-grow: 1; /* Allows footer to align */
-}
-
-.product-card .price {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    padding: 1rem 1.5rem;
-}
-
-.buy-button {
-    display: block;
-    width: 100%;
-    padding: 1rem;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    font-family: var(--body-font);
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: auto; /* Pushes button to bottom */
-}
-
-.buy-button:hover {
-    background-color: #c00000;
-}
-
-/* NEW: Temp Page Styles */
-.temp-page-content {
-    padding: 5rem 0;
-    text-align: center;
-}
-.temp-page-content h1 {
-    font-family: var(--heading-font);
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-.temp-page-content p {
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0.5rem auto;
-}
-
-
-
-
-
-.top-container
-{
-	max-width: 90%;
-	border: 2px black;
-}
-
-.center-container
-{
-	margin: auto;
-	width: 50%;
-}
-
-h1 
-{
-    color: FireBrick;
-    font-family: 'Montserrat', sans-serif;
-}
-
-h2,p 
-{
-    color: FireBrick;
-}
-
-button 
-{
-    max-width: 200px;
-    padding: 10px 20px;
-}
-
-
-@media (max-width: 600px) 
-{@media (max-width: 600px) {
-
-    h1 
-    {
-        font-size: 2.0em;
-    }
-    h2 
-    {
-        font-size: 1.2em;
-    }
-    p 
-    {
-        font-size: 0.9em;
-    }
-    
-
-    .top-anchor img 
-    {
-        width: 100px;
-    }
-
-    button 
-    {
-        padding: 10px 15px;
-    }
-}
-
-    h1 
-    {
-        font-size: 2.0em;
-    }
-    h2 
-    {
-        font-size: 1.2em;
-    }
-    p 
-    {
-        font-size: 0.9em;
-    }
-
-    .top-anchor img 
-    {
-        width: 100px;
-    }
-
-    button 
-    {
-        padding: 10px 15px;
-    }
-}
+    <footer id="contact">
+        <p>&copy; 2025 Redline Motors. All Rights Reserved. | Contact: info@redlinemotors.com</p>
+    </footer>
+</body>
+</html>
