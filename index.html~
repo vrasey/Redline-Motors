@@ -12,54 +12,6 @@
 </head>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content container">
-                <h1>JAPAN SHIPPING SERVICE.</h1>
-                <p>Authentic JDM cars, components and more! </p>
-                <a href="products.html" class="cta-button">Our Services.</a>
-            </div>
-        </section>
-
-        <!-- Featured Products Section -->
-        <section id="products" class="products-section container">
-            <h2>Featured Products</h2>
-            <div class="products-grid">
-                
-                <!-- Product Card 1 -->
-                <div class="product-card">
-                    <img src="https://placehold.co/400x300/111111/FF0000?text=Turbocharger" alt="Performance Turbocharger">
-                    <h3>G-Series Turbo Kit</h3>
-                    <p class="description">High-flow turbo for ultimate power gains. Universal fit.</p>
-                    <p class="price">¥180,000</p>
-                    <button class="buy-button" data-product-id="prod_turbo_01">Add to Cart</button>
-                </div>
-
-                <!-- Product Card 2 -->
-                <div class="product-card">
-                    <img src="https://placehold.co/400x300/111111/FF0000?text=Coilovers" alt="Adjustable Coilovers">
-                    <h3>Full Vehicle Export Support</h3>
-                    <p class="description">Professional car exporting and domestic shipping.</p>
-                    <p class="price">¥125,000</p>
-                    <button class="buy-button" data-product-id="prod_coilover_02">Add to Cart</button>
-                </div>
-
-                <!-- Product Card 3 -->
-                <div class="product-card">
-                    <img src="https://placehold.co/400x300/111111/FF0000?text=Exhaust" alt="Titanium Exhaust System">
-                    <h3>OEM/Custom Part Proxy Purchase</h3>
-                    <p class="description">Lightweight full titanium exhaust system with a deep, aggressive tone.</p>
-                    <p class="price">¥ASK</p>
-                    <button class="buy-button" data-product-id="prod_exhaust_03">Add to Cart</button>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-
-
-<body>
 
     <div class="top-anchor">
         <img src="logo_main.png" alt="Redline Logo">
@@ -80,5 +32,11 @@
         <p>Mission Statement Place Holder<br></p>
         <button onclick="document.location='mailto:redlinemotorsjp@gmail.com'">Email Us!</button>
     </div>
+    </main>
+
+
+
+<body>
+
 </body>
 </html>
