@@ -207,7 +207,7 @@ nav a:hover, nav a.active {
 
 .order-item img {
     width: 100%;
-    height: 220px; /* CHANGED FROM 100% - THIS IS THE FIX */
+    height: 250px; /* CHANGED FROM 100% - THIS IS THE FIX */
     object-fit: cover; /* This prevents the image from stretching */
     border-radius: 8px;
     border: 1px solid #2a2a2a;
