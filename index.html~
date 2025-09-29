@@ -41,22 +41,14 @@
                 <h2>Previous Orders</h2>
                 <div class="order-grid">
                     <div class="order-item">
-                        <img src="https://via.placeholder.com/400x250.png?text=Shipped+S15" alt="Shipped Nissan Silvia S15">
+                        <img src= "images/cam_covers.jpg" alt="Skyline Cam Covers">
                     </div>
                     <div class="order-item">
-                        <img src="https://via.placeholder.com/400x250.png?text=Shipped+Evo+VI" alt="Shipped Mitsubishi Evo VI">
+                        <img src= "images/mugen_fit.jpg" alt="Honda Fit Mugen Bumper">
                     </div>
                     <div class="order-item">
-                        <img src="https://via.placeholder.com/400x250.png?text=Shipped+Chaser" alt="Shipped Toyota Chaser">
-                    </div>
-                    <div class="order-item">
-                        <img src="https://via.placeholder.com/400x250.png?text=Shipped+RX-7" alt="Shipped Mazda RX-7">
-                    </div>
-                    <div class="order-item">
-                        <img src="https://via.placeholder.com/400x250.png?text=Shipped+Supra" alt="Shipped Toyota Supra">
-                    </div>
-                    <div class="order-item">
-                        <img src="https://via.placeholder.com/400x250.png?text=Shipped+R34" alt="Shipped Nissan R34 GTR">
+                    		<img src= 'images/spoon_muffler1.jpg' alt="Spoon Muffler">
+						  </div>
                     </div>
                 </div>
             </div>
