@@ -205,16 +205,26 @@ footer p {
 
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
-    /* === ADDED THIS RULE FOR MOBILE SCALING === */
-    .hero {
+	
+	 header 
+	 {
+        /* This makes the header scroll away on mobile */
+        position: static;
+    }
+    /*ADDED THIS RULE FOR MOBILE SCALING */
+    .hero 
+    {
         background-attachment: fixed;
+        font-size: 2.5rem;
     }
 
-    .hero h1 {
+    .hero h1 
+    {
         font-size: 2.5rem;
     }
     
-    header .container {
+    header .container 
+    {
         flex-direction: column;
         gap: 1rem;
     }
