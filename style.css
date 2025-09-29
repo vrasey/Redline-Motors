@@ -131,7 +131,7 @@ nav a:hover, nav a.active {
 
 /* Hero Section (Homepage) */
 .hero {
-    height: 100vh;
+    height: 75vh;
     background-image: url('images/hero_main.jpeg');
     background-size: cover;
     background-position: center;
@@ -411,7 +411,7 @@ footer p {
 {
     .container
     {
-        max-width: 2560px;
+        max-width: 1920px;
     }
 
     /* You could also make fonts slightly larger on big screens */
