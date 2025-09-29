@@ -155,8 +155,6 @@ nav a:hover, nav a.active {
     color: var(--primary-red);
 }
 
-/* === REMOVED .btn-secondary as it's no longer used === */
-
 
 /* --- Previous Orders Section --- */
 .previous-orders {
@@ -192,16 +190,53 @@ nav a:hover, nav a.active {
 .order-item h3
 {
     /* This adds the space between the image and the title */
-    margin-bottom: 1rem;
+    margin-top: 1rem;
 
     /* These are extra styles to make the text look nice */
     text-align: center;
     padding: 0 1rem 1rem; /* Adds a little breathing room on the sides and bottom */
 }
 
+/* === NEWLY ADDED FORM STYLES START HERE === */
+/* --- Form Styles --- */
+.form-container {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    border: 1px solid #2a2a2a;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.form-container input {
+    background-color: var(--dark-bg);
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.form-container button {
+    align-self: flex-start; /* Aligns button to the left */
+}
+/* === NEWLY ADDED FORM STYLES END HERE === */
+
 
 /* --- Footer --- */
-footer {
+footer 
+{
     background-color: #000;
     text-align: center;
     padding: 2rem 0;
@@ -209,15 +244,17 @@ footer {
     border-top: 1px solid var(--card-bg);
 }
 
-footer p {
+footer p 
+{
     color: var(--text-secondary);
 }
 
 /* --- Responsive Design --- */
-@media (max-width: 768px) {
-	
-	 header 
-	 {
+@media (max-width: 768px) 
+{
+    
+     header 
+     {
         /* This makes the header scroll away on mobile */
         position: static;
     }
@@ -231,13 +268,12 @@ footer p {
 
     nav a 
     {
-        font-size: 0.9rem;      /* Makes the font slightly smaller to fit */
+        font-size: 0.9rem;       /* Makes the font slightly smaller to fit */
     }
-    /*ADDED THIS RULE FOR MOBILE SCALING */
+    
     .hero 
     {
         background-attachment: fixed;
-        font-size: 2.5rem;
     }
 
     .hero h1 
@@ -253,6 +289,6 @@ footer p {
     
     .page-header
     {
-    	padding-top: 40px;
+        padding-top: 40px;
     }
 }
