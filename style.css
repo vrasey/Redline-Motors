@@ -189,6 +189,15 @@ nav a:hover, nav a.active {
     opacity: 0.85;
 }
 
+.order-item h3 {
+    /* This adds the space between the image and the title */
+    margin-top: 1rem;
+
+    /* These are extra styles to make the text look nice */
+    text-align: center;
+    padding: 0 1rem 1rem; /* Adds a little breathing room on the sides and bottom */
+}
+
 
 /* --- Footer --- */
 footer {
