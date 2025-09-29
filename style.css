@@ -114,14 +114,15 @@ nav ul {
 nav a {
     color: var(--text-light);
     font-weight: 700;
-    padding: 0.5rem 0;
-    transition: color 0.3s ease;
-    border-bottom: 2px solid transparent;
+    padding: 0.5rem 1rem; /* Gives the background some space */
+    border-radius: 20px;   /* Creates the rounded pill shape */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    /* The old border-bottom property is no longer needed */
 }
 
 nav a:hover, nav a.active {
     color: var(--primary-red);
-    border-bottom-color: var(--primary-red);
+    background-color: var(--card-bg); /* This is the new faint background */
 }
 
 /* ==========================================================================
