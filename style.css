@@ -439,4 +439,10 @@ footer p {
     {
         font-size: 4.5rem;
     }
+
+    /*Adjust font size for larger screens on How to buy page */
+    .steps-list li::before
+    {
+        font-size: 4rem;
+    }
 }
