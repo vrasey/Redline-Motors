@@ -93,7 +93,8 @@ nav a:hover, nav a.active {
 
 
 /* --- Hero Section --- */
-.hero {
+.hero 
+{
     height: 100vh;
     background-image: url('images/hero_image.jpg'); /* Replace with your own high-quality car image */
     background-size: cover;
