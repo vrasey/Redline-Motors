@@ -233,6 +233,24 @@ nav a:hover, nav a.active {
 }
 /* === NEWLY ADDED FORM STYLES END HERE === */
 
+/* --- General Page Styles --- */
+.page-header {
+    padding-top: 120px; /* Creates space for the fixed header on desktop */
+    padding-bottom: 40px;
+    background-color: var(--card-bg); /* Gives a nice background */
+    text-align: center;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+}
+
+.page-content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
 
 /* --- Footer --- */
 footer 
