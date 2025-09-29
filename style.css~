@@ -205,6 +205,11 @@ footer p {
 
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
+    /* === ADDED THIS RULE FOR MOBILE SCALING === */
+    .hero {
+        background-attachment: fixed;
+    }
+
     .hero h1 {
         font-size: 2.5rem;
     }
