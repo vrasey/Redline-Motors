@@ -201,7 +201,8 @@ nav a:hover, nav a.active {
 
 
 /* --- Footer --- */
-footer {
+footer 
+{
     background-color: #000;
     text-align: center;
     padding: 2rem 0;
@@ -209,12 +210,14 @@ footer {
     border-top: 1px solid var(--card-bg);
 }
 
-footer p {
+footer p 
+{
     color: var(--text-secondary);
 }
 
 /* --- Responsive Design --- */
-@media (max-width: 768px) {
+@media (max-width: 768px) 
+{
 	
 	 header 
 	 {
