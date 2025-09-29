@@ -169,6 +169,25 @@ nav a:hover, nav a.active {
     margin-right: auto;
 }
 
+/* Social Icons in the Hero Section */
+.hero-socials {
+    margin-top: 2rem; /* Space above the icons */
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* Space between icons */
+}
+
+.hero-socials a {
+    color: var(--text-light);
+    font-size: 1.8rem; /* Icon size */
+    transition: all 0.3s ease;
+}
+
+.hero-socials a:hover {
+    color: var(--primary-red);
+    transform: translateY(-3px); /* Add a little "lift" effect on hover */
+}
+
 /* Previous Orders Section (Homepage) */
 .previous-orders {
     padding: 5rem 0;
