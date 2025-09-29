@@ -93,10 +93,9 @@ nav a:hover, nav a.active {
 
 
 /* --- Hero Section --- */
-.hero 
-{
+.hero {
     height: 100vh;
-    background-image: url('images/hero_image.jpg'); /* Replace with your own high-quality car image */
+    background-image: url('images/hero_main.jpeg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -156,73 +155,40 @@ nav a:hover, nav a.active {
     color: var(--primary-red);
 }
 
-.btn-secondary {
-    background-color: transparent;
-    color: var(--text-light);
-    border: 2px solid var(--card-bg);
-}
-
-.btn-secondary:hover {
-    background-color: var(--primary-red);
-    border-color: var(--primary-red);
-}
+/* === REMOVED .btn-secondary as it's no longer used === */
 
 
-/* --- Featured Vehicles Section --- */
-.featured-vehicles {
+/* --- Previous Orders Section --- */
+.previous-orders {
     padding: 5rem 0;
 }
 
-.featured-vehicles h2 {
+.previous-orders h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
 }
 
-.car-grid {
+.order-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
-.car-card {
-    background-color: var(--card-bg);
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #2a2a2a;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.car-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
-
-.car-card img {
-    height: 250px;
+.order-item img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #2a2a2a;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.car-info {
-    padding: 1.5rem;
+.order-item img:hover {
+    transform: scale(1.03);
+    opacity: 0.85;
 }
 
-.car-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.car-info p {
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-}
-
-.car-info ul {
-    list-style: none;
-    margin-bottom: 1.5rem;
-    color: var(--text-light);
-}
 
 /* --- Footer --- */
 footer {
