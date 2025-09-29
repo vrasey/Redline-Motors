@@ -421,6 +421,20 @@ footer p {
     .contact-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Reorder content on the Parts page for mobile */
+    .page-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .parts-instructions {
+        order: 2; /* Send the instructions to the bottom */
+    }
+
+    .parts-form {
+        order: 1; /* Bring the form to the top */
+    }
 }
 
 /* ==========================================================================
