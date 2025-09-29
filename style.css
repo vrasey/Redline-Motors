@@ -315,3 +315,21 @@ footer p {
         padding-top: 40px;
     }
 }
+
+/* ==========================================================================
+   7. Responsive Design for Large Desktops
+   - All styles for screens 1920px or wider.
+   ========================================================================== */
+@media (min-width: 1920px)
+{
+    .container
+    {
+        max-width: 1600px;
+    }
+
+    /* You could also make fonts slightly larger on big screens */
+    .hero h1
+    {
+        font-size: 4.5rem;
+    }
+}
