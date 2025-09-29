@@ -1,42 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REDLINE MOTORS</title>
+    <title>Redline Motors - Japanese Car Exports</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">REDLINE<span>MOTORS</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="#">Inventory</a></li>
+                    <li><a href="#">How to Buy</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <main>
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <h1>Direct From Japan to Your Driveway</h1>
+                <p>Your trusted source for importing high-performance and classic JDM vehicles.</p>
+                <a href="#" class="btn btn-primary">View Our Inventory</a>
+            </div>
+        </section>
 
-    <div class="top-anchor">
-        <img src="logo_main.png" alt="Redline Logo">
-    </div>
+        <section class="featured-vehicles">
+            <div class="container">
+                <h2>Featured Vehicles</h2>
+                <div class="car-grid">
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/400x250.png?text=Nissan+Skyline+R34" alt="Nissan Skyline R34">
+                        <div class="car-info">
+                            <h3>1999 Nissan Skyline GT-R</h3>
+                            <p>A true JDM legend with unmatched performance and style. Ready for a new owner.</p>
+                            <ul>
+                                <li><strong>Mileage:</strong> 60,000 km</li>
+                                <li><strong>Transmission:</strong> 6-Speed Manual</li>
+                            </ul>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
 
-    <div class="top-container">
-        <h1>REDLINE MOTORS</h1>
-        <h2>Welcome to Redline Motors!</h2>
-        <a href="https://www.google.com/">
-        	 <button>Services</button>
-        	 <button>Shipping Info</button>
-        	 <button>Store</button>
-        	 <button>About Us</button>
-        	 </a>
-    </div>
-    
-    <div class="center-container">
-        <p>Mission Statement Place Holder<br></p>
-        <button onclick="document.location='mailto:redlinemotorsjp@gmail.com'">Email Us!</button>
-    </div>
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/400x250.png?text=Toyota+Supra+MK4" alt="Toyota Supra MK4">
+                        <div class="car-info">
+                            <h3>1998 Toyota Supra RZ</h3>
+                            <p>The iconic 2JZ-GTE engine in a timeless body. A highly sought-after collector's item.</p>
+                             <ul>
+                                <li><strong>Mileage:</strong> 85,000 km</li>
+                                <li><strong>Transmission:</strong> 6-Speed Manual</li>
+                            </ul>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/400x250.png?text=Mazda+RX-7+FD" alt="Mazda RX-7 FD">
+                        <div class="car-info">
+                            <h3>2001 Mazda RX-7 Spirit R</h3>
+                            <p>One of the finest handling cars ever made, featuring the legendary rotary engine.</p>
+                             <ul>
+                                <li><strong>Mileage:</strong> 72,000 km</li>
+                                <li><strong>Transmission:</strong> 5-Speed Manual</li>
+                            </ul>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-
-
-<body>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Redline Motors. All Rights Reserved. Based in Tokyo, Japan.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
