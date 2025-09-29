@@ -200,10 +200,92 @@ nav a:hover, nav a.active {
     opacity: 0.85;
 }
 
-.order-item h3 {
+.order-item h3
+{
     margin-top: 1rem;
+    margin-bottom: 1rem;
     text-align: center;
     padding: 0 1rem 1rem;
+}
+
+/* Styles for the How to Buy page steps */
+.steps-list {
+    list-style: none;
+    counter-reset: steps-counter;
+    margin-top: 2rem;
+}
+
+.steps-list li {
+    counter-increment: steps-counter;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 50px;
+}
+
+.steps-list li::before {
+    content: counter(steps-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    background-color: var(--card-bg);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.steps-list li h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* Styles for the About page sections */
+.about-section h2 {
+    font-size: 2rem;
+    color: var(--primary-red);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--card-bg);
+    padding-bottom: 0.5rem;
+}
+
+.about-section h2:first-child {
+    margin-top: 0;
+}
+
+/* Two-column layout for the Contact page */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Left column smaller than right */
+    gap: 2rem;
+    align-items: start;
+}
+
+.contact-details h3 {
+    margin-bottom: 1rem;
+}
+
+.contact-details ul {
+    list-style: none;
+    line-height: 2;
+}
+
+/* Add styles for the textarea element */
+.form-container textarea {
+    background-color: var(--dark-bg);
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-secondary);
+    resize: vertical;
 }
 
 /* General Page Header (for sub-pages like Auctions) */
@@ -313,6 +395,11 @@ footer p {
     /* Adjust padding for sub-page headers */
     .page-header {
         padding-top: 40px;
+    }
+
+    /* Stack columns on mobile */
+    .contact-grid {
+        grid-template-columns: 1fr;
     }
 }
 
