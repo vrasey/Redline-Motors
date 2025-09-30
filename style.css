@@ -391,6 +391,15 @@ nav a:hover, nav a.active {
     align-self: flex-start;
 }
 
+/* Style for the small notice text below a form */
+.form-notice {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
 /* ==========================================================================
    5. Animations & Keyframes
    - Holds animation definitions used throughout the site.
