@@ -400,6 +400,64 @@ nav a:hover, nav a.active {
     text-align: center;
 }
 
+/* --- Currency Converter Styles --- */
+.currency-converter {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    border: 1px solid #2a2a2a;
+}
+
+.currency-converter h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.converter-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow groups to grow */
+}
+
+.input-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.input-group input {
+    background-color: var(--dark-bg);
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 0.8rem;
+    font-size: 1.2rem; /* Larger font for numbers */
+    color: var(--text-light);
+    width: 100%;
+}
+
+.equals-sign {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    padding-top: 1.5rem; /* Align with inputs */
+}
+
+.rate-info {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
 /* ==========================================================================
    5. Animations & Keyframes
    - Holds animation definitions used throughout the site.

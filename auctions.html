@@ -98,8 +98,26 @@
         </form>
 
         <p class="form-notice">Please note: Shipping costs are often not listed on the auction page itself. We will calculate and include all shipping costs in the final quote we send you.</p>
-
+        
     </div>
+    
+    <div class="currency-converter">
+    <h3>USD to JPY Converter</h3>
+    <div class="converter-row">
+        <div class="input-group">
+            <label for="usd-input">USD</label>
+            <input type="number" id="usd-input" placeholder="100" min="0">
+        </div>
+        <div class="equals-sign">=</div>
+        <div class="input-group">
+            <label for="jpy-input">JPY</label>
+            <input type="number" id="jpy-input" placeholder="----" min="0">
+        </div>
+    </div>
+    <small class="rate-info">Live exchange rate updates automatically.</small>
+</div>
+    
+    
 </div>
 
         </div>
@@ -114,6 +132,59 @@
     <a href="https://m.me/820619511130834" class="messenger-button" target="_blank" aria-label="Chat on Messenger">
         <i class="fab fa-facebook-messenger"></i>
     </a>
+
+<script>
+    // Get references to the input fields
+    const usdInput = document.getElementById('usd-input');
+    const jpyInput = document.getElementById('jpy-input');
+    const rateInfo = document.querySelector('.rate-info');
+    let usdToJpyRate;
+
+    // Fetch the latest exchange rate from a free API
+    async function fetchRate() {
+        try {
+            const response = await fetch('https://api.frankfurter.app/latest?from=USD&to=JPY');
+            const data = await response.json();
+            usdToJpyRate = data.rates.JPY;
+            rateInfo.textContent = `Current Rate: 1 USD = ${usdToJpyRate.toFixed(2)} JPY`;
+        } catch (error) {
+            console.error('Failed to fetch exchange rate:', error);
+            rateInfo.textContent = 'Could not load live rate.';
+        }
+    }
+
+    // Function to format JPY (no decimals)
+    function formatJpy(amount) {
+        return Math.round(amount);
+    }
+
+    // Event listener for the USD input
+    usdInput.addEventListener('input', () => {
+        if (!usdToJpyRate) return; // Don't run if the rate isn't loaded yet
+        const usdValue = parseFloat(usdInput.value);
+        if (isNaN(usdValue)) {
+            jpyInput.value = '';
+            return;
+        }
+        const jpyValue = usdValue * usdToJpyRate;
+        jpyInput.value = formatJpy(jpyValue);
+    });
+
+    // Event listener for the JPY input
+    jpyInput.addEventListener('input', () => {
+        if (!usdToJpyRate) return;
+        const jpyValue = parseFloat(jpyInput.value);
+         if (isNaN(jpyValue)) {
+            usdInput.value = '';
+            return;
+        }
+        const usdValue = jpyValue / usdToJpyRate;
+        usdInput.value = usdValue.toFixed(2);
+    });
+
+    // Load the rate when the page loads
+    fetchRate();
+</script>
 
 </body>
 </html>
