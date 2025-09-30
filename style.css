@@ -413,6 +413,7 @@ footer p {
     .hero 
     {
         background-attachment: fixed;
+        height: 70vh;
     }
 
     .hero h1
