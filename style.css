@@ -544,7 +544,6 @@ footer p {
     
     /* Adjust hero text and background for mobile */
     .hero {
-        background-attachment: fixed;
         height: 70vh;
     }
 
