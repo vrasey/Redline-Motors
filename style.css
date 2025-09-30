@@ -132,7 +132,7 @@ nav a:hover, nav a.active {
 
 /* Hero Section (Homepage) */
 .hero {
-    height: 75vh;
+    height: 100vh;
     background-image: url('images/hero_main.jpeg');
     background-size: cover;
     background-position: center;
@@ -381,40 +381,48 @@ footer p {
    6. Responsive Design (Mobile Styles)
    - All styles for screens 768px or narrower.
    ========================================================================== */
-@media (max-width: 768px) {
+@media (max-width: 768px) 
+{
 
     /* Make header scroll with page on mobile */
-    header {
+    header 
+    {
         position: static;
     }
     
-    header .container {
+    header .container 
+    {
         flex-direction: column;
         gap: 1rem;
     }
 
     /* Adjust nav links for smaller screens */
-    nav ul {
+    nav ul 
+    {
         justify-content: center;
         gap: 1.2rem;
         flex-wrap: wrap;
     }
 
-    nav a {
+    nav a 
+    {
         font-size: 0.9rem;
     }
     
     /* Adjust hero text and background for mobile */
-    .hero {
+    .hero 
+    {
         background-attachment: fixed;
     }
 
-    .hero h1 {
+    .hero h1
+    {
         font-size: 2.5rem;
     }
     
     /* Adjust padding for sub-page headers */
-    .page-header {
+    .page-header 
+    {
         padding-top: 40px;
     }
 
@@ -459,13 +467,18 @@ footer p {
     {
         font-size: 4rem;
     }
-
+    
+    .hero 
+    {
+    height: 100vh;
+    }
 }
 
 /* ==========================================================================
    Custom Messenger Button
    ========================================================================== */
-.messenger-button {
+.messenger-button 
+{
     position: fixed;
     bottom: 25px;
     right: 25px;
@@ -483,6 +496,7 @@ footer p {
     transition: transform 0.2s ease;
 }
 
-.messenger-button:hover {
+.messenger-button:hover 
+{
     transform: scale(1.1);
 }
