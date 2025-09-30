@@ -169,6 +169,49 @@ nav a:hover, nav a.active {
     margin-left: auto;
     margin-right: auto;
 }
+/* Scroll Down Indicator */
+.scroll-down-indicator {
+    position: absolute; /* Position relative to hero-content */
+    bottom: 20px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* Make sure it's above the overlay */
+}
+
+.scroll-down-indicator a {
+    display: flex; /* To stack the arrows vertically */
+    flex-direction: column;
+    color: var(--text-light);
+    font-size: 1.5rem; /* Size of the arrows */
+    line-height: 0.8; /* Bring the arrows closer together */
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-down-indicator a:hover {
+    opacity: 1;
+}
+
+/* Animation for the arrows */
+.scroll-down-indicator a i:first-child {
+    animation: bounce 2s infinite;
+}
+
+.scroll-down-indicator a i:last-child {
+    animation: bounce 2s infinite 0.2s; /* Stagger the second arrow's bounce */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
 
 /* Social Icons in the Hero Section */
 .hero-socials {
@@ -444,6 +487,9 @@ footer p {
 
     .parts-form {
         order: 1; /* Bring the form to the top */
+    }
+        .scroll-down-indicator {
+        bottom: 10px; /* Adjust for smaller screens */
     }
 }
 
