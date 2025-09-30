@@ -76,17 +76,31 @@
             </div>
 
             <div class="parts-form" id="quote-form">
-                <div class="about-section">
-                    <h2>Request a Quote</h2>
-                </div>
-                <div class="form-container">
-                    <form action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
-                        <label for="auction-link">Auction Link</label>
-                        <input type="url" id="auction-link" name="auction-link" placeholder="https://auctions.yahoo.co.jp/..." required>
-                        <button type="submit" class="btn btn-primary">Get a Quote</button>
-                    </form>
-                </div>
-            </div>
+    			<div class="about-section">
+        		<h2>Request a Quote</h2>
+    			</div>
+   			<div class="form-container">
+        		<form action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
+            
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="auction-link">Auction Link</label>
+            <input type="url" id="auction-link" name="auction-link" placeholder="https://auctions.yahoo.co.jp/..." required>
+
+            <label for="max-bid">Your Max Bid (USD)</label>
+            <input type="number" id="max-bid" name="max-bid" placeholder="e.g., 150" min="0" required>
+
+            <button type="submit" class="btn btn-primary">Get a Quote</button>
+        </form>
+
+        <p class="form-notice">Please note: Shipping costs are often not listed on the auction page itself. We will calculate and include all shipping costs in the final quote we send you.</p>
+
+    </div>
+</div>
 
         </div>
     </main>
