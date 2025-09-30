@@ -233,6 +233,15 @@ nav a:hover, nav a.active {
     opacity: 1;
 }
 
+/* Apply the bounce animation to the arrows */
+.scroll-down-indicator a i:first-child {
+    animation: bounce 2s infinite;
+}
+
+.scroll-down-indicator a i:last-child {
+    animation: bounce 2s infinite 0.2s; /* Stagger the second arrow's bounce */
+}
+
 .previous-orders {
     padding: 5rem 0;
 }
