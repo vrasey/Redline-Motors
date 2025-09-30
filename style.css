@@ -312,6 +312,11 @@ nav a:hover, nav a.active {
     margin-bottom: 0.5rem;
 }
 
+/* Adds spacing for the new button in the steps list */
+.steps-list li .btn {
+    margin-top: 1rem;
+}
+
 /* Styles for the About page sections */
 .about-section h2 {
     font-size: 2rem;
@@ -495,6 +500,11 @@ footer p {
         .scroll-down-indicator {
         bottom: 10px; /* Adjust for smaller screens */
     }
+    
+    /* Hide the "Go to Quote Form" button on mobile */
+.steps-list li .btn {
+    display: none;
+}
 }
 
 /* ==========================================================================
