@@ -171,11 +171,11 @@ nav a:hover, nav a.active {
 }
 /* Scroll Down Indicator */
 .scroll-down-indicator {
-    position: absolute; /* Position relative to hero-content */
-    bottom: 20px; /* Adjust as needed */
+    position: relative; /* CHANGED FROM absolute - THIS IS THE FIX */
     left: 50%;
     transform: translateX(-50%);
     z-index: 2; /* Make sure it's above the overlay */
+    margin-top: 1.5rem; /* Add some space from the social icons */
 }
 
 .scroll-down-indicator a {
