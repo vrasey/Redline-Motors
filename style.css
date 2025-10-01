@@ -410,6 +410,59 @@ nav a:hover, nav a.active {
     text-align: center;
 }
 
+/* A new secondary button style */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 2px solid var(--card-bg);
+    align-self: flex-start;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-secondary:hover {
+    background-color: var(--card-bg);
+    color: var(--text-light);
+}
+
+/* Styling for each new link item row */
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.link-item .input-wrapper {
+    flex-grow: 1; /* Allows the input to take up available space */
+}
+
+.link-item label {
+    margin-bottom: 0.5rem;
+}
+
+.link-item input {
+    width: 100%;
+    margin-bottom: 0; /* Remove default margin from input */
+}
+
+/* Style for the remove button */
+.btn-remove {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 1.5rem; /* Align with input box */
+    transition: color 0.3s ease;
+}
+
+.btn-remove:hover {
+    color: var(--primary-red);
+}
+
 /* --- Currency Converter Styles --- */
 .currency-converter {
     background-color: var(--card-bg);
