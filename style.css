@@ -458,6 +458,29 @@ nav a:hover, nav a.active {
     color: var(--text-secondary);
 }
 
+/* Add these new rules to your existing converter styles */
+
+.label-with-select {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.label-with-select label {
+    margin-bottom: 0; /* Remove default margin */
+}
+
+#currency-select {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.8rem;
+    font-family: var(--font-secondary);
+}
+
 /* ==========================================================================
    5. Animations & Keyframes
    - Holds animation definitions used throughout the site.

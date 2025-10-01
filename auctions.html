@@ -61,16 +61,16 @@
                     </li>
                     <li>
                         <h3>Step 2: Get a Quote</h3>
-                        <p>Paste the link into the form below. We will review the item and send you a complete, all-inclusive quote covering the item cost, our fee, and shipping to your location.</p>
+                        <p>Paste the link into the form below. We will review the item and send you a complete, all-inclusive quote covering the item cost, our service fee, and your shipping address.</p>
                         <a href="#quote-form" class="btn btn-primary">Go to Quote Form</a>
                     </li>
                     <li>
                         <h3>Step 3: Payment</h3>
-                        <p>Once you approve the quote, we will send you an invoice. After payment is confirmed, we will secure the item on your behalf.</p>
+                        <p>Once you approve the quote, we will send you an final shipping invoice*. After payment is confirmed, then we will secure the item on your behalf.</p>
                     </li>
                     <li>
                         <h3>Step 4: Shipping & Delivery</h3>
-                        <p>We handle all domestic logistics within Japan, package your item securely, and manage international shipping. You will receive tracking information as soon as it's available.</p>
+                        <p>We handle all domestic logistics within Japan, package your item securely, and manage international shipping. You will receive the tracking info via text or email as soon as it's available.</p>
                     </li>
                 </ol>
             </div>
@@ -102,11 +102,17 @@
     </div>
     
     <div class="currency-converter">
-    <h3>USD to JPY Converter</h3>
+    <h3>Currency Converter</h3>
     <div class="converter-row">
         <div class="input-group">
-            <label for="usd-input">USD</label>
-            <input type="number" id="usd-input" placeholder="100" min="0">
+            <div class="label-with-select">
+                <label for="from-input">From</label>
+                <select id="currency-select">
+                    <option value="USD" selected>USD</option>
+                    <option value="AUD">AUD</option>
+                </select>
+            </div>
+            <input type="number" id="from-input" placeholder="100" min="0">
         </div>
         <div class="equals-sign">=</div>
         <div class="input-group">
@@ -114,7 +120,7 @@
             <input type="number" id="jpy-input" placeholder="----" min="0">
         </div>
     </div>
-    <small class="rate-info">Live exchange rate updates automatically.</small>
+    <small class="rate-info">Fetching live exchange rate...</small>
 </div>
     
     
@@ -132,58 +138,80 @@
     <a href="https://m.me/820619511130834" class="messenger-button" target="_blank" aria-label="Chat on Messenger">
         <i class="fab fa-facebook-messenger"></i>
     </a>
-
+    
 <script>
-    // Get references to the input fields
-    const usdInput = document.getElementById('usd-input');
+    // Get references to the HTML elements
+    const fromInput = document.getElementById('from-input');
     const jpyInput = document.getElementById('jpy-input');
+    const currencySelect = document.getElementById('currency-select');
     const rateInfo = document.querySelector('.rate-info');
-    let usdToJpyRate;
+    
+    // Use an object to store multiple rates
+    let rates = {};
 
-    // Fetch the latest exchange rate from a free API
-    async function fetchRate() {
+    // --- Fetch the latest exchange rates from a free API ---
+    async function fetchRates() {
         try {
-            const response = await fetch('https://api.frankfurter.app/latest?from=USD&to=JPY');
+            // Fetch rates for both USD and AUD in one call
+            const response = await fetch('https://api.frankfurter.app/latest?to=JPY&from=USD,AUD');
             const data = await response.json();
-            usdToJpyRate = data.rates.JPY;
-            rateInfo.textContent = `Current Rate: 1 USD = ${usdToJpyRate.toFixed(2)} JPY`;
+            rates = data.rates; // Store the rates object, e.g., { USD: 150.1, AUD: 98.5 }
+            updateRateInfo(); // Update the display text
+            recalculateFromJpy(); // Perform initial calculation if a value exists
         } catch (error) {
-            console.error('Failed to fetch exchange rate:', error);
-            rateInfo.textContent = 'Could not load live rate.';
+            console.error('Failed to fetch exchange rates:', error);
+            rateInfo.textContent = 'Could not load live rates.';
         }
     }
 
-    // Function to format JPY (no decimals)
+    // --- Helper Functions ---
     function formatJpy(amount) {
         return Math.round(amount);
     }
 
-    // Event listener for the USD input
-    usdInput.addEventListener('input', () => {
-        if (!usdToJpyRate) return; // Don't run if the rate isn't loaded yet
-        const usdValue = parseFloat(usdInput.value);
-        if (isNaN(usdValue)) {
+    function updateRateInfo() {
+        const selectedCurrency = currencySelect.value;
+        if (rates[selectedCurrency]) {
+            rateInfo.textContent = `Current Rate: 1 ${selectedCurrency} = ${rates[selectedCurrency].toFixed(2)} JPY`;
+        }
+    }
+
+    function recalculateFromJpy() {
+        const selectedRate = rates[currencySelect.value];
+        if (!selectedRate) return;
+        
+        const jpyValue = parseFloat(jpyInput.value);
+        if (isNaN(jpyValue)) {
+            fromInput.value = '';
+            return;
+        }
+        const fromValue = jpyValue / selectedRate;
+        fromInput.value = fromValue.toFixed(2);
+    }
+
+    function recalculateToJpy() {
+        const selectedRate = rates[currencySelect.value];
+        if (!selectedRate) return;
+
+        const fromValue = parseFloat(fromInput.value);
+        if (isNaN(fromValue)) {
             jpyInput.value = '';
             return;
         }
-        const jpyValue = usdValue * usdToJpyRate;
+        const jpyValue = fromValue * selectedRate;
         jpyInput.value = formatJpy(jpyValue);
+    }
+
+    // --- Event Listeners ---
+    fromInput.addEventListener('input', recalculateToJpy);
+    jpyInput.addEventListener('input', recalculateFromJpy);
+    currencySelect.addEventListener('change', () => {
+        updateRateInfo();
+        recalculateToJpy(); // Recalculate when dropdown changes
     });
 
-    // Event listener for the JPY input
-    jpyInput.addEventListener('input', () => {
-        if (!usdToJpyRate) return;
-        const jpyValue = parseFloat(jpyInput.value);
-         if (isNaN(jpyValue)) {
-            usdInput.value = '';
-            return;
-        }
-        const usdValue = jpyValue / usdToJpyRate;
-        usdInput.value = usdValue.toFixed(2);
-    });
-
-    // Load the rate when the page loads
-    fetchRate();
+    // --- Initial Load ---
+    fetchRates();
 </script>
 
 </body>
