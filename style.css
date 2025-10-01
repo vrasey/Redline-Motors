@@ -103,6 +103,9 @@ header .container {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--text-light);
+    display: flex;        /* Aligns items horizontally */
+    align-items: center;  /* Vertically centers the image and text */
+    gap: 0.75rem;         /* Adds a small space between them */
 }
 
 .logo span {
@@ -605,6 +608,11 @@ footer p {
     /* Hide the "Go to Quote Form" button on mobile */
     .steps-list li .btn {
         display: none;
+    }
+    
+    .logo img 
+    {
+    	height: 40px;
     }
 }
 
