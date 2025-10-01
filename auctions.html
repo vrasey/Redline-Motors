@@ -42,92 +42,84 @@
     </header>
 
     <main>
-        <div class="page-header">
-            <div class="container">
-                <h1>Parts Sourcing & Auctions</h1>
-            </div>
+    <div class="page-header">
+        <div class="container">
+            <h1>Parts Sourcing & Auctions</h1>
         </div>
+    </div>
 
-        <div class="container page-content">
-            
-            <div class="parts-instructions">
-                <div class="about-section">
-                    <h2>How It Works</h2>
-                </div>
-                <ol class="steps-list">
-                    <li>
-                        <h3>Step 1: Find Your Part</h3>
-                        <p>Locate the item you wish to purchase on any Japanese auction or retail site (like Yahoo! Auctions, Up Garage, etc.). Copy the full URL from your browser's address bar.</p>
-                    </li>
-                    <li>
-                        <h3>Step 2: Get a Quote</h3>
-                        <p>Paste the link into the form below. We will review the item and send you a complete, all-inclusive quote covering the item cost, our service fee, and your shipping address.</p>
-                        <a href="#quote-form" class="btn btn-primary">Go to Quote Form</a>
-                    </li>
-                    <li>
-                        <h3>Step 3: Payment</h3>
-                        <p>Once you approve the quote, we will send you an final shipping invoice*. After payment is confirmed, then we will secure the item on your behalf.</p>
-                    </li>
-                    <li>
-                        <h3>Step 4: Shipping & Delivery</h3>
-                        <p>We handle all domestic logistics within Japan, package your item securely, and manage international shipping. You will receive the tracking info via text or email as soon as it's available.</p>
-                    </li>
-                </ol>
-            </div>
-
-            <div class="parts-form" id="quote-form">
-    			<div class="about-section">
-        		<h2>Request a Quote</h2>
-    			</div>
-   			<div class="form-container">
-        		<form action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
-            
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="auction-link">Auction Link</label>
-            <input type="url" id="auction-link" name="auction-link" placeholder="https://auctions.yahoo.co.jp/..." required>
-
-            <label for="max-bid">Your Max Bid (USD)</label>
-            <input type="number" id="max-bid" name="max-bid" placeholder="e.g., 150" min="0" required>
-
-            <button type="submit" class="btn btn-primary">Get a Quote</button>
-        </form>
-
-        <p class="form-notice">Please note: Shipping costs are often not listed on the auction page itself. We will calculate and include all shipping costs in the final quote we send you.</p>
+    <div class="container page-content">
         
-    </div>
-    
-    <div class="currency-converter">
-    <h3>Currency Converter</h3>
-    <div class="converter-row">
-        <div class="input-group">
-            <div class="label-with-select">
-                <label for="from-input">From</label>
-                <select id="currency-select">
-                    <option value="USD" selected>USD</option>
-                    <option value="AUD">AUD</option>
-                </select>
+        <div class="parts-instructions">
+            <div class="about-section">
+                <h2>How It Works</h2>
             </div>
-            <input type="number" id="from-input" placeholder="100" min="0">
+            <ol class="steps-list">
+                <li>
+                    <h3>Step 1: Find Your Part</h3>
+                    <p>Locate the item you wish to purchase on any Japanese auction or retail site (like Yahoo! Auctions, Up Garage, etc.). Copy the full URL from your browser's address bar.</p>
+                </li>
+                <li>
+                    <h3>Step 2: Get a Quote</h3>
+                    <p>Paste the link into the form below. We will review the item and send you a complete, all-inclusive quote covering the item cost, our service fee, and your shipping address.</p>
+                    <a href="#quote-form" class="btn btn-primary">Go to Quote Form</a>
+                </li>
+                <li>
+                    <h3>Step 3: Payment</h3>
+                    <p>Once you approve the quote, we will send you an final shipping invoice*. After payment is confirmed, then we will secure the item on your behalf.</p>
+                </li>
+                <li>
+                    <h3>Step 4: Shipping & Delivery</h3>
+                    <p>We handle all domestic logistics within Japan, package your item securely, and manage international shipping. You will receive the tracking info via text or email as soon as it's available.</p>
+                </li>
+            </ol>
         </div>
-        <div class="equals-sign">=</div>
-        <div class="input-group">
-            <label for="jpy-input">JPY</label>
-            <input type="number" id="jpy-input" placeholder="----" min="0">
-        </div>
-    </div>
-    <small class="rate-info">Fetching live exchange rate...</small>
-</div>
-    
-    
-</div>
 
-        </div>
-    </main>
+        <div class="parts-form" id="quote-form">
+            <div class="about-section">
+                <h2>Request a Quote</h2>
+            </div>
+            <div class="form-container">
+                <form action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="auction-link">Auction Link</label>
+                    <input type="url" id="auction-link" name="auction-link" placeholder="https://auctions.yahoo.co.jp/..." required>
+
+                    <label for="max-bid">Your Max Bid (USD)</label>
+                    <input type="number" id="max-bid" name="max-bid" placeholder="e.g., 150" min="0" required>
+
+                    <button type="submit" class="btn btn-primary">Get a Quote</button>
+                </form>
+                <p class="form-notice">Please note: Shipping costs are often not listed on the auction page itself. We will calculate and include all shipping costs in the final quote we send you.</p>
+            </div>
+            
+            <div class="currency-converter">
+                <h3>Currency Converter</h3>
+                <div class="converter-row">
+                    <div class="input-group">
+                        <div class="label-with-select">
+                            <label for="from-input">From</label>
+                            <select id="currency-select">
+                                <option value="USD" selected>USD</option>
+                                <option value="AUD">AUD</option>
+                            </select>
+                        </div>
+                        <input type="number" id="from-input" placeholder="100" min="0">
+                    </div>
+                    <div class="equals-sign">=</div>
+                    <div class="input-group">
+                        <label for="jpy-input">JPY</label>
+                        <input type="number" id="jpy-input" placeholder="----" min="0">
+                    </div>
+                </div>
+                <small class="rate-info">Fetching live exchange rate...</small>
+            </div>
+        </div> </div> </main>
 
     <footer>
         <div class="container">
