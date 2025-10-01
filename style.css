@@ -567,7 +567,7 @@ footer p {
     
     /* Adjust hero text and background for mobile */
     .hero {
-        height: 70vh;
+        height: 80vh;
     }
 
     .hero h1 {
