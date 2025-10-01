@@ -171,7 +171,7 @@
     function updateRateInfo() {
         const selectedCurrency = currencySelect.value;
         if (rates[selectedCurrency]) {
-            rateInfo.textContent = `Current Rate: 1 ${selectedCurrency} = ${rates[selectedCurrency].toFixed(2)} JPY`;
+            rateInfo.textContent = `Live Conversion Rate: 1 ${selectedCurrency} = ${rates[selectedCurrency].toFixed(2)} JPY`;
         }
     }
 
