@@ -425,6 +425,23 @@ nav a:hover, nav a.active {
     background-color: var(--card-bg);
     color: var(--text-light);
 }
+/* Styling for the Add Another Item button */
+#add-link-btn {
+    border: 1px dashed var(--text-secondary); /* A dashed border will make it look clickable/interactive */
+    margin-bottom: 2rem; /* Give it a bit more space below */
+    margin-top: 0.5rem; /* Give it a bit more space above */
+    padding: 0.7rem 1.5rem; /* Adjust padding for visual balance with border */
+    display: inline-flex; /* Use flex to center icon and text if you add an icon later */
+    align-items: center;
+    justify-content: center;
+}
+
+#add-link-btn:hover {
+    border-color: var(--primary-red); /* Highlight border on hover */
+    color: var(--primary-red);
+    background-color: var(--card-bg); /* Match the existing hover */
+
+}
 
 /* Styling for each new link item row */
 .link-item {
