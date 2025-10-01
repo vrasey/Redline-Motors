@@ -691,6 +691,18 @@ footer p {
     {
     	height: 40px;
     }
+
+    .converter-row {
+        flex-direction: column; /* Stack the inputs vertically */
+        gap: 0;                 /* Reset the gap for a new layout */
+    }
+
+    .equals-sign {
+        transform: rotate(90deg); /* Rotate the '=' to point down */
+        padding-top: 0;           /* Remove the old padding */
+        margin: 1rem 0;           /* Add some vertical space */
+       
+   }
 }
 
 /* ==========================================================================
