@@ -114,7 +114,7 @@ header .container {
     height: 40px; /* Controls the size of the logo image */
 }
 
-/* === THIS RULE HAS BEEN UPDATED === */
+/* Find this rule in your Header & Navigation section */
 .logo .logo-text span {
     color: var(--primary-red);
 }
