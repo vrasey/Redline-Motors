@@ -231,5 +231,55 @@
     fetchRates();
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const addLinkBtn = document.getElementById('add-link-btn');
+        const linksContainer = document.getElementById('auction-links-container');
+        let linkCount = 1;
+        const maxLinks = 5;
+
+        // Function to handle adding a new link field
+        addLinkBtn.addEventListener('click', () => {
+            if (linkCount >= maxLinks) {
+                return; // Stop if we've reached the max
+            }
+
+            linkCount++;
+
+            // Create the new link item's HTML
+            const newLinkItem = document.createElement('div');
+            newLinkItem.classList.add('link-item');
+            newLinkItem.innerHTML = `
+                <div class="input-wrapper">
+                    <label for="auction-link-${linkCount}">Auction Link #${linkCount}</label>
+                    <input type="url" id="auction-link-${linkCount}" name="auction-link-${linkCount}" placeholder="https://auctions.yahoo.co.jp/..." required>
+                </div>
+                <button type="button" class="btn-remove" aria-label="Remove item">&times;</button>
+            `;
+
+            linksContainer.appendChild(newLinkItem);
+
+            // Hide the "add" button if we've reached the cap
+            if (linkCount >= maxLinks) {
+                addLinkBtn.style.display = 'none';
+            }
+        });
+
+        // Function to handle removing a link field (using event delegation)
+        linksContainer.addEventListener('click', (event) => {
+            if (event.target && event.target.classList.contains('btn-remove')) {
+                // Find the parent .link-item and remove it
+                event.target.closest('.link-item').remove();
+                linkCount--;
+
+                // Show the "add" button again if we are below the cap
+                if (linkCount < maxLinks) {
+                    addLinkBtn.style.display = 'inline-block';
+                }
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
