@@ -102,13 +102,14 @@
 
         <label for="max-bid">Your Max Bid (USD)</label>
         <input type="number" id="max-bid" name="max-bid" placeholder="e.g., 150" min="0" required>
+        
+        <div id="scrape-preview-container"></div>
 
-        <button type="submit" class="btn btn-primary">Get a Quote</button>
+        <button type="button" id="get-quote-btn" class="btn btn-primary">Get a Quote</button>
     </form>
 
     <p class="form-notice">Please note: Shipping costs are often not listed on the auction page itself. We will calculate and include all shipping costs in the final quote we send you.</p>
 </div>
-
             
             <div class="currency-converter">
                 <h3>Currency Converter</h3>
@@ -278,6 +279,70 @@
                 }
             }
         });
+    });
+</script>
+
+<script>
+    // --- CONFIGURATION ---
+    const backendUrl = 'redline-scraper-haafeee5ahd3fad0.eastasia-01.azurewebsites.net'; // <-- IMPORTANT: PASTE YOUR AZURE URL HERE
+
+    // --- ELEMENT REFERENCES ---
+    const quoteBtn = document.getElementById('get-quote-btn');
+    const quoteForm = document.querySelector('.form-container form');
+    const auctionLinkInput = document.getElementById('auction-link-1');
+    const previewContainer = document.getElementById('scrape-preview-container');
+
+    // --- SCRAPER LOGIC ---
+    quoteBtn.addEventListener('click', async () => {
+        const urlToScrape = auctionLinkInput.value;
+
+        // Simple validation to ensure a link is present
+        if (!urlToScrape) {
+            alert('Please provide at least one auction link.');
+            return;
+        }
+
+        // Show a loading message in the preview box
+        previewContainer.innerHTML = '<p class="loading-text">Fetching details from auction...</p>';
+        previewContainer.style.display = 'block';
+
+        try {
+            // Send the URL to our backend server
+            const response = await fetch(`${backendUrl}/scrape`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: urlToScrape }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Server responded with an error.');
+            }
+
+            const data = await response.json();
+
+            // Build the HTML for the preview
+            const previewHtml = `
+                <div class="scrape-preview">
+                    <img src="${data.imageUrl}" alt="Auction item preview">
+                    <div class="preview-details">
+                        <h4>${data.title}</h4>
+                        <p class="price">Current Price: ${data.price}</p>
+                    </div>
+                </div>
+            `;
+            
+            // Display the preview
+            previewContainer.innerHTML = previewHtml;
+
+            // Optional: You could add a "Confirm & Submit" button here,
+            // or just submit the form after a short delay.
+            // For now, we will just show the preview. To submit, the user can click again.
+            // quoteForm.submit(); // <-- Uncomment this line to submit the form automatically
+
+        } catch (error) {
+            console.error('Scraping failed:', error);
+            previewContainer.innerHTML = '<p class="error-text">Could not fetch details. Please check the link and try again.</p>';
+        }
     });
 </script>
 

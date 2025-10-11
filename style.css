@@ -480,6 +480,51 @@ nav a:hover, nav a.active {
     color: var(--primary-red);
 }
 
+/* --- Scrape Preview Styles --- */
+#scrape-preview-container {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: var(--dark-bg);
+    border: 1px solid #333;
+    border-radius: 8px;
+    display: none; /* Hidden by default */
+}
+
+.scrape-preview {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.scrape-preview img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.scrape-preview .preview-details h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.scrape-preview .preview-details .price {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.loading-text, .error-text {
+    width: 100%;
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 1rem 0;
+}
+
+.error-text {
+    color: var(--primary-red);
+}
+
 /* --- Currency Converter Styles --- */
 .currency-converter {
     background-color: var(--card-bg);
