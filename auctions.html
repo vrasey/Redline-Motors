@@ -284,7 +284,7 @@
 
 <script>
     // --- CONFIGURATION ---
-    const backendUrl = 'redline-scraper-haafeee5ahd3fad0.eastasia-01.azurewebsites.net'; // <-- IMPORTANT: PASTE YOUR AZURE URL HERE
+    const backendUrl = 'https://redline-scraper-haafeee5ahd3fad0.eastasia-01.azurewebsites.net'; // <-- HTTPS ADDED HERE
 
     // --- ELEMENT REFERENCES ---
     const quoteBtn = document.getElementById('get-quote-btn');
@@ -333,11 +333,6 @@
             
             // Display the preview
             previewContainer.innerHTML = previewHtml;
-
-            // Optional: You could add a "Confirm & Submit" button here,
-            // or just submit the form after a short delay.
-            // For now, we will just show the preview. To submit, the user can click again.
-            // quoteForm.submit(); // <-- Uncomment this line to submit the form automatically
 
         } catch (error) {
             console.error('Scraping failed:', error);
