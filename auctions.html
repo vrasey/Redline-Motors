@@ -131,16 +131,10 @@
     const fromInput=document.getElementById("from-input"),jpyInput=document.getElementById("jpy-input"),currencySelect=document.getElementById("currency-select"),rateInfo=document.querySelector(".rate-info");let rates={};async function fetchRates(){try{const t=await fetch("https://api.frankfurter.app/latest?to=USD,AUD,JPY"),e=await t.json();rates={USD:e.rates.JPY/e.rates.USD,AUD:e.rates.JPY/e.rates.AUD},updateRateInfo(),recalculateToJpy()}catch(t){console.error("Failed to fetch exchange rates:",t),rateInfo.textContent="Could not load live rates."}}function formatJpy(t){return Math.round(t)}function updateRateInfo(){const t=currencySelect.value;rates[t]&&(rateInfo.textContent=`Live Conversion Rate: 1 ${t} = ${rates[t].toFixed(2)} JPY`)}function recalculateFromJpy(){const t=rates[currencySelect.value];if(!t)return;const e=parseFloat(jpyInput.value);if(isNaN(e)||0===e)return void(fromInput.value="");const n=e/t;fromInput.value=n.toFixed(2)}function recalculateToJpy(){const t=rates[currencySelect.value];if(!t)return;const e=parseFloat(fromInput.value);if(isNaN(e)||0===e)return void(jpyInput.value="");const n=e*t;jpyInput.value=formatJpy(n)}fromInput.addEventListener("input",recalculateToJpy),jpyInput.addEventListener("input",recalculateFromJpy),currencySelect.addEventListener("change",()=>{updateRateInfo(),jpyInput.value?recalculateFromJpy():recalculateToJpy()}),fetchRates();
 </script>
 <script>
-    document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("add-link-btn"),e=document.getElementById("auction-links-container");let n=1;t.addEventListener("click",()=>{if(n>=5)return;n++;const o=document.createElement("div");o.classList.add("link-item"),o.innerHTML=`
-                <div class="input-wrapper">
-                    <label for="auction-link-${n}">Auction Link #${n}</label>
-                    <input type="url" id="auction-link-${n}" name="auction-link-${n}" placeholder="https://auctions.yahoo.co.jp/..." required>
-                </div>
-                <button type="button" class="btn-remove" aria-label="Remove item">&times;</button>
-            `,e.appendChild(o),n>=5&&(t.style.display="none")}),e.addEventListener("click",t=>{t.target&&t.target.classList.contains("btn-remove")&&(t.target.closest(".link-item").remove(),n--,n<5&&(addLinkBtn.style.display="inline-block"))})});
+    document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("add-link-btn"),e=document.getElementById("auction-links-container");let n=1;t.addEventListener("click",()=>{if(n>=5)return;n++;const o=document.createElement("div");o.classList.add("link-item"),o.innerHTML=`<div class="input-wrapper"><label for="auction-link-${n}">Auction Link #${n}</label><input type="url" id="auction-link-${n}" name="auction-link-${n}" placeholder="https://auctions.yahoo.co.jp/..." required></div><button type="button" class="btn-remove" aria-label="Remove item">&times;</button>`,e.appendChild(o),n>=5&&(t.style.display="none")}),e.addEventListener("click",t=>{t.target&&t.target.classList.contains("btn-remove")&&(t.target.closest(".link-item").remove(),n--,n<5&&(addLinkBtn.style.display="inline-block"))})});
 </script>
 <script>
-    const backendUrl = 'https://redline-scraper-haafeee5ahd3fad0.eastasia-01.azurewebsites.net'; // <-- IMPORTANT: PASTE YOUR AZURE URL
+    const backendUrl = 'YOUR_AZURE_URL_HERE'; // <-- IMPORTANT: PASTE YOUR AZURE URL
     const quoteBtn = document.getElementById('get-quote-btn');
     const auctionLinkInput = document.getElementById('auction-link-1');
     const previewContainer = document.getElementById('scrape-preview-container');
@@ -168,7 +162,7 @@
 
             const data = await response.json();
 
-            // Updated preview to include the image and match your Python script
+            // Build the HTML for the preview, now including the image
             const previewHtml = `
                 <div class="scrape-preview">
                     <img src="${data.imageUrl}" alt="Auction item preview">
