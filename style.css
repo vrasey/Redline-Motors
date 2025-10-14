@@ -1,6 +1,5 @@
 /* ==========================================================================
    1. Global Styles & Variables
-   - Sets up the color palette, fonts, and basic styles for the whole site.
    ========================================================================== */
 :root {
     --primary-red: #D2042D;
@@ -11,763 +10,156 @@
     --font-primary: 'Exo 2', sans-serif;
     --font-secondary: 'Roboto', sans-serif;
 }
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: var(--font-secondary);
-    background-color: var(--dark-bg);
-    color: var(--text-light);
-    line-height: 1.6;
-}
-
-h1, h2, h3 {
-    font-family: var(--font-primary);
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-a {
-    text-decoration: none;
-    color: var(--primary-red);
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-secondary); background-color: var(--dark-bg); color: var(--text-light); line-height: 1.6; }
+h1, h2, h3 { font-family: var(--font-primary); font-weight: 700; line-height: 1.2; }
+a { text-decoration: none; color: var(--primary-red); }
+img { max-width: 100%; display: block; }
 
 /* ==========================================================================
    2. Layout & Reusable Components
-   - Styles for shared layout elements like containers and buttons.
    ========================================================================== */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Button Styles */
-.btn {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    font-family: var(--font-primary);
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-}
-
-.btn-primary {
-    background-color: var(--primary-red);
-    color: white;
-    border: 2px solid var(--primary-red);
-}
-
-.btn-primary:hover {
-    background-color: transparent;
-    color: var(--primary-red);
-}
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+.btn { display: inline-block; padding: 0.8rem 2rem; font-family: var(--font-primary); font-size: 1rem; font-weight: 700; border-radius: 5px; transition: all 0.3s ease; text-transform: uppercase; }
+.btn-primary { background-color: var(--primary-red); color: white; border: 2px solid var(--primary-red); }
+.btn-primary:hover { background-color: transparent; color: var(--primary-red); }
 
 /* ==========================================================================
    3. Header & Navigation
-   - Styles for the main site header and navigation bar.
    ========================================================================== */
-header {
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 1px solid var(--card-bg);
-}
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* This is your existing rule, make sure it has display: flex */
-.logo {
-    font-family: var(--font-primary);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--text-light);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-/* === ADD THIS NEW RULE === */
-.logo img {
-    height: 40px; /* Controls the size of the logo image */
-}
-
-/* Find this rule in your Header & Navigation section */
-.logo .logo-text span {
-    color: var(--primary-red);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-}
-
-nav a {
-    color: var(--text-light);
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-nav a:hover, nav a.active {
-    color: var(--primary-red);
-    background-color: var(--card-bg);
-}
+header { background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); padding: 1rem 0; position: fixed; width: 100%; z-index: 1000; border-bottom: 1px solid var(--card-bg); }
+header .container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: var(--text-light); display: flex; align-items: center; gap: 0.75rem; }
+.logo img { height: 40px; }
+.logo .logo-text span { color: var(--primary-red); }
+nav ul { list-style: none; display: flex; gap: 1.5rem; }
+nav a { color: var(--text-light); font-weight: 700; padding: 0.5rem 1rem; border-radius: 20px; transition: color 0.3s ease, background-color 0.3s ease; }
+nav a:hover, nav a.active { color: var(--primary-red); background-color: var(--card-bg); }
 
 /* ==========================================================================
    4. Page-Specific Sections
-   - Styles for content unique to certain pages (Homepage, Auctions, etc.).
    ========================================================================== */
+.page-header { padding-top: 120px; padding-bottom: 40px; background-color: var(--card-bg); text-align: center; border-bottom: 1px solid #2a2a2a; }
+.page-header h1 { font-size: 3rem; }
+.page-content { padding-top: 2rem; padding-bottom: 2rem; }
+.hero { height: 100vh; background-image: url('images/hero_main.jpeg'); background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.4)); }
+.hero-content { position: relative; z-index: 2; }
+.hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+.hero p { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin: 0 auto 2rem auto; }
+.hero-socials { margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; }
+.hero-socials a { color: var(--text-light); font-size: 1.8rem; transition: all 0.3s ease; }
+.hero-socials a:hover { color: var(--primary-red); transform: translateY(-3px); }
+.scroll-down-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; }
+.scroll-down-indicator a { display: flex; flex-direction: column; color: var(--text-light); font-size: 1.5rem; line-height: 0.8; opacity: 0.8; transition: opacity 0.3s ease; }
+.scroll-down-indicator a:hover { opacity: 1; }
+.scroll-down-indicator a i:first-child { animation: bounce 2s infinite; }
+.scroll-down-indicator a i:last-child { animation: bounce 2s infinite 0.2s; }
+.previous-orders { padding: 5rem 0; }
+.previous-orders h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; }
+.order-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+.order-item img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid #2a2a2a; transition: transform 0.3s ease, opacity 0.3s ease; }
+.order-item img:hover { transform: scale(1.03); opacity: 0.85; }
+.order-item h3 { margin-top: 1rem; margin-bottom: 2rem; min-height: 2.5rem; text-align: center; padding: 0 1rem 1rem; }
+.steps-list { list-style: none; counter-reset: steps-counter; margin-top: 2rem; }
+.steps-list li { counter-increment: steps-counter; margin-bottom: 2rem; position: relative; padding-left: 50px; }
+.steps-list li::before { content: counter(steps-counter); position: absolute; left: 0; top: 0; font-family: var(--font-primary); font-size: 1.5rem; font-weight: 700; color: var(--primary-red); background-color: var(--card-bg); border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
+.steps-list li h3 { margin-bottom: 0.5rem; }
+.steps-list li .btn { margin-top: 1rem; }
+.about-section h2 { font-size: 2rem; color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-bg); padding-bottom: 0.5rem; }
+.about-section h2:first-child { margin-top: 0; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start; }
+.contact-details h3 { margin-bottom: 1rem; }
+.contact-details ul { list-style: none; line-height: 2; }
+.form-container { background-color: var(--card-bg); padding: 2rem; border-radius: 8px; margin-top: 2rem; border: 1px solid #2a2a2a; }
+.form-container form { display: flex; flex-direction: column; }
+.form-container label { margin-bottom: 0.5rem; font-weight: 700; color: var(--text-secondary); }
+.form-container input, .form-container textarea { background-color: var(--dark-bg); border: 1px solid #333; border-radius: 5px; padding: 0.8rem; font-size: 1rem; color: var(--text-light); margin-bottom: 1.5rem; font-family: var(--font-secondary); }
+.form-container textarea { resize: vertical; }
+.form-container button { align-self: flex-start; }
+.form-notice { margin-top: 1.5rem; font-size: 0.9rem; font-style: italic; color: var(--text-secondary); text-align: center; }
+.btn-secondary { background-color: transparent; color: var(--text-secondary); border: 2px solid var(--card-bg); align-self: flex-start; margin-bottom: 1.5rem; padding: 0.5rem 1rem; font-size: 0.9rem; }
+.btn-secondary:hover { background-color: var(--card-bg); color: var(--text-light); }
+#add-link-btn { border: 1px dashed var(--text-secondary); margin-bottom: 2rem; margin-top: 0.5rem; padding: 0.7rem 1.5rem; display: inline-flex; align-items: center; justify-content: center; }
+#add-link-btn:hover { border-color: var(--primary-red); color: var(--primary-red); background-color: var(--card-bg); }
+.link-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.link-item .input-wrapper { flex-grow: 1; }
+.link-item label { margin-bottom: 0.5rem; }
+.link-item input { width: 100%; margin-bottom: 0; }
+.btn-remove { background: none; border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; padding: 0; margin-top: 1.5rem; transition: color 0.3s ease; }
+.btn-remove:hover { color: var(--primary-red); }
+#scrape-preview-container { margin: 1.5rem 0; padding: 1rem; background-color: var(--dark-bg); border: 1px solid #333; border-radius: 8px; display: none; }
+.scrape-preview { display: flex; gap: 1rem; align-items: center; }
+.scrape-preview img { width: 100px; height: 100px; object-fit: cover; border-radius: 5px; }
+.scrape-preview .preview-details h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.scrape-preview .preview-details .price { font-size: 1rem; font-weight: 700; }
+.loading-text, .error-text { width: 100%; text-align: center; color: var(--text-secondary); font-style: italic; padding: 1rem 0; }
+.error-text { color: var(--primary-red); }
+.currency-converter { background-color: var(--card-bg); padding: 2rem; border-radius: 8px; margin-top: 2rem; border: 1px solid #2a2a2a; }
+.currency-converter h3 { text-align: center; margin-bottom: 1.5rem; }
+.converter-row { display: flex; align-items: center; justify-content: center; gap: 1.5rem; }
+.input-group { display: flex; flex-direction: column; flex: 1; }
+.input-group label { margin-bottom: 0.5rem; font-weight: 700; color: var(--text-secondary); }
+.input-group input { background-color: var(--dark-bg); border: 1px solid #333; border-radius: 5px; padding: 0.8rem; font-size: 1.2rem; color: var(--text-light); width: 100%; }
+.equals-sign { font-size: 2rem; font-weight: 700; color: var(--primary-red); padding-top: 1.5rem; }
+.rate-info { display: block; text-align: center; margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-secondary); }
+.label-with-select { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+.label-with-select label { margin-bottom: 0; }
+#currency-select { background-color: var(--dark-bg); color: var(--text-light); border: 1px solid #333; border-radius: 5px; padding: 0.2rem 0.4rem; font-size: 0.8rem; font-family: var(--font-secondary); }
 
-/* --- General Sub-Page Styles --- */
-.page-header {
-    padding-top: 120px;
-    padding-bottom: 40px;
-    background-color: var(--card-bg);
-    text-align: center;
-    border-bottom: 1px solid #2a2a2a;
-}
-
-.page-header h1 {
-    font-size: 3rem;
-}
-
-.page-content {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
-
-/* --- Homepage Styles --- */
-.hero {
-    height: 100vh;
-    background-image: url('images/hero_main.jpeg');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.4));
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
-}
-
-.hero-socials {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.hero-socials a {
-    color: var(--text-light);
-    font-size: 1.8rem;
-    transition: all 0.3s ease;
-}
-
-.hero-socials a:hover {
-    color: var(--primary-red);
-    transform: translateY(-3px);
-}
-
-/* Scroll Down Indicator */
-.scroll-down-indicator {
-    position: absolute;  /* Reverted back to absolute */
-    bottom: 40px;        /* Increased spacing from the bottom */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    /* The margin-top is no longer needed */
-}
-
-.scroll-down-indicator a {
-    display: flex;
-    flex-direction: column;
-    color: var(--text-light);
-    font-size: 1.5rem;
-    line-height: 0.8;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.scroll-down-indicator a:hover {
-    opacity: 1;
-}
-
-/* Apply the bounce animation to the arrows */
-.scroll-down-indicator a i:first-child {
-    animation: bounce 2s infinite;
-}
-
-.scroll-down-indicator a i:last-child {
-    animation: bounce 2s infinite 0.2s; /* Stagger the second arrow's bounce */
-}
-
-.previous-orders {
-    padding: 5rem 0;
-}
-
-.previous-orders h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-}
-
-.order-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-}
-
-.order-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #2a2a2a;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.order-item img:hover {
-    transform: scale(1.03);
-    opacity: 0.85;
-}
-
-.order-item h3 {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    min-height: 2.5rem;
-    text-align: center;
-    padding: 0 1rem 1rem;
-}
-
-/* --- "How to Buy" Page Styles --- */
-.steps-list {
-    list-style: none;
-    counter-reset: steps-counter; /* Initialize a counter for the steps */
-    margin-top: 2rem;
-}
-
-.steps-list li {
-    counter-increment: steps-counter; /* Increment the counter for each list item */
-    margin-bottom: 2rem;
-    position: relative;
-    padding-left: 50px;
-}
-
-.steps-list li::before {
-    content: counter(steps-counter); /* Display the counter's value */
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-family: var(--font-primary);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-red);
-    background-color: var(--card-bg);
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.steps-list li h3 {
-    margin-bottom: 0.5rem;
-}
-
-.steps-list li .btn {
-    margin-top: 1rem;
-}
-
-/* --- "About" Page Styles --- */
-.about-section h2 {
-    font-size: 2rem;
-    color: var(--primary-red);
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid var(--card-bg);
-    padding-bottom: 0.5rem;
-}
-
-.about-section h2:first-child {
-    margin-top: 0;
-}
-
-/* --- "Contact" Page Styles --- */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 2rem;
-    align-items: start;
-}
-
-.contact-details h3 {
-    margin-bottom: 1rem;
-}
-
-.contact-details ul {
-    list-style: none;
-    line-height: 2;
-}
-
-/* --- Form Component Styles --- */
-.form-container {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    margin-top: 2rem;
-    border: 1px solid #2a2a2a;
-}
-
-.form-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-container label {
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    color: var(--text-secondary);
-}
-
-.form-container input,
-.form-container textarea {
-    background-color: var(--dark-bg);
-    border: 1px solid #333;
-    border-radius: 5px;
-    padding: 0.8rem;
-    font-size: 1rem;
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    font-family: var(--font-secondary);
-}
-
-.form-container textarea {
-    resize: vertical;
-}
-
-.form-container button {
-    align-self: flex-start;
-}
-
-/* Style for the small notice text below a form */
-.form-notice {
-    margin-top: 1.5rem;
+/* NEW CSS RULE FOR END TIME */
+.scrape-preview .preview-details .end-time {
     font-size: 0.9rem;
-    font-style: italic;
     color: var(--text-secondary);
-    text-align: center;
-}
-
-/* A new secondary button style */
-.btn-secondary {
-    background-color: transparent;
-    color: var(--text-secondary);
-    border: 2px solid var(--card-bg);
-    align-self: flex-start;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-}
-
-.btn-secondary:hover {
-    background-color: var(--card-bg);
-    color: var(--text-light);
-}
-/* Styling for the Add Another Item button */
-#add-link-btn {
-    border: 1px dashed var(--text-secondary); /* A dashed border will make it look clickable/interactive */
-    margin-bottom: 2rem; /* Give it a bit more space below */
-    margin-top: 0.5rem; /* Give it a bit more space above */
-    padding: 0.7rem 1.5rem; /* Adjust padding for visual balance with border */
-    display: inline-flex; /* Use flex to center icon and text if you add an icon later */
-    align-items: center;
-    justify-content: center;
-}
-
-#add-link-btn:hover {
-    border-color: var(--primary-red); /* Highlight border on hover */
-    color: var(--primary-red);
-    background-color: var(--card-bg); /* Match the existing hover */
-
-}
-
-/* Styling for each new link item row */
-.link-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.link-item .input-wrapper {
-    flex-grow: 1; /* Allows the input to take up available space */
-}
-
-.link-item label {
-    margin-bottom: 0.5rem;
-}
-
-.link-item input {
-    width: 100%;
-    margin-bottom: 0; /* Remove default margin from input */
-}
-
-/* Style for the remove button */
-.btn-remove {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0;
-    margin-top: 1.5rem; /* Align with input box */
-    transition: color 0.3s ease;
-}
-
-.btn-remove:hover {
-    color: var(--primary-red);
-}
-
-/* --- Scrape Preview Styles --- */
-#scrape-preview-container {
-    margin: 1.5rem 0;
-    padding: 1rem;
-    background-color: var(--dark-bg);
-    border: 1px solid #333;
-    border-radius: 8px;
-    display: none; /* Hidden by default */
-}
-
-.scrape-preview {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.scrape-preview img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.scrape-preview .preview-details h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
-
-.scrape-preview .preview-details .price {
-    font-size: 1rem;
-    font-weight: 700;
-}
-
-.loading-text, .error-text {
-    width: 100%;
-    text-align: center;
-    color: var(--text-secondary);
-    font-style: italic;
-    padding: 1rem 0;
-}
-
-.error-text {
-    color: var(--primary-red);
-}
-
-/* --- Currency Converter Styles --- */
-.currency-converter {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    margin-top: 2rem;
-    border: 1px solid #2a2a2a;
-}
-
-.currency-converter h3 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-.converter-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1; /* Allow groups to grow */
-}
-
-.input-group label {
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    color: var(--text-secondary);
-}
-
-.input-group input {
-    background-color: var(--dark-bg);
-    border: 1px solid #333;
-    border-radius: 5px;
-    padding: 0.8rem;
-    font-size: 1.2rem; /* Larger font for numbers */
-    color: var(--text-light);
-    width: 100%;
-}
-
-.equals-sign {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-red);
-    padding-top: 1.5rem; /* Align with inputs */
-}
-
-.rate-info {
-    display: block;
-    text-align: center;
-    margin-top: 1.5rem;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-
-/* Add these new rules to your existing converter styles */
-
-.label-with-select {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.label-with-select label {
-    margin-bottom: 0; /* Remove default margin */
-}
-
-#currency-select {
-    background-color: var(--dark-bg);
-    color: var(--text-light);
-    border: 1px solid #333;
-    border-radius: 5px;
-    padding: 0.2rem 0.4rem;
-    font-size: 0.8rem;
-    font-family: var(--font-secondary);
+    margin-top: 0.5rem;
 }
 
 /* ==========================================================================
    5. Animations & Keyframes
-   - Holds animation definitions used throughout the site.
    ========================================================================== */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
-}
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
 
 /* ==========================================================================
    6. Footer
-   - Styles for the main site footer.
    ========================================================================== */
-footer {
-    background-color: #000;
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 3rem;
-    border-top: 1px solid var(--card-bg);
-}
-
-footer p {
-    color: var(--text-secondary);
-}
+footer { background-color: #000; text-align: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid var(--card-bg); }
+footer p { color: var(--text-secondary); }
 
 /* ==========================================================================
    7. Custom Messenger Button
    ========================================================================== */
-.messenger-button {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #0084FF;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-    z-index: 999;
-    transition: transform 0.2s ease;
-}
-
-.messenger-button:hover {
-    transform: scale(1.1);
-}
+.messenger-button { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; border-radius: 50%; background-color: #0084FF; color: white; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); z-index: 999; transition: transform 0.2s ease; }
+.messenger-button:hover { transform: scale(1.1); }
 
 /* ==========================================================================
    8. Responsive Design (Mobile)
-   - All styles for screens 768px or narrower.
    ========================================================================== */
 @media (max-width: 768px) {
-
-    /* Make header scroll with page on mobile */
-    header {
-        position: static;
-    }
-    
-    header .container {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    /* Adjust nav links for smaller screens */
-    nav ul {
-        justify-content: center;
-        gap: 1.2rem;
-        flex-wrap: wrap;
-    }
-
-    nav a {
-        font-size: 0.9rem;
-    }
-    
-    /* Adjust hero text and background for mobile */
-    .hero {
-        height: 80vh;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .scroll-down-indicator {
-        bottom: 10px;
-    }
-    
-    /* Adjust padding for sub-page headers */
-    .page-header {
-        padding-top: 40px;
-    }
-
-    /* Stack columns on mobile */
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Used on Parts page for reordering content */
-    .page-content {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .parts-instructions {
-        order: 2; /* Send the instructions to the bottom */
-    }
-
-    .parts-form {
-        order: 1; /* Bring the form to the top */
-    }
-    
-    /* Hide the "Go to Quote Form" button on mobile */
-    .steps-list li .btn {
-        display: none;
-    }
-    
-    .logo img 
-    {
-    	height: 40px;
-    }
-
-    .converter-row {
-        flex-direction: column; /* Stack the inputs vertically */
-        gap: 0;                 /* Reset the gap for a new layout */
-    }
-
-    .equals-sign {
-        transform: rotate(90deg); /* Rotate the '=' to point down */
-        padding-top: 0;           /* Remove the old padding */
-        margin: 1rem 0;           /* Add some vertical space */
-       
-   }
+    header { position: static; }
+    header .container { flex-direction: column; gap: 1rem; }
+    nav ul { justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+    nav a { font-size: 0.9rem; }
+    .hero { height: 80vh; }
+    .hero h1 { font-size: 2.5rem; }
+    .scroll-down-indicator { bottom: 10px; }
+    .page-header { padding-top: 40px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .page-content { display: flex; flex-direction: column; }
+    .parts-instructions { order: 2; }
+    .parts-form { order: 1; }
+    .steps-list li .btn { display: none; }
+    .logo img { height: 40px; }
+    .converter-row { flex-direction: column; gap: 0; }
+    .equals-sign { transform: rotate(90deg); padding-top: 0; margin: 1rem 0; }
 }
 
 /* ==========================================================================
    9. Responsive Design (Large Desktops)
-   - All styles for screens 1920px or wider.
    ========================================================================== */
 @media (min-width: 1920px) {
-    .container {
-        max-width: 1920px;
-    }
-
-    .hero {
-        height: 100vh;
-    }
-
-    .hero h1 {
-        font-size: 4.5rem;
-    }
-
-    .hero-socials a {
-        font-size: 4rem;
-    }
+    .container { max-width: 1920px; }
+    .hero { height: 100vh; }
+    .hero h1 { font-size: 4.5rem; }
+    .hero-socials a { font-size: 4rem; }
 }
