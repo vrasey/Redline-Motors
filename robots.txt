@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://redlinemotorsjp.tech/sitemap.xml
