@@ -98,8 +98,27 @@
                     <p class="form-notice">Please note: Shipping costs are often not listed on the auction page itself...</p>
                 </div>
                 <div class="currency-converter">
+                    <h3>Currency Converter</h3>
+                    <div class="converter-row">
+                        <div class="input-group">
+                            <div class="label-with-select">
+                                <label for="from-input">From</label>
+                                <select id="currency-select">
+                                    <option value="USD" selected>USD</option>
+                                    <option value="AUD">AUD</option>
+                                </select>
+                            </div>
+                            <input type="number" id="from-input" placeholder="100" min="0">
+                        </div>
+                        <div class="equals-sign">=</div>
+                        <div class="input-group">
+                            <label for="jpy-input">JPY</label>
+                            <input type="number" id="jpy-input" placeholder="----" min="0">
+                        </div>
                     </div>
-            </div>
+                    <small class="rate-info">Fetching live exchange rate...</small>
+                </div>
+                </div>
         </div>
         <div id="custom-request-content" style="display: none;">
             <div class="about-section">
