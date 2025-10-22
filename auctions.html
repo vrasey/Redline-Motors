@@ -40,82 +40,99 @@
 <main>
     <div class="page-header">
         <div class="container">
-            <h1>Parts Sourcing & Auctions</h1>
+            <h1>Parts Sourcing & Quotes</h1>
         </div>
     </div>
+
     <div class="container page-content">
-        <div class="parts-instructions">
-            <div class="about-section">
-                <h2>How It Works</h2>
+        
+        <div id="request-type-selection" class="request-selection">
+            <h2>How can we help you find your part?</h2>
+            <p>Please choose the type of request:</p>
+            <div class="button-group">
+                <button id="show-direct-link-form" class="btn btn-primary">I have a direct link (Yahoo! Auctions, etc.)</button>
+                <button id="show-custom-request-form" class="btn btn-secondary">I need help finding a part (Sourcing Request)</button>
             </div>
-            <ol class="steps-list">
-                <li>
-                    <h3>Step 1: Find Your Part</h3>
-                    <p>Locate the item you wish to purchase on any Japanese auction or retail site (like Yahoo! Auctions, Up Garage, etc.). Copy the full URL from your browser's address bar.</p>
-                </li>
-                <li>
-                    <h3>Step 2: Get a Quote</h3>
-                    <p>Paste the link into the form below. We will review the item and send you a complete, all-inclusive quote covering the item cost, our service fee, and your shipping address.</p>
-                    <a href="#quote-form" class="btn btn-primary">Go to Quote Form</a>
-                </li>
-                <li>
-                    <h3>Step 3: Payment</h3>
-                    <p>Once you approve the quote, we will send you an final shipping invoice*. After payment is confirmed, then we will secure the item on your behalf.</p>
-                </li>
-                <li>
-                    <h3>Step 4: Shipping & Delivery</h3>
-                    <p>We handle all domestic logistics within Japan, package your item securely, and manage international shipping. You will receive the tracking info via text or email as soon as it's available.</p>
-                </li>
-            </ol>
         </div>
-        <div class="parts-form" id="quote-form">
-            <div class="about-section">
-                <h2>Request a Quote</h2>
-            </div>
-            <div class="form-container">
-                <form action="https://formspree.io/f/xeorgbkz" method="POST">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">Your Email</label>
-                    <input type="email" id="email" name="email" required>
-                    <div id="auction-links-container">
-                        <div class="link-item">
-                            <label for="auction-link-1">Auction Link #1</label>
-                            <input type="url" id="auction-link-1" name="auction-link-1" placeholder="https://auctions.yahoo.co.jp/..." required>
-                        </div>
-                    </div>
-                    <button type="button" id="add-link-btn" class="btn btn-secondary">+ Add another item</button>
-                    <label for="max-bid">Your Max Bid (USD)</label>
-                    <input type="number" id="max-bid" name="max-bid" placeholder="e.g., 150" min="0" required>
-                    <div id="scrape-preview-container"></div>
-                    <button type="button" id="get-quote-btn" class="btn btn-primary">Get a Quote</button>
-                </form>
-                <p class="form-notice">Please note: Shipping costs are often not listed on the auction page itself. We will calculate and include all shipping costs in the final quote we send you.</p>
-            </div>
-            <div class="currency-converter">
-                <h3>Currency Converter</h3>
-                <div class="converter-row">
-                    <div class="input-group">
-                        <div class="label-with-select">
-                            <label for="from-input">From</label>
-                            <select id="currency-select">
-                                <option value="USD" selected>USD</option>
-                                <option value="AUD">AUD</option>
-                            </select>
-                        </div>
-                        <input type="number" id="from-input" placeholder="100" min="0">
-                    </div>
-                    <div class="equals-sign">=</div>
-                    <div class="input-group">
-                        <label for="jpy-input">JPY</label>
-                        <input type="number" id="jpy-input" placeholder="----" min="0">
-                    </div>
+        <div id="direct-link-content" style="display: none;">
+            <div class="parts-instructions">
+                <div class="about-section">
+                    <h2>How It Works (Direct Link)</h2>
                 </div>
-                <small class="rate-info">Fetching live exchange rate...</small>
+                <ol class="steps-list">
+                    <li>
+                        <h3>Step 1: Find Your Part</h3>
+                        <p>Locate the item you wish to purchase on any Japanese auction or retail site (like Yahoo! Auctions, Up Garage, etc.). Copy the full URL.</p>
+                    </li>
+                    <li>
+                        <h3>Step 2: Get a Quote</h3>
+                        <p>Paste the link into the form below. We will review the item and send you a complete quote.</p>
+                        <a href="#quote-form" class="btn btn-primary">Go to Quote Form</a>
+                    </li>
+                    <li><h3>Step 3: Payment</h3><p>...</p></li>
+                    <li><h3>Step 4: Shipping & Delivery</h3><p>...</p></li>
+                </ol>
+            </div>
+            <div class="parts-form" id="quote-form">
+                <div class="about-section">
+                    <h2>Request a Quote (Direct Link)</h2>
+                </div>
+                <div class="form-container">
+                    <form action="https://formspree.io/f/xeorgbkz" method="POST">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                        <div id="auction-links-container">
+                            <div class="link-item">
+                                <label for="auction-link-1">Auction Link #1</label>
+                                <input type="url" id="auction-link-1" name="auction-link-1" placeholder="https://auctions.yahoo.co.jp/..." required>
+                            </div>
+                        </div>
+                        <button type="button" id="add-link-btn" class="btn btn-secondary">+ Add another item</button>
+                        <label for="max-bid">Your Max Bid (USD)</label>
+                        <input type="number" id="max-bid" name="max-bid" placeholder="e.g., 150" min="0" required>
+                        <div id="scrape-preview-container"></div>
+                        <button type="submit" class="btn btn-primary">Submit Quote Request</button>
+                    </form>
+                    <p class="form-notice">Please note: Shipping costs are often not listed on the auction page itself...</p>
+                </div>
+                <div class="currency-converter">
+                    </div>
             </div>
         </div>
-    </div>
+        <div id="custom-request-content" style="display: none;">
+            <div class="about-section">
+                <h2>Custom Part Sourcing Request</h2>
+            </div>
+            <p>Don't have a direct link? No problem! Please provide as much detail as possible about the part you're looking for, and we'll do our best to find it for you.</p>
+            <div class="form-container">
+                <form action="YOUR_NEW_CUSTOM_FORMSPREE_ENDPOINT" method="POST">
+                    <label for="custom-name">Your Name</label>
+                    <input type="text" id="custom-name" name="name" required>
+
+                    <label for="custom-email">Your Email</label>
+                    <input type="email" id="custom-email" name="email" required>
+
+                    <label for="part-description">Part Description / Part Number</label>
+                    <textarea id="part-description" name="part-description" rows="4" placeholder="e.g., R34 GT-R V-Spec II front lip, specific part numbers if known, condition desired..." required></textarea>
+
+                    <label for="vehicle-info">Vehicle Information (Year, Make, Model, Trim)</label>
+                    <input type="text" id="vehicle-info" name="vehicle-info" placeholder="e.g., 1999 Nissan Skyline GT-R V-Spec" required>
+                    
+                    <label for="budget">Budget (Optional, USD)</label>
+                    <input type="number" id="budget" name="budget" placeholder="e.g., 500" min="0">
+                    
+                    <label for="additional-notes">Additional Notes (Optional)</label>
+                    <textarea id="additional-notes" name="additional-notes" rows="3" placeholder="Any other details? Location for shipping estimate?"></textarea>
+
+                    <button type="submit" class="btn btn-primary">Submit Sourcing Request</button>
+                </form>
+            </div>
+        </div>
+        </div>
 </main>
+
 
 <footer>
     <div class="container">
@@ -181,6 +198,27 @@
             console.error('Scraping failed:', error);
             previewContainer.innerHTML = '<p class="error-text">Could not fetch details. Please check the link and try again.</p>';
         }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const selectionSection = document.getElementById('request-type-selection');
+        const directLinkForm = document.getElementById('direct-link-content');
+        const customRequestForm = document.getElementById('custom-request-content');
+        
+        const showDirectBtn = document.getElementById('show-direct-link-form');
+        const showCustomBtn = document.getElementById('show-custom-request-form');
+
+        showDirectBtn.addEventListener('click', () => {
+            selectionSection.style.display = 'none';
+            directLinkForm.style.display = 'block';
+        });
+
+        showCustomBtn.addEventListener('click', () => {
+            selectionSection.style.display = 'none';
+            customRequestForm.style.display = 'block';
+        });
     });
 </script>
 
