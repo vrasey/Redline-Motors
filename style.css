@@ -93,6 +93,8 @@ nav a[href="how-to-buy.html"] {
 .button-group .btn {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
+    min-width: 480px;  /* <-- FIX 1: Make buttons same width */
+    text-align: center; /* Ensure text is centered within the button */
 }
 
 /* --- FIX: Style for secondary button within the button group --- */
@@ -104,11 +106,7 @@ nav a[href="how-to-buy.html"] {
     padding: 1rem 2.5rem; 
     font-size: 1.1rem;
     align-self: auto; /* Reset alignment */
-}
-.button-group .btn-secondary:hover {
-    background-color: transparent;
-    color: #555555;
-    border-color: #555555;
+    margin: 0; /* <-- FIX 2: Reset any inherited margins */
 }
 /* --- End of FIX --- */
 
@@ -216,6 +214,12 @@ footer p { color: var(--text-secondary); }
     .logo img { height: 40px; }
     .converter-row { flex-direction: column; gap: 0; }
     .equals-sign { transform: rotate(90deg); padding-top: 0; margin: 1rem 0; }
+
+    /* --- FIX 3: Make buttons stack nicely on mobile --- */
+    .button-group .btn {
+        min-width: 90%; /* Use most of the width */
+        width: 90%;
+    }
 }
 
 /* ==========================================================================
