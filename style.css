@@ -69,6 +69,13 @@ nav ul { list-style: none; display: flex; gap: 1.5rem; }
 nav a { color: var(--text-light); font-weight: 700; padding: 0.5rem 1rem; border-radius: 20px; transition: color 0.3s ease, background-color 0.3s ease; }
 nav a:hover, nav a.active { color: var(--primary-red); background-color: var(--card-bg); }
 
+/* --- FIX: HIDE 'BUY A CAR' BUTTON --- */
+nav a[href="how-to-buy.html"] {
+    display: none;
+}
+/* To re-enable it, delete the 3 lines above */
+/* --- END OF FIX --- */
+
 /* ==========================================================================
    4. Page-Specific Sections
    ========================================================================== */
