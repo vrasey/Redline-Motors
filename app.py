@@ -61,7 +61,7 @@ def get_yahoo_auction_details(url):
 
 # --- This is the API Endpoint ---
 # Your JavaScript will send its request to this URL path
-@app.route("/scrape", methods=["POST"])
+@app.route("/scrape", methods=["POST", "OPTIONS"])
 def scrape():
     # Get the JSON data sent from the JavaScript
     data = request.get_json()
