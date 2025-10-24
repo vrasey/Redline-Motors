@@ -57,6 +57,19 @@ img { max-width: 100%; display: block; }
     border-color: var(--card-bg); 
 }
 
+/* --- NEW: Tertiary Button Style for "Preview Auction Details" --- */
+.btn-tertiary {
+    background-color: transparent;
+    color: var(--primary-red); /* Red text */
+    border: 2px solid var(--primary-red); /* Red border */
+}
+.btn-tertiary:hover {
+    background-color: var(--primary-red); /* Solid red background on hover */
+    color: white; /* White text on hover */
+    border-color: var(--primary-red);
+}
+/* --- End NEW --- */
+
 /* ==========================================================================
    3. Header & Navigation
    ========================================================================== */
