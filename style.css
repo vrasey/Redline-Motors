@@ -61,21 +61,13 @@ img { max-width: 100%; display: block; }
    3. Header & Navigation
    ========================================================================== */
 header { background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); padding: 1rem 0; position: fixed; width: 100%; z-index: 1000; border-bottom: 1px solid var(--card-bg); }
-/* --- FIX: Center navigation links --- */
+/* --- REVERTED: Original flexbox layout --- */
 header .container { 
-    display: grid;
-    grid-template-columns: 1fr auto 1fr; /* Left col, Center col, Right col */
-    align-items: center;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
 }
-header .logo {
-    grid-column: 1 / 2;
-    justify-self: start; /* Aligns logo to the far left */
-}
-header nav {
-    grid-column: 2 / 3;
-    justify-self: center; /* Aligns nav block to the center */
-}
-/* --- End of FIX --- */
+/* --- End of REVERT --- */
 .logo { font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: var(--text-light); display: flex; align-items: center; gap: 0.75rem; }
 .logo img { height: 40px; }
 .logo .logo-text span { color: var(--primary-red); }
@@ -121,6 +113,12 @@ nav a[href="how-to-buy.html"] {
     font-size: 1.1rem;
     align-self: auto; /* Reset alignment */
     margin: 0; /* Reset any inherited margins */
+}
+/* --- FIX: Add hover effect back --- */
+.button-group .btn-secondary:hover {
+    background-color: transparent;
+    color: #555555;
+    border-color: #555555;
 }
 /* --- End of FIX --- */
 
@@ -213,7 +211,11 @@ footer p { color: var(--text-secondary); }
    ========================================================================== */
 @media (max-width: 768px) {
     header { position: static; }
-    header .container { flex-direction: column; gap: 1rem; }
+    /* --- REVERTED: Original mobile stacking --- */
+    header .container { 
+        flex-direction: column; 
+        gap: 1rem;
+    }
     nav ul { justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
     nav a { font-size: 0.9rem; }
     .hero { height: 80vh; }
