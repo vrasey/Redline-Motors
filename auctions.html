@@ -171,7 +171,7 @@
     document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("add-link-btn"),e=document.getElementById("auction-links-container");let n=1;t.addEventListener("click",()=>{if(n>=5)return;n++;const o=document.createElement("div");o.classList.add("link-item"),o.innerHTML=`<div class="input-wrapper"><label for="auction-link-${n}">Auction Link #${n}</label><input type="url" id="auction-link-${n}" name="auction-link-${n}" placeholder="https://auctions.yahoo.co.jp/..." required></div><button type="button" class="btn-remove" aria-label="Remove item">&times;</button>`,e.appendChild(o),n>=5&&(t.style.display="none")}),e.addEventListener("click",t=>{t.target&&t.target.classList.contains("btn-remove")&&(t.target.closest(".link-item").remove(),n--,n<5&&(addLinkBtn.style.display="inline-block"))})});
 </script>
 <script>
-    const backendUrl = 'https://pythonauctionscraper-dzfybycyf7fshsg3.eastasia-01.azurewebsites.net';
+    const backendUrl = 'https://redline-zoho-backend-fsgqhzhehcfgb0eh.eastasia-01.azurewebsites.net';
     const quoteBtn = document.getElementById('get-quote-btn');
     const auctionLinkInput = document.getElementById('auction-link-1');
     const previewContainer = document.getElementById('scrape-preview-container');
