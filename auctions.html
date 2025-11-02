@@ -73,12 +73,12 @@
                     <li><h3>Step 4: Shipping & Delivery</h3><p>...</p></li>
                 </ol>
             </div>
-            <div class="parts-form" id="quote-form">
-                <div class="about-section">
+            <div class="parts-form" id="quote-form-container"> <div class="about-section">
                     <h2>Request a Quote (Direct Link)</h2>
                 </div>
                 <div class="form-container">
-                    <form action="https://formspree.io/f/xeorgbkz" method="POST">
+                    
+                    <form id="quote-form">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
                         <label for="email">Your Email</label>
@@ -94,7 +94,7 @@
                         <input type="number" id="max-bid" name="max-bid" placeholder="e.g., 150" min="0" required>
 								<button type="button" id="get-quote-btn" class="btn btn-tertiary" style="margin-bottom: 1.5rem;">Preview Auction Details</button>
                         <div id="scrape-preview-container"></div>
-                        <button type="submit" class="btn btn-primary">Submit Quote Request</button>
+                        <button type="submit" class="btn btn-primary">Submit Quote Request</button>
                     </form>
                     <p class="form-notice">Please note: Shipping costs on the auction page are domestic shipping prices. Not the final cost.</p>
                 </div>
@@ -242,5 +242,65 @@
     });
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const quoteForm = document.getElementById('quote-form');
+        
+        if (quoteForm) {
+            const submitButton = quoteForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+
+            quoteForm.addEventListener('submit', async (event) => {
+                // Stop the form's default behavior (submitting to Formspree)
+                event.preventDefault(); 
+                
+                submitButton.innerHTML = 'Creating Invoice...';
+                submitButton.disabled = true;
+
+                // Get data from the form
+                const formData = new FormData(quoteForm);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    'auction-link-1': formData.get('auction-link-1'), // Grabs the first auction link
+                    'max-bid': formData.get('max-bid')
+                };
+
+                try {
+                    // Send data to your local Flask server
+                    const response = await fetch('https://redline-zoho-backend-fsgqhzhehcfgb0eh.eastasia-01.azurewebsites.net/create-invoice', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.error || 'Unknown error occurred');
+                    }
+
+                    // Success!
+                    console.log('Invoice created:', result);
+                    submitButton.innerHTML = 'Success! Invoice Created.';
+                    // You can reset the form if you want
+                    // quoteForm.reset();
+                    
+                } catch (error) {
+                    // Handle failure
+                    console.error('Failed to create invoice:', error);
+                    submitButton.innerHTML = 'Error: Check Console';
+                    // Re-enable button after a delay
+                    setTimeout(() => { 
+                        submitButton.innerHTML = originalButtonText; 
+                        submitButton.disabled = false; 
+                    }, 4000);
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>
