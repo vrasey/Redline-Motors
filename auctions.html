@@ -70,8 +70,8 @@
                         <p>Paste the link into the form below. We will review the item and send you a complete quote.</p>
                         <a href="#quote-form" class="btn btn-primary">Go to Quote Form</a>
                     </li>
-                    <li><h3>Step 3: Payment</h3><p>...</p></li>
-                    <li><h3>Step 4: Shipping & Delivery</h3><p>...</p></li>
+                    <li><h3>Step 3: Payment</h3><p>Once you approve the quote, we will send you an invoice.</p></li>
+                    <li><h3>Step 4: Shipping & Delivery</h3><p>We handle all domestic and international logistics.</p></li>
                 </ol>
             </div>
 
@@ -81,11 +81,13 @@
                 </div>
                 <div class="form-container">
                     
-                    <form id="quote-form">
+                    <form action="https://formspree.io/f/xeorgbkz" method="POST">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
+                        
                         <label for="email">Your Email</label>
                         <input type="email" id="email" name="email" required>
+                        
                         <div id="auction-links-container">
                             <div class="link-item">
                                 <label for="auction-link-1">Auction Link #1</label>
@@ -133,7 +135,7 @@
             </div>
             <p>Don't have a direct link? No problem! Please provide as much detail as possible about the part you're looking for, and we'll do our best to find it for you.</p>
             <div class="form-container">
-                <form action="YOUR_NEW_CUSTOM_FORMSPREE_ENDPOINT" method="POST">
+                <form action="https://formspree.io/f/xeorgbkz" method="POST">
                     <label for="custom-name">Your Name</label>
                     <input type="text" id="custom-name" name="name" required>
 
@@ -195,66 +197,6 @@
             selectionSection.style.display = 'none';
             customRequestForm.style.display = 'block';
         });
-    });
-</script>
-
-<script>
-    // =========================================================================
-    // CONFIGURATION: Set this to your new Azure App Service URL once deployed.
-    // Example: 'https://redline-backend-v2.azurewebsites.net'
-    // =========================================================================
-    const API_BASE_URL = 'https://YOUR_NEW_AZURE_APP_URL.azurewebsites.net'; 
-
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- Submit Quote / Create Invoice Logic ---
-        const quoteForm = document.getElementById('quote-form');
-        
-        if (quoteForm) {
-            const submitButton = quoteForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.innerHTML;
-
-            quoteForm.addEventListener('submit', async (event) => {
-                event.preventDefault(); 
-                
-                submitButton.innerHTML = 'Creating Invoice...';
-                submitButton.disabled = true;
-
-                const formData = new FormData(quoteForm);
-                const data = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    'auction-link-1': formData.get('auction-link-1'),
-                    'max-bid': formData.get('max-bid')
-                };
-
-                try {
-                    // Call the /create-invoice endpoint
-                    const response = await fetch(`${API_BASE_URL}/create-invoice`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data)
-                    });
-
-                    const result = await response.json();
-
-                    if (!response.ok) {
-                        throw new Error(result.error || 'Unknown error occurred');
-                    }
-
-                    console.log('Invoice created:', result);
-                    submitButton.innerHTML = 'Success! Invoice Created.';
-                    // Optional: quoteForm.reset();
-                    
-                } catch (error) {
-                    console.error('Failed to create invoice:', error);
-                    submitButton.innerHTML = 'Error: Check Console';
-                    setTimeout(() => { 
-                        submitButton.innerHTML = originalButtonText; 
-                        submitButton.disabled = false; 
-                    }, 4000);
-                }
-            });
-        }
     });
 </script>
 
