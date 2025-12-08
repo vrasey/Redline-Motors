@@ -99,7 +99,7 @@
                         <label for="max-bid">Your Max Bid (USD)</label>
                         <input type="number" id="max-bid" name="max-bid" placeholder="e.g., 150" min="0" required>
                         
-                        <input type="hidden" id="webhook-url" value="YOUR_WEBHOOK_URL_HERE">
+                        <input type="hidden" id="webhook-url" value="https://flow.zoho.jp/90002450688/flow/webhook/incoming?zapikey=1001.d79335a486b375f819ab9f7e8307055a.9be944bd0d8a63750bbcaf0b0bfe969b&isdebug=false">
 
                         <button type="submit" class="btn btn-primary" id="submit-btn">Submit Quote Request</button>
                     </form>
@@ -211,8 +211,8 @@
         const statusDiv = document.getElementById('form-status');
         const webhookUrl = document.getElementById('webhook-url').value;
 
-        // 1. Basic Validation
-        if (webhookUrl === "https://flow.zoho.jp/90002450688/flow/webhook/incoming?zapikey=1001.d79335a486b375f819ab9f7e8307055a.9be944bd0d8a63750bbcaf0b0bfe969b&isdebug=false" || webhookUrl === "") {
+        // 1. Basic Validation (Corrected logic)
+        if (!webhookUrl || webhookUrl.includes("YOUR_WEBHOOK_URL_HERE")) {
             alert("Error: Webhook URL not configured. Please contact support.");
             return;
         }
@@ -229,15 +229,18 @@
             if(input.value) linksList.push(input.value);
         });
 
+        // Convert array to a clean string with new lines (better for Zoho Notes)
+        const linksString = linksList.join('\n');
+
         const formData = {
             customer_name: document.getElementById('name').value,
             customer_email: document.getElementById('email').value,
             max_bid: document.getElementById('max-bid').value,
-            auction_links: linksList,
+            auction_links: linksString, 
             submission_date: new Date().toISOString()
         };
 
-        // 4. Send to Automation (Zapier/Make/Zoho Flow)
+        // 4. Send to Zoho Flow
         try {
             const response = await fetch(webhookUrl, {
                 method: 'POST',
