@@ -131,6 +131,9 @@
             selectionSection.style.display = 'none';
             customRequestForm.style.display = 'block';
         });
+
+        // Initialize Currency Converter
+        updateCurrency();
     });
 
     // 2. Dynamic Links Logic
@@ -145,7 +148,26 @@
         container.appendChild(div);
     });
 
-    // 3. Zoho Flow Submission Logic (Updated for Overhaul)
+    // --- NEW: CURRENCY CONVERTER LOGIC ---
+    // You can manually update this 'rate' periodically based on the market
+    const JPY_TO_USD_RATE = 0.0065; 
+
+    function updateCurrency() {
+        const jpyInput = document.getElementById('max-bid-jpy');
+        const usdDisplay = document.getElementById('usd-estimation');
+        
+        if(jpyInput && usdDisplay) {
+            jpyInput.addEventListener('input', () => {
+                const jpyValue = parseFloat(jpyInput.value) || 0;
+                const usdValue = (jpyValue * JPY_TO_USD_RATE).toFixed(2);
+                usdDisplay.textContent = `Est. Total: $${usdValue} USD`;
+                // Also update the hidden field for Zoho
+                document.getElementById('max-bid').value = usdValue;
+            });
+        }
+    }
+
+    // 3. Zoho Flow Submission Logic
     document.getElementById('invoice-form').addEventListener('submit', async function(e) {
         e.preventDefault();
         const submitBtn = document.getElementById('submit-btn');
@@ -163,18 +185,19 @@
         formData.append('customer_name', document.getElementById('name').value);
         formData.append('customer_email', document.getElementById('email').value);
         formData.append('phone', document.getElementById('phone').value);
-        formData.append('max_bid', document.getElementById('max-bid').value);
+        formData.append('max_bid', document.getElementById('max-bid').value); // Sends the converted USD
+        formData.append('max_bid_jpy', document.getElementById('max-bid-jpy').value); // Sends original JPY
         formData.append('auction_links', linksList.join(', '));
         formData.append('address', document.getElementById('address').value);
         formData.append('notes', document.getElementById('notes').value);
         formData.append('submission_date', new Date().toLocaleDateString());
 
         try {
-            // Note: mode 'no-cors' is used because Zoho Webhooks don't always return CORS headers
             await fetch(webhookUrl, { method: 'POST', mode: 'no-cors', body: formData });
             statusDiv.innerHTML = '<p style="color: #4CAF50;">Request Sent! We will contact you shortly.</p>';
             statusDiv.style.display = 'block';
             document.getElementById('invoice-form').reset();
+            document.getElementById('usd-estimation').textContent = "Est. Total: $0.00 USD";
         } catch (error) {
             statusDiv.innerHTML = '<p style="color: #D2042D;">Error. Please try again.</p>';
             statusDiv.style.display = 'block';
