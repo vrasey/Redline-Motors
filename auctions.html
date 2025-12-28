@@ -136,8 +136,8 @@
             customRequestForm.style.display = 'block';
         });
 
-        // Initialize Currency Converter
-        updateCurrency();
+        // Initialize Live Currency Logic
+        initLiveCurrency();
     });
 
     // 2. Dynamic Links Logic
@@ -152,19 +152,32 @@
         container.appendChild(div);
     });
 
-    // 3. CURRENCY CONVERTER LOGIC
-    const JPY_TO_USD_RATE = 0.0065;
+    // --- 3. LIVE CURRENCY CONVERTER LOGIC ---
+    let currentRate = 0.0065; // Default fallback rate
 
-    function updateCurrency() {
+    async function initLiveCurrency() {
         const jpyInput = document.getElementById('max-bid-jpy');
         const usdDisplay = document.getElementById('usd-estimation');
         const hiddenUsdField = document.getElementById('max-bid');
 
-        if(jpyInput && usdDisplay) {
+        // Fetch live rate on load
+        try {
+            const response = await fetch('https://open.er-api.com/v6/latest/JPY');
+            const data = await response.json();
+            if (data && data.rates && data.rates.USD) {
+                currentRate = data.rates.USD;
+                console.log("Live JPY to USD Rate Loaded:", currentRate);
+            }
+        } catch (error) {
+            console.error("Currency API failed, using fallback rate.");
+        }
+
+        // Add listener for real-time calculation
+        if (jpyInput && usdDisplay) {
             jpyInput.addEventListener('input', () => {
                 const jpyValue = parseFloat(jpyInput.value) || 0;
-                const usdValue = (jpyValue * JPY_TO_USD_RATE).toFixed(2);
-                usdDisplay.textContent = `Est. Total: $${usdValue} USD`;
+                const usdValue = (jpyValue * currentRate).toFixed(2);
+                usdDisplay.textContent = `Est. Total: $${usdValue} USD (Rate: ${currentRate.toFixed(5)})`;
                 hiddenUsdField.value = usdValue;
             });
         }
@@ -210,6 +223,3 @@
         }
     });
 </script>
-
-</body>
-</html>
