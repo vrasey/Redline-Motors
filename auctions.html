@@ -206,53 +206,43 @@
 <script>
     document.getElementById('invoice-form').addEventListener('submit', async function(e) {
         e.preventDefault();
-        
+
         const submitBtn = document.getElementById('submit-btn');
         const statusDiv = document.getElementById('form-status');
         const webhookUrl = document.getElementById('webhook-url').value;
 
-        // 1. Basic Validation (CORRECTED)
-        // We only error if the URL is empty or if it still contains the old placeholder text
-        if (!webhookUrl || webhookUrl.includes("YOUR_WEBHOOK_URL_HERE")) {
-            alert("Error: Webhook URL not configured.");
-            return;
-        }
-
-        // 2. UI Feedback
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending...";
-        statusDiv.style.display = 'none';
 
-        // 3. Gather Data
+        // 1. Gather Link Data into an array
         const linkInputs = document.querySelectorAll('[id^="auction-link-"]');
         let linksList = [];
         linkInputs.forEach(input => {
             if(input.value) linksList.push(input.value);
         });
-        const linksString = linksList.join('\n'); // Clean list for notes
 
-        // 4. Convert to Form Data (Required for no-cors)
-        const params = new URLSearchParams();
-        params.append('customer_name', document.getElementById('name').value);
-        params.append('customer_email', document.getElementById('email').value);
-        params.append('max_bid', document.getElementById('max-bid').value);
-        params.append('auction_links', linksString);
-        params.append('submission_date', new Date().toISOString());
+        // 2. Create the JSON Payload
+        const payload = {
+            customer_name: document.getElementById('name').value,
+            customer_email: document.getElementById('email').value,
+            max_bid: document.getElementById('max-bid').value,
+            auction_links: linksList.join(', '), // Comma separated for easy reading
+            submission_date: new Date().toLocaleDateString()
+        };
 
-        // 5. Send with NO-CORS mode
+        // 3. Send via Fetch
         try {
             await fetch(webhookUrl, {
                 method: 'POST',
-                mode: 'no-cors', // <--- This bypasses the security error
+                mode: 'no-cors', // Keeps browser from blocking the cross-origin request
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 },
-                body: params
+                body: JSON.stringify(payload)
             });
 
-            // In no-cors mode, we can't check response.ok. 
-            // If the code reaches here without error, the request was sent.
-            statusDiv.innerHTML = '<p style="color: #4CAF50;">Request Sent! We are generating your quote.</p>';
+            // Success UI
+            statusDiv.innerHTML = '<p style="color: #4CAF50;">Request Sent! We will contact you shortly.</p>';
             statusDiv.style.display = 'block';
             document.getElementById('invoice-form').reset();
 
