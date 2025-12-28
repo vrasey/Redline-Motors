@@ -81,8 +81,12 @@
                         </div>
                         <button type="button" id="add-link-btn" class="btn btn-secondary" style="margin-bottom: 1rem;">+ Add another item</button>
 
-                        <label for="max-bid">Your Max Bid (USD)</label>
-                        <input type="number" id="max-bid" name="max-bid" placeholder="e.g., 150" min="0" required>
+                        <label for="max-bid-jpy">Your Max Bid (JPY ¥)</label>
+                        <input type="number" id="max-bid-jpy" name="max-bid-jpy" placeholder="e.g., 25000" min="0" required>
+
+                        <input type="hidden" id="max-bid" name="max-bid">
+
+                        <p id="usd-estimation" style="color: #D2042D; font-weight: bold; margin-top: -10px; margin-bottom: 20px;">Est. Total: $0.00 USD</p>
 
                         <label for="address">Shipping Address</label>
                         <textarea id="address" name="address" rows="3" placeholder="Street, City, State, ZIP, Country" required></textarea>
@@ -148,26 +152,25 @@
         container.appendChild(div);
     });
 
-    // --- NEW: CURRENCY CONVERTER LOGIC ---
-    // You can manually update this 'rate' periodically based on the market
-    const JPY_TO_USD_RATE = 0.0065; 
+    // 3. CURRENCY CONVERTER LOGIC
+    const JPY_TO_USD_RATE = 0.0065;
 
     function updateCurrency() {
         const jpyInput = document.getElementById('max-bid-jpy');
         const usdDisplay = document.getElementById('usd-estimation');
-        
+        const hiddenUsdField = document.getElementById('max-bid');
+
         if(jpyInput && usdDisplay) {
             jpyInput.addEventListener('input', () => {
                 const jpyValue = parseFloat(jpyInput.value) || 0;
                 const usdValue = (jpyValue * JPY_TO_USD_RATE).toFixed(2);
                 usdDisplay.textContent = `Est. Total: $${usdValue} USD`;
-                // Also update the hidden field for Zoho
-                document.getElementById('max-bid').value = usdValue;
+                hiddenUsdField.value = usdValue;
             });
         }
     }
 
-    // 3. Zoho Flow Submission Logic
+    // 4. Zoho Flow Submission Logic
     document.getElementById('invoice-form').addEventListener('submit', async function(e) {
         e.preventDefault();
         const submitBtn = document.getElementById('submit-btn');
@@ -185,8 +188,8 @@
         formData.append('customer_name', document.getElementById('name').value);
         formData.append('customer_email', document.getElementById('email').value);
         formData.append('phone', document.getElementById('phone').value);
-        formData.append('max_bid', document.getElementById('max-bid').value); // Sends the converted USD
-        formData.append('max_bid_jpy', document.getElementById('max-bid-jpy').value); // Sends original JPY
+        formData.append('max_bid', document.getElementById('max-bid').value);
+        formData.append('max_bid_jpy', document.getElementById('max-bid-jpy').value);
         formData.append('auction_links', linksList.join(', '));
         formData.append('address', document.getElementById('address').value);
         formData.append('notes', document.getElementById('notes').value);
