@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Source parts directly from Japanese auction sites like Yahoo! Auctions. Paste a link to get a quote from Redline Motors.">
-    <meta property="og:title" content="Parts Sourcing & Auctions - Redline Motors">
-    <meta property="og:description" content="Source parts directly from Japanese auction sites. Paste a link to get a quote.">
-    <meta property="og:image" content="https://vrasey.github.io/Redline-Motors/images/hero_main.jpeg">
-    <meta property="og:url" content="https://vrasey.github.io/Redline-Motors/auctions.html">
-    <meta property="og:type" content="website">
     <title>Parts Sourcing & Auctions - Redline Motors</title>
     <link rel="icon" type="image/png" href="images/logo_main.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +40,6 @@
     </div>
 
     <div class="container page-content">
-        
         <div id="request-type-selection" class="request-selection">
             <h2>How can we help you find your part?</h2>
             <p>Please choose the type of request:</p>
@@ -61,102 +55,46 @@
                     <h2>How It Works (Direct Link)</h2>
                 </div>
                 <ol class="steps-list">
-                    <li>
-                        <h3>Step 1: Find Your Part</h3>
-                        <p>Locate the item you wish to purchase on any Japanese auction or retail site (like Yahoo! Auctions, Up Garage, etc.). Copy the full URL.</p>
-                    </li>
-                    <li>
-                        <h3>Step 2: Get a Quote</h3>
-                        <p>Paste the link into the form below. We will review the item and send you a complete quote.</p>
-                        <a href="#quote-form-container" class="btn btn-primary">Go to Quote Form</a>
-                    </li>
-                    <li><h3>Step 3: Payment</h3><p>Once you approve the quote, we will send you an invoice.</p></li>
-                    <li><h3>Step 4: Shipping & Delivery</h3><p>We handle all domestic and international logistics.</p></li>
+                    <li><h3>Step 1: Find Your Part</h3><p>Locate the item on a Japanese site and copy the URL.</p></li>
+                    <li><h3>Step 2: Get a Quote</h3><p>Paste the link into the form below.</p></li>
+                    <li><h3>Step 3: Payment</h3><p>Once you approve the quote, we will send an invoice.</p></li>
                 </ol>
             </div>
 
-            <div class="parts-form" id="quote-form-container"> 
-                <div class="about-section">
-                    <h2>Request a Quote (Direct Link)</h2>
-                </div>
-                
+            <div class="parts-form" id="quote-form-container">
                 <div class="form-container">
                     <form id="invoice-form">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
-                        
                         <label for="email">Your Email</label>
                         <input type="email" id="email" name="email" required>
-                        
                         <div id="auction-links-container">
                             <div class="link-item">
                                 <label for="auction-link-1">Auction Link #1</label>
                                 <input type="url" id="auction-link-1" name="auction-link-1" placeholder="https://auctions.yahoo.co.jp/..." required>
                             </div>
                         </div>
-                        <button type="button" id="add-link-btn" class="btn btn-secondary">+ Add another item</button>
-                        
+                        <button type="button" id="add-link-btn" class="btn btn-secondary" style="margin-bottom: 1rem;">+ Add another item</button>
                         <label for="max-bid">Your Max Bid (USD)</label>
                         <input type="number" id="max-bid" name="max-bid" placeholder="e.g., 150" min="0" required>
-                        
                         <input type="hidden" id="webhook-url" value="https://flow.zoho.jp/90002450688/flow/webhook/incoming?zapikey=1001.94c3777fb20cec597e936f5aeee76630.0c68edb49b60ae752a7cff34987b5ab3&isdebug=true">
-
                         <button type="submit" class="btn btn-primary" id="submit-btn">Submit Quote Request</button>
                     </form>
-                    
                     <div id="form-status" style="display:none; margin-top:1rem; text-align:center;"></div>
-                    
-                    <p class="form-notice">Please note: Shipping costs on the auction page are domestic shipping prices. Not the final cost.</p>
-                </div>
-                <div class="currency-converter">
-                    <h3>Currency Converter</h3>
-                    <div class="converter-row">
-                        <div class="input-group">
-                            <div class="label-with-select">
-                                <label for="from-input">From</label>
-                                <select id="currency-select">
-                                    <option value="USD" selected>USD</option>
-                                    <option value="AUD">AUD</option>
-                                </select>
-                            </div>
-                            <input type="number" id="from-input" placeholder="100" min="0">
-                        </div>
-                        <div class="equals-sign">=</div>
-                        <div class="input-group">
-                            <label for="jpy-input">JPY</label>
-                            <input type="number" id="jpy-input" placeholder="----" min="0">
-                        </div>
-                    </div>
-                    <small class="rate-info">Fetching live exchange rate...</small>
                 </div>
             </div>
         </div>
 
         <div id="custom-request-content" style="display: none;">
-            <div class="about-section">
-                <h2>Custom Part Sourcing Request</h2>
-            </div>
-            <p>Don't have a direct link? No problem! Please provide as much detail as possible about the part you're looking for, and we'll do our best to find it for you.</p>
+            <div class="about-section"><h2>Custom Part Sourcing Request</h2></div>
             <div class="form-container">
                 <form action="https://formspree.io/f/xeorgbkz" method="POST">
                     <label for="custom-name">Your Name</label>
                     <input type="text" id="custom-name" name="name" required>
-
                     <label for="custom-email">Your Email</label>
                     <input type="email" id="custom-email" name="email" required>
-
-                    <label for="part-description">Part Description / Part Number</label>
-                    <textarea id="part-description" name="part-description" rows="4" placeholder="e.g., R34 GT-R V-Spec II front lip, specific part numbers if known, condition desired..." required></textarea>
-
-                    <label for="vehicle-info">Vehicle Information (Year, Make, Model, Trim)</label>
-                    <input type="text" id="vehicle-info" name="vehicle-info" placeholder="e.g., 1999 Nissan Skyline GT-R V-Spec" required>
-                    
-                    <label for="budget">Budget (Optional, USD)</label>
-                    <input type="number" id="budget" name="budget" placeholder="e.g., 500" min="0">
-                    
-                    <label for="additional-notes">Additional Notes (Optional)</label>
-                    <textarea id="additional-notes" name="additional-notes" rows="3" placeholder="Any other details? Location for shipping estimate?"></textarea>
-
+                    <label for="part-description">Part Description</label>
+                    <textarea id="part-description" name="part-description" rows="4" required></textarea>
                     <button type="submit" class="btn btn-primary">Submit Sourcing Request</button>
                 </form>
             </div>
@@ -164,71 +102,70 @@
     </div>
 </main>
 
-<footer>
-    <div class="container">
-        <p>&copy; 2025 Redline Motors. All Rights Reserved. Based in Tokyo, Japan.</p>
-    </div>
-</footer>
-
-<a href="https://m.me/820619511130834" class="messenger-button" target="_blank" aria-label="Chat on Messenger">
-    <i class="fab fa-facebook-messenger"></i>
-</a>
-
 <script>
-    const fromInput=document.getElementById("from-input"),jpyInput=document.getElementById("jpy-input"),currencySelect=document.getElementById("currency-select"),rateInfo=document.querySelector(".rate-info");let rates={};async function fetchRates(){try{const t=await fetch("https://api.frankfurter.app/latest?to=USD,AUD,JPY"),e=await t.json();rates={USD:e.rates.JPY/e.rates.USD,AUD:e.rates.JPY/e.rates.AUD},updateRateInfo(),recalculateToJpy()}catch(t){console.error("Failed to fetch exchange rates:",t),rateInfo.textContent="Could not load live rates."}}function formatJpy(t){return Math.round(t)}function updateRateInfo(){const t=currencySelect.value;rates[t]&&(rateInfo.textContent=`Live Conversion Rate: 1 ${t} = ${rates[t].toFixed(2)} JPY`)}function recalculateFromJpy(){const t=rates[currencySelect.value];if(!t)return;const e=parseFloat(jpyInput.value);if(isNaN(e)||0===e)return void(fromInput.value="");const n=e/t;fromInput.value=n.toFixed(2)}function recalculateToJpy(){const t=rates[currencySelect.value];if(!t)return;const e=parseFloat(fromInput.value);if(isNaN(e)||0===e)return void(jpyInput.value="");const n=e*t;jpyInput.value=formatJpy(n)}fromInput.addEventListener("input",recalculateToJpy),jpyInput.addEventListener("input",recalculateFromJpy),currencySelect.addEventListener("change",()=>{updateRateInfo(),jpyInput.value?recalculateFromJpy():recalculateToJpy()}),fetchRates();
-</script>
+    // 1. Selection Switcher Logic (Fixed)
+    document.addEventListener('DOMContentLoaded', () => {
+        const selectionSection = document.getElementById('request-type-selection');
+        const directLinkForm = document.getElementById('direct-link-content');
+        const customRequestForm = document.getElementById('custom-request-content');
 
-<script>
-    document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("add-link-btn"),e=document.getElementById("auction-links-container");let n=1;t.addEventListener("click",()=>{if(n>=5)return;n++;const o=document.createElement("div");o.classList.add("link-item"),o.innerHTML=`<div class="input-wrapper"><label for="auction-link-${n}">Auction Link #${n}</label><input type="url" id="auction-link-${n}" name="auction-link-${n}" placeholder="https://auctions.yahoo.co.jp/..." required></div><button type="button" class="btn-remove" aria-label="Remove item">&times;</button>`,e.appendChild(o),n>=5&&(t.style.display="none")}),e.addEventListener("click",t=>{t.target&&t.target.classList.contains("btn-remove")&&(t.target.closest(".link-item").remove(),n--,n<5&&(t.style.display="inline-block"))})});
-</script>
-
-<script>
-document.getElementById('invoice-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const submitBtn = document.getElementById('submit-btn');
-    const statusDiv = document.getElementById('form-status');
-    const webhookUrl = document.getElementById('webhook-url').value;
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Sending...";
-
-    const linkInputs = document.querySelectorAll('[id^="auction-link-"]');
-    let linksList = [];
-    linkInputs.forEach(input => {
-        if(input.value) linksList.push(input.value);
-    });
-
-    // 1. Use URLSearchParams instead of a JSON object
-    const formData = new URLSearchParams();
-    formData.append('customer_name', document.getElementById('name').value);
-    formData.append('customer_email', document.getElementById('email').value);
-    formData.append('max_bid', document.getElementById('max-bid').value);
-    formData.append('auction_links', linksList.join(', '));
-    formData.append('submission_date', new Date().toLocaleDateString());
-
-    try {
-        await fetch(webhookUrl, {
-            method: 'POST',
-            mode: 'no-cors', 
-            // We removed the 'Content-Type' header because no-cors doesn't allow it.
-            // URLSearchParams will automatically set the correct compatible type.
-            body: formData 
+        document.getElementById('show-direct-link-form').addEventListener('click', () => {
+            selectionSection.style.display = 'none';
+            directLinkForm.style.display = 'block';
         });
 
-        statusDiv.innerHTML = '<p style="color: #4CAF50;">Request Sent! We will contact you shortly.</p>';
-        statusDiv.style.display = 'block';
-        document.getElementById('invoice-form').reset();
+        document.getElementById('show-custom-request-form').addEventListener('click', () => {
+            selectionSection.style.display = 'none';
+            customRequestForm.style.display = 'block';
+        });
+    });
 
-    } catch (error) {
-        console.error('Error:', error);
-        statusDiv.innerHTML = '<p style="color: #D2042D;">Network Error. Please try again.</p>';
-        statusDiv.style.display = 'block';
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Submit Quote Request";
-    }
-});
+    // 2. Dynamic Links Logic
+    document.getElementById("add-link-btn").addEventListener("click", () => {
+        const container = document.getElementById("auction-links-container");
+        const linkCount = container.querySelectorAll(".link-item").length;
+        if (linkCount >= 5) return;
+
+        const div = document.createElement("div");
+        div.classList.add("link-item");
+        div.innerHTML = `<label>Auction Link #${linkCount + 1}</label><input type="url" name="auction-link-${linkCount + 1}" required>`;
+        container.appendChild(div);
+    });
+
+    // 3. Zoho Flow Submission Logic
+    document.getElementById('invoice-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const submitBtn = document.getElementById('submit-btn');
+        const statusDiv = document.getElementById('form-status');
+        const webhookUrl = document.getElementById('webhook-url').value;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+
+        const linkInputs = document.querySelectorAll('[id^="auction-link-"], [name^="auction-link-"]');
+        let linksList = [];
+        linkInputs.forEach(input => { if(input.value) linksList.push(input.value); });
+
+        const formData = new URLSearchParams();
+        formData.append('customer_name', document.getElementById('name').value);
+        formData.append('customer_email', document.getElementById('email').value);
+        formData.append('max_bid', document.getElementById('max-bid').value);
+        formData.append('auction_links', linksList.join(', '));
+        formData.append('submission_date', new Date().toLocaleDateString());
+
+        try {
+            await fetch(webhookUrl, { method: 'POST', mode: 'no-cors', body: formData });
+            statusDiv.innerHTML = '<p style="color: #4CAF50;">Request Sent! We will contact you shortly.</p>';
+            statusDiv.style.display = 'block';
+            document.getElementById('invoice-form').reset();
+        } catch (error) {
+            statusDiv.innerHTML = '<p style="color: #D2042D;">Error. Please try again.</p>';
+            statusDiv.style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit Quote Request";
+        }
+    });
 </script>
 
 </body>
