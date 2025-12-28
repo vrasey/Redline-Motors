@@ -183,78 +183,52 @@
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const selectionSection = document.getElementById('request-type-selection');
-        const directLinkForm = document.getElementById('direct-link-content');
-        const customRequestForm = document.getElementById('custom-request-content');
-        
-        const showDirectBtn = document.getElementById('show-direct-link-form');
-        const showCustomBtn = document.getElementById('show-custom-request-form');
+document.getElementById('invoice-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-        showDirectBtn.addEventListener('click', () => {
-            selectionSection.style.display = 'none';
-            directLinkForm.style.display = 'block';
-        });
+    const submitBtn = document.getElementById('submit-btn');
+    const statusDiv = document.getElementById('form-status');
+    const webhookUrl = document.getElementById('webhook-url').value;
 
-        showCustomBtn.addEventListener('click', () => {
-            selectionSection.style.display = 'none';
-            customRequestForm.style.display = 'block';
-        });
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
+    const linkInputs = document.querySelectorAll('[id^="auction-link-"]');
+    let linksList = [];
+    linkInputs.forEach(input => {
+        if(input.value) linksList.push(input.value);
     });
-</script>
 
-<script>
-    document.getElementById('invoice-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
+    // 1. Use URLSearchParams instead of a JSON object
+    const formData = new URLSearchParams();
+    formData.append('customer_name', document.getElementById('name').value);
+    formData.append('customer_email', document.getElementById('email').value);
+    formData.append('max_bid', document.getElementById('max-bid').value);
+    formData.append('auction_links', linksList.join(', '));
+    formData.append('submission_date', new Date().toLocaleDateString());
 
-        const submitBtn = document.getElementById('submit-btn');
-        const statusDiv = document.getElementById('form-status');
-        const webhookUrl = document.getElementById('webhook-url').value;
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
-
-        // 1. Gather Link Data into an array
-        const linkInputs = document.querySelectorAll('[id^="auction-link-"]');
-        let linksList = [];
-        linkInputs.forEach(input => {
-            if(input.value) linksList.push(input.value);
+    try {
+        await fetch(webhookUrl, {
+            method: 'POST',
+            mode: 'no-cors', 
+            // We removed the 'Content-Type' header because no-cors doesn't allow it.
+            // URLSearchParams will automatically set the correct compatible type.
+            body: formData 
         });
 
-        // 2. Create the JSON Payload
-        const payload = {
-            customer_name: document.getElementById('name').value,
-            customer_email: document.getElementById('email').value,
-            max_bid: document.getElementById('max-bid').value,
-            auction_links: linksList.join(', '), // Comma separated for easy reading
-            submission_date: new Date().toLocaleDateString()
-        };
+        statusDiv.innerHTML = '<p style="color: #4CAF50;">Request Sent! We will contact you shortly.</p>';
+        statusDiv.style.display = 'block';
+        document.getElementById('invoice-form').reset();
 
-        // 3. Send via Fetch
-        try {
-            await fetch(webhookUrl, {
-                method: 'POST',
-                mode: 'no-cors', // Keeps browser from blocking the cross-origin request
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            });
-
-            // Success UI
-            statusDiv.innerHTML = '<p style="color: #4CAF50;">Request Sent! We will contact you shortly.</p>';
-            statusDiv.style.display = 'block';
-            document.getElementById('invoice-form').reset();
-
-        } catch (error) {
-            console.error('Error:', error);
-            statusDiv.innerHTML = '<p style="color: #D2042D;">Network Error. Please try again.</p>';
-            statusDiv.style.display = 'block';
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Submit Quote Request";
-        }
-    });
+    } catch (error) {
+        console.error('Error:', error);
+        statusDiv.innerHTML = '<p style="color: #D2042D;">Network Error. Please try again.</p>';
+        statusDiv.style.display = 'block';
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Quote Request";
+    }
+});
 </script>
 
 </body>
