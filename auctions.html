@@ -192,6 +192,10 @@
         </div>
 
         <div id="direct-link-content" style="display: none;">
+            <button id="back-to-selection-from-direct" class="btn btn-secondary" style="margin-bottom: 1rem;">
+                <i class="fas fa-arrow-left"></i> Back to Selection
+            </button>
+
             <div class="mobile-jump-container">
                 <a href="#quote-form-container" class="btn btn-primary btn-jump-pop">
                     Jump to Request Form <i class="fas fa-arrow-down" style="margin-left: 8px;"></i>
@@ -321,6 +325,10 @@
         </div>
 
         <div id="custom-request-content" style="display: none;">
+            <button id="back-to-selection-from-custom" class="btn btn-secondary" style="margin-bottom: 1rem;">
+                <i class="fas fa-arrow-left"></i> Back to Selection
+            </button>
+
             <div class="mobile-jump-container">
                 <a href="#custom-form-container" class="btn btn-secondary btn-jump-pop" style="border-color: #555; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);">
                     Jump to Sourcing Form <i class="fas fa-arrow-down" style="margin-left: 8px;"></i>
@@ -395,6 +403,20 @@
         document.getElementById('back-to-form-from-guide').addEventListener('click', () => {
             detailedGuide.style.display = 'none';
             directLinkForm.style.display = 'block';
+            window.scrollTo(0, 0);
+        });
+
+        // NEW: Back to Selection from Direct Link
+        document.getElementById('back-to-selection-from-direct').addEventListener('click', () => {
+            directLinkForm.style.display = 'none';
+            selectionSection.style.display = 'block';
+            window.scrollTo(0, 0);
+        });
+
+        // NEW: Back to Selection from Custom Request
+        document.getElementById('back-to-selection-from-custom').addEventListener('click', () => {
+            customRequestForm.style.display = 'none';
+            selectionSection.style.display = 'block';
             window.scrollTo(0, 0);
         });
 
