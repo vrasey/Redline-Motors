@@ -64,19 +64,19 @@
             min-height: 3rem;
         }
 
-        /* --- FIX: Visible Grey Button Style for "Start Request" --- */
+        /* --- FIX: Solid Grey Button Style for "Start Request" --- */
         .selection-card .btn-secondary {
-            border: 2px solid #555; /* Visible Grey Border */
-            color: #ddd;            /* Visible Grey/White Text */
-            background-color: transparent;
+            background-color: #424242; /* Solid Grey Background */
+            color: #ffffff;            /* White Text */
+            border: 2px solid #424242; /* Matching Border */
             transition: all 0.3s ease;
         }
 
-        /* Hover effect for the grey button */
+        /* Hover effect: Lighten the grey slightly */
         .selection-card .btn-secondary:hover {
-            border-color: #fff;     /* Turns white on hover */
-            color: #fff;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: #5a5a5a;
+            border-color: #5a5a5a;
+            transform: translateY(-2px);
         }
 
         /* --- Instruction Grid Styles --- */
