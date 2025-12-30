@@ -64,14 +64,12 @@
             min-height: 3rem;
         }
 
-        /* --- FIX: Force Grey Button to Match Red Button Dimensions --- */
+        /* --- Force Grey Button to Match Red Button Dimensions --- */
         .selection-card .btn-secondary {
             background-color: #424242;
             color: #ffffff;
             border: 2px solid #424242;
             transition: all 0.3s ease;
-
-            /* Overriding global small size to match primary button */
             padding: 0.8rem 2rem;
             font-size: 1rem;
             width: 100%;
@@ -203,7 +201,11 @@
             <div class="parts-instructions">
                 <div class="about-section">
                     <h2>How It Works: Sourcing Auctions</h2>
+                    <button id="show-detailed-guide" class="btn btn-tertiary" style="margin-top: 1rem; font-size: 0.9rem;">
+                        <i class="fas fa-book-open" style="margin-right:8px;"></i> Need more help? View Step-by-Step Guide
+                    </button>
                 </div>
+
                 <div class="instruction-grid">
                     <div class="instruction-card">
                         <i class="fas fa-search"></i>
@@ -263,6 +265,61 @@
             </div>
         </div>
 
+        <div id="detailed-guide-content" style="display: none;">
+            <button id="back-to-form-from-guide" class="btn btn-secondary" style="margin-bottom: 2rem;">
+                <i class="fas fa-arrow-left"></i> Back to Quote Form
+            </button>
+
+            <div class="about-section">
+                <h2>Yahoo! Auctions Step-by-Step Guide</h2>
+                <p>New to buying from Japan? Here is exactly how to find the perfect part.</p>
+            </div>
+
+            <div class="instruction-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="instruction-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>1. Translate the Site</h3>
+                    <p>Use Google Chrome or Edge. Right-click anywhere on the page and select <strong>"Translate to English"</strong> to read item details easily.</p>
+                </div>
+
+                <div class="instruction-card">
+                    <i class="fas fa-star"></i>
+                    <h3>2. Check Seller Rating</h3>
+                    <p>Look for the seller's evaluation score (Sun/Cloud/Rain icons). Avoid sellers with many "Bad" ratings or very low feedback counts.</p>
+                </div>
+
+                <div class="instruction-card">
+                    <i class="fas fa-truck-fast"></i>
+                    <h3>3. Domestic Shipping</h3>
+                    <p>Check if shipping is "Paid by Seller" or "Paid by Winner". Large items (bumpers/engines) can be expensive to ship within Japan.</p>
+                </div>
+
+                <div class="instruction-card">
+                    <i class="fas fa-copy"></i>
+                    <h3>4. Copy the URL</h3>
+                    <p>Once you find the item, simply copy the full web address (URL) from the top of your browser bar.</p>
+                </div>
+
+                <div class="instruction-card">
+                    <i class="fas fa-paste"></i>
+                    <h3>5. Paste in Form</h3>
+                    <p>Paste that link into our quote form. Enter your <strong>Max Bid in JPY</strong> (the absolute most you'd pay for the item itself).</p>
+                </div>
+
+                <div class="instruction-card">
+                    <i class="fas fa-box-open"></i>
+                    <h3>6. We Handle the Rest</h3>
+                    <p>We bid for you. If we win, we handle payment, warehouse inspection, repacking, and international export.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button id="jump-to-form-bottom" class="btn btn-primary btn-jump-pop" style="max-width: 300px;">
+                    Ready? Go to Quote Form
+                </button>
+            </div>
+        </div>
+
         <div id="custom-request-content" style="display: none;">
             <div class="mobile-jump-container">
                 <a href="#custom-form-container" class="btn btn-secondary btn-jump-pop" style="border-color: #555; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);">
@@ -309,20 +366,44 @@
         const selectionSection = document.getElementById('request-type-selection');
         const directLinkForm = document.getElementById('direct-link-content');
         const customRequestForm = document.getElementById('custom-request-content');
+        const detailedGuide = document.getElementById('detailed-guide-content');
 
-        // Logic to hide selection and show specific form
+        // Show Direct Link Form
         document.getElementById('show-direct-link-form').addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent double triggering if clicked on button vs card
+            e.stopPropagation();
             selectionSection.style.display = 'none';
             directLinkForm.style.display = 'block';
-            window.scrollTo(0, 0); // Scroll to top
+            window.scrollTo(0, 0);
         });
 
+        // Show Custom Request Form
         document.getElementById('show-custom-request-form').addEventListener('click', (e) => {
             e.stopPropagation();
             selectionSection.style.display = 'none';
             customRequestForm.style.display = 'block';
             window.scrollTo(0, 0);
+        });
+
+        // Show Detailed Guide (Hides form, shows guide)
+        document.getElementById('show-detailed-guide').addEventListener('click', () => {
+            directLinkForm.style.display = 'none';
+            detailedGuide.style.display = 'block';
+            window.scrollTo(0, 0);
+        });
+
+        // Back to Form from Guide
+        document.getElementById('back-to-form-from-guide').addEventListener('click', () => {
+            detailedGuide.style.display = 'none';
+            directLinkForm.style.display = 'block';
+            window.scrollTo(0, 0);
+        });
+
+        // Bottom "Ready" button in guide
+        document.getElementById('jump-to-form-bottom').addEventListener('click', () => {
+            detailedGuide.style.display = 'none';
+            directLinkForm.style.display = 'block';
+            // Scroll to form container specifically
+            document.getElementById('quote-form-container').scrollIntoView({ behavior: 'smooth' });
         });
 
         initLiveCurrency();
