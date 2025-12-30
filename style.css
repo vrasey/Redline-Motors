@@ -21,66 +21,61 @@ img { max-width: 100%; display: block; }
    2. Layout & Reusable Components
    ========================================================================== */
 .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-.btn { 
-    display: inline-block; 
-    padding: 0.8rem 2rem; 
-    font-family: var(--font-primary); 
-    font-size: 1rem; 
-    font-weight: 700; 
-    border-radius: 5px; 
-    transition: all 0.3s ease; 
-    text-transform: uppercase; 
-    border: 2px solid transparent; /* Ensures consistent height */ 
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    border: 2px solid transparent;
 }
-.btn-primary { 
-    background-color: var(--primary-red); 
-    color: white; 
-    border-color: var(--primary-red); 
-}
-.btn-primary:hover { 
-    background-color: transparent; 
-    color: var(--primary-red); 
-}
-/* General secondary button style (used for "Add Item") */
-.btn-secondary { 
-    background-color: transparent; 
-    color: var(--text-secondary); 
-    border: 2px solid var(--card-bg); 
-    align-self: flex-start; 
-    margin-bottom: 1.5rem; 
-    padding: 0.5rem 1rem; 
-    font-size: 0.9rem; 
-}
-.btn-secondary:hover { 
-    background-color: var(--card-bg); 
-    color: var(--text-light); 
-    border-color: var(--card-bg); 
-}
-
-/* --- NEW: Tertiary Button Style for "Preview Auction Details" --- */
-.btn-tertiary {
-    background-color: transparent;
-    color: var(--primary-red); /* Red text */
-    border: 2px solid var(--primary-red); /* Red border */
-}
-.btn-tertiary:hover {
-    background-color: var(--primary-red); /* Solid red background on hover */
-    color: white; /* White text on hover */
+.btn-primary {
+    background-color: var(--primary-red);
+    color: white;
     border-color: var(--primary-red);
 }
-/* --- End NEW --- */
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-red);
+}
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 2px solid var(--card-bg);
+    align-self: flex-start;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+.btn-secondary:hover {
+    background-color: var(--card-bg);
+    color: var(--text-light);
+    border-color: var(--card-bg);
+}
+.btn-tertiary {
+    background-color: transparent;
+    color: var(--primary-red);
+    border: 2px solid var(--primary-red);
+}
+.btn-tertiary:hover {
+    background-color: var(--primary-red);
+    color: white;
+    border-color: var(--primary-red);
+}
 
 /* ==========================================================================
    3. Header & Navigation
    ========================================================================== */
 header { background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); padding: 1rem 0; position: fixed; width: 100%; z-index: 1000; border-bottom: 1px solid var(--card-bg); }
-/* --- REVERTED: Original flexbox layout --- */
-header .container { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-/* --- End of REVERT --- */
 .logo { font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: var(--text-light); display: flex; align-items: center; gap: 0.75rem; }
 .logo img { height: 40px; }
 .logo .logo-text span { color: var(--primary-red); }
@@ -88,52 +83,38 @@ nav ul { list-style: none; display: flex; gap: 1.5rem; }
 nav a { color: var(--text-light); font-weight: 700; padding: 0.5rem 1rem; border-radius: 20px; transition: color 0.3s ease, background-color 0.3s ease; }
 nav a:hover, nav a.active { color: var(--primary-red); background-color: var(--card-bg); }
 
-/* --- FIX: HIDE 'BUY A CAR' BUTTON --- */
-nav a[href="how-to-buy.html"] {
-    display: none;
-}
-/* To re-enable it, delete the 3 lines above */
-/* --- END OF FIX --- */
-
 /* ==========================================================================
    4. Page-Specific Sections
    ========================================================================== */
-/* --- Request Type Selection Styles --- */
 .request-selection { text-align: center; padding: 3rem 0; border-bottom: 1px solid var(--card-bg); margin-bottom: 2rem; }
 .request-selection h2 { margin-bottom: 1rem; }
 .request-selection p { color: var(--text-secondary); margin-bottom: 2rem; }
-.button-group { 
-    display: flex; 
-    justify-content: center; 
-    gap: 1.5rem; 
-    flex-wrap: wrap; 
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
-/* Apply consistent size to all buttons in this group */
 .button-group .btn {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
-    min-width: 480px;  /* Make buttons same width */
-    text-align: center; /* Ensure text is centered within the button */
+    min-width: 480px;
+    text-align: center;
 }
-
-/* --- FIX: Style for secondary button within the button group --- */
 .button-group .btn-secondary {
-    background-color: #555555; /* Grey background */
+    background-color: #555555;
     color: white;
-    border: 2px solid #555555; /* EXPLICIT BORDER FIX */
-    /* Explicitly set size properties to match .button-group .btn */
-    padding: 1rem 2.5rem; 
+    border: 2px solid #555555;
+    padding: 1rem 2.5rem;
     font-size: 1.1rem;
-    align-self: auto; /* Reset alignment */
-    margin: 0; /* Reset any inherited margins */
+    align-self: auto;
+    margin: 0;
 }
-/* --- FIX: Add hover effect back --- */
 .button-group .btn-secondary:hover {
     background-color: transparent;
     color: #555555;
     border-color: #555555;
 }
-/* --- End of FIX --- */
 
 .page-header { padding-top: 120px; padding-bottom: 40px; background-color: var(--card-bg); text-align: center; border-bottom: 1px solid #2a2a2a; }
 .page-header h1 { font-size: 3rem; }
@@ -203,30 +184,24 @@ nav a[href="how-to-buy.html"] {
 #currency-select { background-color: var(--dark-bg); color: var(--text-light); border: 1px solid #333; border-radius: 5px; padding: 0.2rem 0.4rem; font-size: 0.8rem; font-family: var(--font-secondary); }
 
 /* ==========================================================================
-   5. Animations & Keyframes
-   ========================================================================== */
-@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
-
-/* ==========================================================================
-   6. Footer
+   5. Footer
    ========================================================================== */
 footer { background-color: #000; text-align: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid var(--card-bg); }
 footer p { color: var(--text-secondary); }
 
 /* ==========================================================================
-   7. Custom Messenger Button
+   6. Custom Messenger Button
    ========================================================================== */
 .messenger-button { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; border-radius: 50%; background-color: #0084FF; color: white; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); z-index: 999; transition: transform 0.2s ease; }
 .messenger-button:hover { transform: scale(1.1); }
 
 /* ==========================================================================
-   8. Responsive Design (Mobile)
+   7. Responsive Design
    ========================================================================== */
 @media (max-width: 768px) {
     header { position: static; }
-    /* --- REVERTED: Original mobile stacking --- */
-    header .container { 
-        flex-direction: column; 
+    header .container {
+        flex-direction: column;
         gap: 1rem;
     }
     nav ul { justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
@@ -243,17 +218,11 @@ footer p { color: var(--text-secondary); }
     .logo img { height: 40px; }
     .converter-row { flex-direction: column; gap: 0; }
     .equals-sign { transform: rotate(90deg); padding-top: 0; margin: 1rem 0; }
-
-    /* --- FIX 3: Make buttons stack nicely on mobile --- */
     .button-group .btn {
-        min-width: 90%; /* Use most of the width */
+        min-width: 90%;
         width: 90%;
     }
 }
-
-/* ==========================================================================
-   9. Responsive Design (Large Desktops)
-   ========================================================================== */
 @media (min-width: 1920px) {
     .container { max-width: 1920px; }
     .hero { height: 100vh; }

@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Scaling and Mobile-Specific Logic */
         .instruction-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -21,7 +20,6 @@
             margin-bottom: 3rem;
             margin-top: 2rem;
         }
-
         .instruction-card {
             background-color: var(--card-bg);
             padding: 2rem;
@@ -30,33 +28,24 @@
             text-align: center;
             transition: transform 0.3s ease;
         }
-
         .instruction-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary-red);
         }
-
         .instruction-card i {
             font-size: 3rem;
             color: var(--primary-red);
             margin-bottom: 1.5rem;
             display: block;
         }
-
         .instruction-card h3 { margin-bottom: 1rem; font-size: 1.2rem; }
         .instruction-card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.4; }
-
-        /* Mobile Jump Prompt - Hidden on Desktop */
         .mobile-jump-container { display: none; margin-bottom: 2rem; }
-
-        /* New "Pop" style for the jump button */
         .btn-jump-pop {
             width: 100%;
-            box-shadow: 0 0 15px rgba(210, 4, 45, 0.5); /* Red Glow */
-            border: 1px solid #ff4d6d; /* Lighter border for visibility */
+            box-shadow: 0 0 15px rgba(210, 4, 45, 0.5);
+            border: 1px solid #ff4d6d;
         }
-
-        /* Terms Info Box */
         .form-info-box {
             margin-top: 2rem;
             padding: 1rem;
@@ -67,7 +56,6 @@
         }
         .form-info-box p { font-size: 0.9rem; margin: 0; color: var(--text-light); }
         .form-info-box a { font-weight: bold; text-decoration: underline; }
-
         @media (max-width: 768px) {
             .instruction-grid { grid-template-columns: 1fr; gap: 1rem; }
             .instruction-card { padding: 1.25rem; }
@@ -90,7 +78,6 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="auctions.html" class="active">Parts</a></li>
-                <li><a href="how-to-buy.html">Buy a Car</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -115,7 +102,6 @@
         </div>
 
         <div id="direct-link-content" style="display: none;">
-
             <div class="mobile-jump-container">
                 <a href="#quote-form-container" class="btn btn-primary btn-jump-pop">
                     Jump to Request Form <i class="fas fa-arrow-down" style="margin-left: 8px;"></i>
@@ -126,7 +112,6 @@
                 <div class="about-section">
                     <h2>How It Works: Sourcing Auctions</h2>
                 </div>
-
                 <div class="instruction-grid">
                     <div class="instruction-card">
                         <i class="fas fa-search"></i>
@@ -156,13 +141,10 @@
                     <form id="invoice-form">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
-
                         <label for="email">Your Email</label>
                         <input type="email" id="email" name="email" required>
-
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required>
-
                         <div id="auction-links-container">
                             <div class="link-item">
                                 <label for="auction-link-1">Auction Link #1</label>
@@ -170,22 +152,16 @@
                             </div>
                         </div>
                         <button type="button" id="add-link-btn" class="btn btn-secondary" style="margin-bottom: 1rem;">+ Add another item</button>
-
                         <label for="max-bid-jpy">Your Max Bid (JPY ¥)</label>
                         <input type="number" id="max-bid-jpy" name="max-bid-jpy" placeholder="e.g., 25000" min="0" required>
                         <input type="hidden" id="max-bid" name="max-bid">
                         <p id="usd-estimation" style="color: #D2042D; font-weight: bold; margin-top: -10px; margin-bottom: 20px;">Est. Total: $0.00 USD</p>
-
                         <label for="address">Shipping Address</label>
                         <textarea id="address" name="address" rows="3" placeholder="Street, City, State, ZIP, Country" required></textarea>
-
                         <label for="notes">Additional Notes</label>
                         <textarea id="notes" name="notes" rows="3" placeholder="Specific requests or part details..."></textarea>
-
                         <input type="hidden" id="webhook-url" value="https://flow.zoho.jp/90002450688/flow/webhook/incoming?zapikey=1001.d79335a486b375f819ab9f7e8307055a.9be944bd0d8a63750bbcaf0b0bfe969b&isdebug=false">
-
                         <button type="submit" class="btn btn-primary" id="submit-btn">Submit Quote Request</button>
-
                         <div class="form-info-box">
                             <p>By submitting, you agree to the Redline Motors <a href="terms.html" target="_blank">Terms & Conditions</a>.</p>
                         </div>
@@ -227,20 +203,16 @@
         const selectionSection = document.getElementById('request-type-selection');
         const directLinkForm = document.getElementById('direct-link-content');
         const customRequestForm = document.getElementById('custom-request-content');
-
         document.getElementById('show-direct-link-form').addEventListener('click', () => {
             selectionSection.style.display = 'none';
             directLinkForm.style.display = 'block';
         });
-
         document.getElementById('show-custom-request-form').addEventListener('click', () => {
             selectionSection.style.display = 'none';
             customRequestForm.style.display = 'block';
         });
-
         initLiveCurrency();
     });
-
     document.getElementById("add-link-btn").addEventListener("click", () => {
         const container = document.getElementById("auction-links-container");
         const linkCount = container.querySelectorAll(".link-item").length;
@@ -250,7 +222,6 @@
         div.innerHTML = `<label>Auction Link #${linkCount + 1}</label><input type="url" name="auction-link-${linkCount + 1}" required>`;
         container.appendChild(div);
     });
-
     let currentRate = 0.0065;
     async function initLiveCurrency() {
         const jpyInput = document.getElementById('max-bid-jpy');
@@ -270,7 +241,6 @@
             });
         }
     }
-
     document.getElementById('invoice-form').addEventListener('submit', async function(e) {
         e.preventDefault();
         const submitBtn = document.getElementById('submit-btn');
