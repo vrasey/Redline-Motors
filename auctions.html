@@ -4,13 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Source parts directly from Japanese auction sites like Yahoo! Auctions. Paste a link to get a quote from Redline Motors.">
+
     <title>Parts Sourcing & Auctions - Redline Motors</title>
+
     <link rel="icon" type="image/png" href="images/logo_main.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Inline styles for the new instruction grid to ensure they work immediately */
+        .instruction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            margin-top: 2rem;
+        }
+
+        .instruction-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .instruction-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+        }
+
+        .instruction-card i {
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .instruction-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .instruction-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .instruction-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -52,13 +106,35 @@
         <div id="direct-link-content" style="display: none;">
             <div class="parts-instructions">
                 <div class="about-section">
-                    <h2>How It Works (Direct Link)</h2>
+                    <h2>How It Works: Sourcing Auctions</h2>
+                    <p style="color: var(--text-secondary);">Follow these steps to secure parts from Yahoo! Auctions, Mercari, or Up Garage.</p>
                 </div>
-                <ol class="steps-list">
-                    <li><h3>Step 1: Find Your Part</h3><p>Locate the item on a Japanese site and copy the URL.</p></li>
-                    <li><h3>Step 2: Get a Quote</h3><p>Paste the link into the form below.</p></li>
-                    <li><h3>Step 3: Payment</h3><p>Once you approve the quote, we will send an invoice.</p></li>
-                </ol>
+
+                <div class="instruction-grid">
+                    <div class="instruction-card">
+                        <i class="fas fa-search"></i>
+                        <h3>1. Find Your Part</h3>
+                        <p>Browse Japanese sites like <strong>Yahoo! Auctions</strong> or <strong>Croooober</strong>. Find the item you want and copy the URL.</p>
+                    </div>
+
+                    <div class="instruction-card">
+                        <i class="fas fa-link"></i>
+                        <h3>2. Paste & Submit</h3>
+                        <p>Paste the link below. Enter your <strong>Max Bid in JPY</strong> (the most you are willing to pay for the item itself).</p>
+                    </div>
+
+                    <div class="instruction-card">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <h3>3. Review Quote</h3>
+                        <p>We email you a <strong>USD Estimate</strong> including shipping. Approve it to proceed to the secure payment portal.</p>
+                    </div>
+
+                    <div class="instruction-card">
+                        <i class="fas fa-gavel"></i>
+                        <h3>4. We Bid & Ship</h3>
+                        <p>Once paid, we bid. If we win, the part is inspected at our Tokyo warehouse and then shipped straight to your driveway.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="parts-form" id="quote-form-container">
@@ -119,6 +195,16 @@
     </div>
 </main>
 
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Redline Motors. All Rights Reserved. Based in Tokyo, Japan.</p>
+    </div>
+</footer>
+
+<a href="https://m.me/820619511130834" class="messenger-button" target="_blank" aria-label="Chat on Messenger">
+    <i class="fab fa-facebook-messenger"></i>
+</a>
+
 <script>
     // 1. Selection Switcher Logic
     document.addEventListener('DOMContentLoaded', () => {
@@ -136,7 +222,6 @@
             customRequestForm.style.display = 'block';
         });
 
-        // Initialize Live Currency Logic
         initLiveCurrency();
     });
 
@@ -152,27 +237,23 @@
         container.appendChild(div);
     });
 
-    // --- 3. LIVE CURRENCY CONVERTER LOGIC ---
-    let currentRate = 0.0065; // Default fallback rate
-
+    // 3. Live Currency Logic
+    let currentRate = 0.0065;
     async function initLiveCurrency() {
         const jpyInput = document.getElementById('max-bid-jpy');
         const usdDisplay = document.getElementById('usd-estimation');
         const hiddenUsdField = document.getElementById('max-bid');
 
-        // Fetch live rate on load
         try {
             const response = await fetch('https://open.er-api.com/v6/latest/JPY');
             const data = await response.json();
             if (data && data.rates && data.rates.USD) {
                 currentRate = data.rates.USD;
-                console.log("Live JPY to USD Rate Loaded:", currentRate);
             }
         } catch (error) {
-            console.error("Currency API failed, using fallback rate.");
+            console.error("Currency API failed.");
         }
 
-        // Add listener for real-time calculation
         if (jpyInput && usdDisplay) {
             jpyInput.addEventListener('input', () => {
                 const jpyValue = parseFloat(jpyInput.value) || 0;
@@ -193,7 +274,7 @@
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending...";
 
-        const linkInputs = document.querySelectorAll('[id^="auction-link-"], [name^="auction-link-"]');
+        const linkInputs = document.querySelectorAll('[name^="auction-link-"]');
         let linksList = [];
         linkInputs.forEach(input => { if(input.value) linksList.push(input.value); });
 
@@ -223,3 +304,6 @@
         }
     });
 </script>
+
+</body>
+</html>
