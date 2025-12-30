@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* --- Selection Screen Styles (New) --- */
+        /* --- Selection Screen Styles --- */
         .selection-grid {
             display: flex;
             justify-content: center;
@@ -33,7 +33,7 @@
             min-width: 280px;
             max-width: 450px;
             transition: transform 0.3s ease, border-color 0.3s ease;
-            cursor: pointer; /* Makes the whole card feel interactive */
+            cursor: pointer;
             position: relative;
         }
 
@@ -61,7 +61,22 @@
             margin-bottom: 2rem;
             font-size: 1rem;
             line-height: 1.5;
-            min-height: 3rem; /* Keeps cards even height */
+            min-height: 3rem;
+        }
+
+        /* --- FIX: Visible Grey Button Style for "Start Request" --- */
+        .selection-card .btn-secondary {
+            border: 2px solid #555; /* Visible Grey Border */
+            color: #ddd;            /* Visible Grey/White Text */
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect for the grey button */
+        .selection-card .btn-secondary:hover {
+            border-color: #fff;     /* Turns white on hover */
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         /* --- Instruction Grid Styles --- */
