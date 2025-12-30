@@ -64,15 +64,19 @@
             min-height: 3rem;
         }
 
-        /* --- FIX: Solid Grey Button Style for "Start Request" --- */
+        /* --- FIX: Force Grey Button to Match Red Button Dimensions --- */
         .selection-card .btn-secondary {
-            background-color: #424242; /* Solid Grey Background */
-            color: #ffffff;            /* White Text */
-            border: 2px solid #424242; /* Matching Border */
+            background-color: #424242;
+            color: #ffffff;
+            border: 2px solid #424242;
             transition: all 0.3s ease;
+
+            /* Overriding global small size to match primary button */
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            width: 100%;
         }
 
-        /* Hover effect: Lighten the grey slightly */
         .selection-card .btn-secondary:hover {
             background-color: #5a5a5a;
             border-color: #5a5a5a;
