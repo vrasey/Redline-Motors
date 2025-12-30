@@ -49,6 +49,13 @@
         /* Mobile Jump Prompt - Hidden on Desktop */
         .mobile-jump-container { display: none; margin-bottom: 2rem; }
 
+        /* New "Pop" style for the jump button */
+        .btn-jump-pop {
+            width: 100%;
+            box-shadow: 0 0 15px rgba(210, 4, 45, 0.5); /* Red Glow */
+            border: 1px solid #ff4d6d; /* Lighter border for visibility */
+        }
+
         /* Terms Info Box */
         .form-info-box {
             margin-top: 2rem;
@@ -68,7 +75,6 @@
             .instruction-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
             .instruction-card p { font-size: 0.85rem; }
             .mobile-jump-container { display: block; text-align: center; }
-            .mobile-jump-container .btn { width: 100%; }
         }
     </style>
 </head>
@@ -111,7 +117,9 @@
         <div id="direct-link-content" style="display: none;">
 
             <div class="mobile-jump-container">
-                <a href="#quote-form-container" class="btn btn-secondary">Jump to Request Form <i class="fas fa-arrow-down"></i></a>
+                <a href="#quote-form-container" class="btn btn-primary btn-jump-pop">
+                    Jump to Request Form <i class="fas fa-arrow-down" style="margin-left: 8px;"></i>
+                </a>
             </div>
 
             <div class="parts-instructions">
