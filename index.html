@@ -33,33 +33,29 @@
             margin: 0 auto;
             display: flex;
             align-items: center;
+            /* Hide overflow so we don't see the scrollbar */
+            overflow: hidden; 
         }
 
         /* The Scrolling Track */
         .carousel-track {
             display: flex;
             gap: 20px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            padding: 20px 5px;
+            /* Important: We handle scrolling via JS, so we hide the native bar */
+            overflow-x: hidden; 
+            padding: 20px 0;
             width: 100%;
-            scrollbar-width: none; 
-            -ms-overflow-style: none;
-        }
-        .carousel-track::-webkit-scrollbar { 
-            display: none; 
+            white-space: nowrap; /* Keeps items in a line */
         }
 
         /* Individual Cards */
         .carousel-item {
-            /* Adjusted width to 350px to show fewer items (approx 2-3) at once */
+            /* Fixed width */
             flex: 0 0 350px; 
             background-color: var(--card-bg);
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #2a2a2a;
-            scroll-snap-align: center;
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
@@ -70,7 +66,7 @@
 
         .carousel-item img {
             width: 100%;
-            height: 250px; /* Slightly taller for better visibility */
+            height: 250px;
             object-fit: cover;
         }
 
@@ -81,35 +77,10 @@
             padding: 1.2rem;
             margin: 0;
             color: var(--text-light);
+            white-space: normal; /* Allows text to wrap inside the card */
         }
-
-        /* Navigation Buttons */
-        .carousel-btn {
-            background-color: rgba(0,0,0,0.6);
-            border: 1px solid var(--card-bg);
-            color: var(--text-light);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            position: absolute;
-        }
-        
-        .carousel-btn:hover {
-            background-color: var(--primary-red);
-            border-color: var(--primary-red);
-        }
-
-        .prev-btn { left: -20px; }
-        .next-btn { right: -20px; }
 
         @media (max-width: 768px) {
-            .carousel-btn { display: none; }
             .carousel-item { flex: 0 0 85vw; } 
         }
     </style>
@@ -159,10 +130,6 @@
             <h2>Previous Orders</h2>
             
             <div class="carousel-wrapper">
-                <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Scroll Left">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-
                 <div class="carousel-track" id="track">
                     
                     <div class="carousel-item">
@@ -185,20 +152,7 @@
                         <h3>NA Miata Lip</h3>
                     </div>
 
-                    <div class="carousel-item">
-                        <img src="images/cam_covers.jpg" alt="Skyline Cam Covers">
-                        <h3>RB26 Cam Covers (Set 2)</h3>
-                    </div>
-                     <div class="carousel-item">
-                        <img src="images/mugen_fit.jpg" alt="Honda Fit Mugen Bumper">
-                        <h3>Honda Fit Mugen Bumper (Set 2)</h3>
-                    </div>
-
                 </div>
-
-                <button class="carousel-btn next-btn" id="nextBtn" aria-label="Scroll Right">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
             </div>
 
         </div>
@@ -220,59 +174,44 @@
 
 <script>
     const track = document.getElementById('track');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
     
-    // Width of card (350) + gap (20) = 370
-    const itemWidth = 370; 
-    let autoScrollInterval;
+    // 1. Clone items to create an infinite loop illusion
+    // We clone the children and append them to the end so there is no gap when resetting
+    const items = Array.from(track.children);
+    items.forEach(item => {
+        const clone = item.cloneNode(true);
+        track.appendChild(clone);
+    });
 
-    // Function to scroll right
-    const scrollNext = () => {
-        // Check if we are near the end
-        if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
-            // Smoothly go back to start
-            track.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-            // Scroll one item width
-            track.scrollBy({ left: itemWidth, behavior: 'smooth' });
+    // 2. Variables for scrolling
+    let scrollAmount = 0;
+    const speed = 0.5; // Adjust this value: 0.5 is very slow, 1.0 is normal, 2.0 is fast
+    let isHovering = false;
+    let animationId;
+
+    function smoothScroll() {
+        if (!isHovering) {
+            scrollAmount += speed;
+
+            // If we have scrolled past half the width (the original set of items),
+            // reset instantly to 0. Since the cloned items match the start, this is invisible.
+            if (scrollAmount >= track.scrollWidth / 2) {
+                scrollAmount = 0;
+            }
+
+            track.scrollLeft = scrollAmount;
         }
-    };
-
-    // Function to scroll left
-    const scrollPrev = () => {
-        track.scrollBy({ left: -itemWidth, behavior: 'smooth' });
-    };
-
-    // Button Event Listeners
-    nextBtn.addEventListener('click', () => {
-        stopAutoScroll(); // Stop auto scroll if user clicks
-        scrollNext();
-        startAutoScroll(); // Restart timer
-    });
-
-    prevBtn.addEventListener('click', () => {
-        stopAutoScroll();
-        scrollPrev();
-        startAutoScroll();
-    });
-
-    // Auto Scroll Logic
-    function startAutoScroll() {
-        // Run scrollNext every 3000ms (3 seconds)
-        autoScrollInterval = setInterval(scrollNext, 3000);
+        
+        // Request the next frame
+        animationId = requestAnimationFrame(smoothScroll);
     }
 
-    function stopAutoScroll() {
-        clearInterval(autoScrollInterval);
-    }
+    // 3. Pause on Hover
+    track.addEventListener('mouseenter', () => isHovering = true);
+    track.addEventListener('mouseleave', () => isHovering = false);
 
-    // Pause on Hover
-    track.addEventListener('mouseenter', stopAutoScroll);
-    track.addEventListener('mouseleave', startAutoScroll);
-
-    // Start immediately
-    startAutoScroll();
+    // Start the loop
+    smoothScroll();
 </script>
 
 </body>
