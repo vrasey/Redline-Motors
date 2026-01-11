@@ -110,6 +110,35 @@
         .instruction-card h3 { margin-bottom: 1rem; font-size: 1.2rem; }
         .instruction-card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.4; }
 
+        /* --- NEW: Per-Item Styling --- */
+        .link-item {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            border: 1px solid #333;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .link-item h4 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .remove-link-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            color: #666;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .remove-link-btn:hover { color: var(--primary-red); }
+
         /* --- Mobile Elements --- */
         .mobile-jump-container { display: none; margin-bottom: 2rem; }
         .btn-jump-pop {
@@ -167,7 +196,7 @@
     </div>
 
     <div class="container page-content">
-
+        
         <div id="request-type-selection" class="request-selection" style="border-bottom: none;">
             <div class="about-section" style="text-align: center; max-width: 800px; margin: 0 auto;">
                 <h2>How can we help you today?</h2>
@@ -192,6 +221,7 @@
         </div>
 
         <div id="direct-link-content" style="display: none;">
+            
             <button id="back-to-selection-from-direct" class="btn btn-secondary" style="margin-bottom: 1rem;">
                 <i class="fas fa-arrow-left"></i> Back to Selection
             </button>
@@ -239,27 +269,29 @@
                     <form id="invoice-form">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
+
                         <label for="email">Your Email</label>
                         <input type="email" id="email" name="email" required>
+
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required>
+
                         <div id="auction-links-container">
-                            <div class="link-item">
-                                <label for="auction-link-1">Auction Link #1</label>
-                                <input type="url" id="auction-link-1" name="auction-link-1" placeholder="https://auctions.yahoo.co.jp/..." required>
                             </div>
-                        </div>
-                        <button type="button" id="add-link-btn" class="btn btn-secondary" style="margin-bottom: 1rem;">+ Add another item</button>
-                        <label for="max-bid-jpy">Your Max Bid (JPY ¥)</label>
-                        <input type="number" id="max-bid-jpy" name="max-bid-jpy" placeholder="e.g., 25000" min="0" required>
-                        <input type="hidden" id="max-bid" name="max-bid">
-                        <p id="usd-estimation" style="color: #D2042D; font-weight: bold; margin-top: -10px; margin-bottom: 20px;">Est. Total: $0.00 USD</p>
-                        <label for="address">Shipping Address</label>
+
+                        <button type="button" id="add-link-btn" class="btn btn-secondary" style="margin-bottom: 2rem;">+ Add another item</button>
+
+                        <p id="usd-estimation" style="color: #D2042D; font-weight: bold; margin-top: -10px; margin-bottom: 20px; font-size: 1.2rem; text-align: right; border-top: 1px solid #333; padding-top: 10px;">Est. Total: $0.00 USD</p>
+
+                        <input type="hidden" id="max-bid" name="max-bid"> <input type="hidden" id="max-bid-jpy" name="max-bid-jpy"> <label for="address">Shipping Address</label>
                         <textarea id="address" name="address" rows="3" placeholder="Street, City, State, ZIP, Country" required></textarea>
+
                         <label for="notes">Additional Notes</label>
                         <textarea id="notes" name="notes" rows="3" placeholder="Specific requests or part details..."></textarea>
+
                         <input type="hidden" id="webhook-url" value="https://flow.zoho.jp/90002450688/flow/webhook/incoming?zapikey=1001.d79335a486b375f819ab9f7e8307055a.9be944bd0d8a63750bbcaf0b0bfe969b&isdebug=false">
                         <button type="submit" class="btn btn-primary" id="submit-btn">Submit Quote Request</button>
+                        
                         <div class="form-info-box">
                             <p>By submitting, you agree to the Redline Motors <a href="terms.html" target="_blank">Terms & Conditions</a>.</p>
                         </div>
@@ -268,59 +300,22 @@
                 </div>
             </div>
         </div>
-
+        
         <div id="detailed-guide-content" style="display: none;">
             <button id="back-to-form-from-guide" class="btn btn-secondary" style="margin-bottom: 2rem;">
                 <i class="fas fa-arrow-left"></i> Back to Quote Form
             </button>
-
-            <div class="about-section">
-                <h2>Yahoo! Auctions Step-by-Step Guide</h2>
-                <p>New to buying from Japan? Here is exactly how to find the perfect part.</p>
-            </div>
-
+            <div class="about-section"><h2>Yahoo! Auctions Step-by-Step Guide</h2><p>New to buying from Japan? Here is exactly how to find the perfect part.</p></div>
             <div class="instruction-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="instruction-card">
-                    <i class="fas fa-globe"></i>
-                    <h3>1. Translate the Site</h3>
-                    <p>Use Google Chrome or Edge. Right-click anywhere on the page and select <strong>"Translate to English"</strong> to read item details easily.</p>
-                </div>
-
-                <div class="instruction-card">
-                    <i class="fas fa-star"></i>
-                    <h3>2. Check Seller Rating</h3>
-                    <p>Look for the seller's evaluation score (Sun/Cloud/Rain icons). Avoid sellers with many "Bad" ratings or very low feedback counts.</p>
-                </div>
-
-                <div class="instruction-card">
-                    <i class="fas fa-truck-fast"></i>
-                    <h3>3. Domestic Shipping</h3>
-                    <p>Check if shipping is "Paid by Seller" or "Paid by Winner". Large items (bumpers/engines) can be expensive to ship within Japan.</p>
-                </div>
-
-                <div class="instruction-card">
-                    <i class="fas fa-copy"></i>
-                    <h3>4. Copy the URL</h3>
-                    <p>Once you find the item, simply copy the full web address (URL) from the top of your browser bar.</p>
-                </div>
-
-                <div class="instruction-card">
-                    <i class="fas fa-paste"></i>
-                    <h3>5. Paste in Form</h3>
-                    <p>Paste that link into our quote form. Enter your <strong>Max Bid in JPY</strong> (the absolute most you'd pay for the item itself).</p>
-                </div>
-
-                <div class="instruction-card">
-                    <i class="fas fa-box-open"></i>
-                    <h3>6. We Handle the Rest</h3>
-                    <p>We bid for you. If we win, we handle payment, warehouse inspection, repacking, and international export.</p>
-                </div>
+                <div class="instruction-card"><i class="fas fa-globe"></i><h3>1. Translate</h3><p>Use Google Chrome to translate pages.</p></div>
+                <div class="instruction-card"><i class="fas fa-star"></i><h3>2. Check Ratings</h3><p>Avoid sellers with Bad ratings.</p></div>
+                <div class="instruction-card"><i class="fas fa-truck-fast"></i><h3>3. Shipping</h3><p>Check if domestic shipping is paid by seller.</p></div>
+                <div class="instruction-card"><i class="fas fa-copy"></i><h3>4. Copy URL</h3><p>Copy the link from your browser.</p></div>
+                <div class="instruction-card"><i class="fas fa-paste"></i><h3>5. Paste in Form</h3><p>Paste the link into our quote form.</p></div>
+                <div class="instruction-card"><i class="fas fa-box-open"></i><h3>6. We Handle Rest</h3><p>We bid, inspect, and ship.</p></div>
             </div>
-
             <div style="text-align: center; margin-top: 2rem;">
-                <button id="jump-to-form-bottom" class="btn btn-primary btn-jump-pop" style="max-width: 300px;">
-                    Ready? Go to Quote Form
-                </button>
+                <button id="jump-to-form-bottom" class="btn btn-primary btn-jump-pop" style="max-width: 300px;">Ready? Go to Quote Form</button>
             </div>
         </div>
 
@@ -328,20 +323,14 @@
             <button id="back-to-selection-from-custom" class="btn btn-secondary" style="margin-bottom: 1rem;">
                 <i class="fas fa-arrow-left"></i> Back to Selection
             </button>
-
             <div class="mobile-jump-container">
                 <a href="#custom-form-container" class="btn btn-secondary btn-jump-pop" style="border-color: #555; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);">
                     Jump to Sourcing Form <i class="fas fa-arrow-down" style="margin-left: 8px;"></i>
                 </a>
             </div>
-
             <div class="parts-instructions">
-                <div class="about-section">
-                    <h2>Custom Part Sourcing</h2>
-                    <p>Can't find it on the auctions? Let our team in Tokyo search our network of tuning shops, breakers, and private sellers for you.</p>
-                </div>
+                <div class="about-section"><h2>Custom Part Sourcing</h2><p>Can't find it on the auctions? Let our team in Tokyo search our network.</p></div>
             </div>
-
             <div class="parts-form" id="custom-form-container">
                 <div class="form-container">
                     <form action="https://formspree.io/f/xeorgbkz" method="POST">
@@ -371,94 +360,109 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // Navigation Logic
         const selectionSection = document.getElementById('request-type-selection');
         const directLinkForm = document.getElementById('direct-link-content');
         const customRequestForm = document.getElementById('custom-request-content');
         const detailedGuide = document.getElementById('detailed-guide-content');
 
-        // Show Direct Link Form
-        document.getElementById('show-direct-link-form').addEventListener('click', (e) => {
-            e.stopPropagation();
-            selectionSection.style.display = 'none';
-            directLinkForm.style.display = 'block';
+        const showSection = (sectionToShow) => {
+            [selectionSection, directLinkForm, customRequestForm, detailedGuide].forEach(el => el.style.display = 'none');
+            sectionToShow.style.display = 'block';
             window.scrollTo(0, 0);
-        });
+        };
 
-        // Show Custom Request Form
-        document.getElementById('show-custom-request-form').addEventListener('click', (e) => {
-            e.stopPropagation();
-            selectionSection.style.display = 'none';
-            customRequestForm.style.display = 'block';
-            window.scrollTo(0, 0);
-        });
-
-        // Show Detailed Guide (Hides form, shows guide)
-        document.getElementById('show-detailed-guide').addEventListener('click', () => {
-            directLinkForm.style.display = 'none';
-            detailedGuide.style.display = 'block';
-            window.scrollTo(0, 0);
-        });
-
-        // Back to Form from Guide
-        document.getElementById('back-to-form-from-guide').addEventListener('click', () => {
-            detailedGuide.style.display = 'none';
-            directLinkForm.style.display = 'block';
-            window.scrollTo(0, 0);
-        });
-
-        // NEW: Back to Selection from Direct Link
-        document.getElementById('back-to-selection-from-direct').addEventListener('click', () => {
-            directLinkForm.style.display = 'none';
-            selectionSection.style.display = 'block';
-            window.scrollTo(0, 0);
-        });
-
-        // NEW: Back to Selection from Custom Request
-        document.getElementById('back-to-selection-from-custom').addEventListener('click', () => {
-            customRequestForm.style.display = 'none';
-            selectionSection.style.display = 'block';
-            window.scrollTo(0, 0);
-        });
-
-        // Bottom "Ready" button in guide
+        document.getElementById('show-direct-link-form').addEventListener('click', (e) => { e.stopPropagation(); showSection(directLinkForm); });
+        document.getElementById('show-custom-request-form').addEventListener('click', (e) => { e.stopPropagation(); showSection(customRequestForm); });
+        document.getElementById('show-detailed-guide').addEventListener('click', () => showSection(detailedGuide));
+        document.getElementById('back-to-form-from-guide').addEventListener('click', () => showSection(directLinkForm));
+        document.getElementById('back-to-selection-from-direct').addEventListener('click', () => showSection(selectionSection));
+        document.getElementById('back-to-selection-from-custom').addEventListener('click', () => showSection(selectionSection));
         document.getElementById('jump-to-form-bottom').addEventListener('click', () => {
-            detailedGuide.style.display = 'none';
-            directLinkForm.style.display = 'block';
-            // Scroll to form container specifically
+            showSection(directLinkForm);
             document.getElementById('quote-form-container').scrollIntoView({ behavior: 'smooth' });
         });
 
+        // Initialize Dynamic Items
+        const container = document.getElementById("auction-links-container");
+        const addBtn = document.getElementById("add-link-btn");
+        
+        // Function to Add Item Row
+        function addItemRow(index) {
+            const div = document.createElement("div");
+            div.className = "link-item";
+            div.innerHTML = `
+                <h4>Item #${index}</h4>
+                <label>Auction Link</label>
+                <input type="url" class="item-link" name="auction-link-${index}" placeholder="https://auctions.yahoo.co.jp/..." required>
+                
+                <label>Max Bid (JPY)</label>
+                <input type="number" class="item-bid" name="max-bid-${index}" placeholder="e.g., 25000" min="0" required>
+                
+                ${index > 1 ? '<button type="button" class="remove-link-btn">&times;</button>' : ''}
+            `;
+            container.appendChild(div);
+
+            // Add Event Listeners for Math
+            const bidInput = div.querySelector('.item-bid');
+            bidInput.addEventListener('input', calculateTotal);
+            
+            // Add Remove Logic
+            if(index > 1) {
+                div.querySelector('.remove-link-btn').addEventListener('click', () => {
+                    div.remove();
+                    reindexItems();
+                    calculateTotal();
+                });
+            }
+        }
+
+        function reindexItems() {
+            const items = container.querySelectorAll('.link-item');
+            items.forEach((item, idx) => {
+                item.querySelector('h4').textContent = `Item #${idx + 1}`;
+            });
+        }
+
+        addBtn.addEventListener("click", () => {
+            const count = container.querySelectorAll(".link-item").length + 1;
+            addItemRow(count);
+        });
+
+        // Add initial row
+        addItemRow(1);
         initLiveCurrency();
     });
 
-    document.getElementById("add-link-btn").addEventListener("click", () => {
-        const container = document.getElementById("auction-links-container");
-        const linkCount = container.querySelectorAll(".link-item").length;
-        if (linkCount >= 5) return;
-        const div = document.createElement("div");
-        div.classList.add("link-item");
-        div.innerHTML = `<label>Auction Link #${linkCount + 1}</label><input type="url" name="auction-link-${linkCount + 1}" required>`;
-        container.appendChild(div);
-    });
-
     let currentRate = 0.0065;
+    
     async function initLiveCurrency() {
-        const jpyInput = document.getElementById('max-bid-jpy');
-        const usdDisplay = document.getElementById('usd-estimation');
-        const hiddenUsdField = document.getElementById('max-bid');
         try {
             const response = await fetch('https://open.er-api.com/v6/latest/JPY');
             const data = await response.json();
             if (data && data.rates && data.rates.USD) { currentRate = data.rates.USD; }
         } catch (error) { console.error("Currency API failed."); }
-        if (jpyInput && usdDisplay) {
-            jpyInput.addEventListener('input', () => {
-                const jpyValue = parseFloat(jpyInput.value) || 0;
-                const usdValue = (jpyValue * currentRate).toFixed(2);
-                usdDisplay.textContent = `Est. Total: $${usdValue} USD (Rate: ${currentRate.toFixed(5)})`;
-                hiddenUsdField.value = usdValue;
-            });
-        }
+        
+        // Initial calc in case of refresh with data
+        calculateTotal();
+    }
+
+    function calculateTotal() {
+        const bidInputs = document.querySelectorAll('.item-bid');
+        let totalJpy = 0;
+        
+        bidInputs.forEach(input => {
+            totalJpy += parseFloat(input.value) || 0;
+        });
+
+        const totalUsd = (totalJpy * currentRate).toFixed(2);
+        
+        // Update Visuals
+        document.getElementById('usd-estimation').textContent = `Est. Total: $${totalUsd} USD (Rate: ${currentRate.toFixed(5)})`;
+        
+        // Update Hidden Global Totals
+        document.getElementById('max-bid').value = totalUsd;
+        document.getElementById('max-bid-jpy').value = totalJpy;
     }
 
     document.getElementById('invoice-form').addEventListener('submit', async function(e) {
@@ -468,29 +472,48 @@
         const webhookUrl = document.getElementById('webhook-url').value;
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending...";
-        const linkInputs = document.querySelectorAll('[name^="auction-link-"]');
-        let linksList = [];
-        linkInputs.forEach(input => { if(input.value) linksList.push(input.value); });
+        
+        // --- DATA COLLECTION ---
+        const items = document.querySelectorAll('.link-item');
+        let formattedLinks = [];
+        
+        items.forEach((item, idx) => {
+            const link = item.querySelector('.item-link').value;
+            const bid = item.querySelector('.item-bid').value;
+            if(link) {
+                formattedLinks.push(`${link} (Bid: ¥${bid})`);
+            }
+        });
+        
         const formData = new URLSearchParams();
         formData.append('customer_name', document.getElementById('name').value);
         formData.append('customer_email', document.getElementById('email').value);
         formData.append('phone', document.getElementById('phone').value);
-        formData.append('max_bid', document.getElementById('max-bid').value);
-        formData.append('max_bid_jpy', document.getElementById('max-bid-jpy').value);
-        formData.append('auction_links', linksList.join(', '));
+        
+        // Send Aggregated Totals
+        formData.append('max_bid', document.getElementById('max-bid').value);     // Total USD
+        formData.append('max_bid_jpy', document.getElementById('max-bid-jpy').value); // Total JPY
+        
+        // Send Formatted List of Links + Bids
+        formData.append('auction_links', formattedLinks.join(', '));
+        
         formData.append('address', document.getElementById('address').value);
         formData.append('notes', document.getElementById('notes').value);
         formData.append('submission_date', new Date().toLocaleDateString());
+        
         try {
             await fetch(webhookUrl, { method: 'POST', mode: 'no-cors', body: formData });
             statusDiv.innerHTML = '<p style="color: #4CAF50;">Request Sent! We will contact you shortly.</p>';
             statusDiv.style.display = 'block';
             document.getElementById('invoice-form').reset();
             document.getElementById('usd-estimation').textContent = "Est. Total: $0.00 USD";
+            // Reset to 1 item
+            document.getElementById("auction-links-container").innerHTML = '';
+            // Re-trigger add row manually or reload page logic
+            location.reload(); 
         } catch (error) {
             statusDiv.innerHTML = '<p style="color: #D2042D;">Error. Please try again.</p>';
             statusDiv.style.display = 'block';
-        } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = "Submit Quote Request";
         }
