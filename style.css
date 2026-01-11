@@ -2,7 +2,7 @@
    1. Global Styles & Variables
    ========================================================================== */
 :root {
-    --primary-red: #CF0A2C; /* Updated to your specific Red */
+    --primary-red: #CF0A2C;
     --dark-bg: #111111;
     --card-bg: #1E1E1E;
     --card-hover: #2a2a2a;
@@ -40,7 +40,6 @@ img { max-width: 100%; display: block; }
     text-align: center;
 }
 
-/* Primary: Red Background, White Text */
 .btn-primary {
     background-color: var(--primary-red);
     color: white;
@@ -51,7 +50,6 @@ img { max-width: 100%; display: block; }
     color: var(--primary-red);
 }
 
-/* Secondary: Transparent with Grey Border (Good for "Back" or secondary options) */
 .btn-secondary {
     background-color: transparent;
     color: var(--text-secondary);
@@ -63,7 +61,6 @@ img { max-width: 100%; display: block; }
     border-color: #444;
 }
 
-/* Tertiary: Transparent with Red Border (Good for "Learn More") */
 .btn-tertiary {
     background-color: transparent;
     color: var(--primary-red);
@@ -78,7 +75,6 @@ img { max-width: 100%; display: block; }
    3. Header & Navigation
    ========================================================================== */
 header { background-color: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px); padding: 1rem 0; position: fixed; width: 100%; z-index: 1000; border-bottom: 1px solid #333; }
-
 header .container { display: flex; justify-content: space-between; align-items: center; }
 
 .logo { font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: var(--text-light); display: flex; align-items: center; gap: 0.75rem; }
@@ -119,7 +115,17 @@ nav a:hover, nav a.active { color: var(--primary-red); background-color: rgba(25
 .previous-orders h2 { color: var(--primary-red); text-align: center; margin-bottom: 3rem; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 1px; }
 
 .carousel-wrapper { position: relative; width: 100%; overflow: hidden; display: flex; }
-.carousel-track { display: flex; gap: 20px; padding: 20px 0; width: 100%; white-space: nowrap; }
+
+/* FIX: Added overflow-x: hidden and scroll-behavior: auto */
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    scroll-behavior: auto;
+}
 
 .carousel-item {
     flex: 0 0 350px;
@@ -140,7 +146,6 @@ nav a:hover, nav a.active { color: var(--primary-red); background-color: rgba(25
    6. FAQ Accordions (FAQ Page)
    ========================================================================== */
 .faq-section { max-width: 900px; margin: 0 auto; }
-
 .faq-category {
     margin-top: 50px; margin-bottom: 25px;
     font-size: 1.6rem; color: var(--primary-red);
@@ -162,14 +167,12 @@ summary {
 }
 summary:hover { background-color: var(--card-hover); }
 summary::-webkit-details-marker { display: none; }
-
 summary::after {
     content: '+'; position: absolute; right: 25px; top: 50%;
     transform: translateY(-50%); font-size: 1.8rem; font-weight: bold;
     color: var(--primary-red); line-height: 1;
 }
 details[open] summary::after { content: '-'; }
-
 .faq-answer {
     padding: 0 25px 25px 25px; line-height: 1.7; color: var(--text-secondary);
     border-top: none; background-color: var(--card-bg);
@@ -190,7 +193,6 @@ details[open] summary::after { content: '-'; }
 .selection-card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-light); }
 .selection-card p { color: var(--text-secondary); margin-bottom: 2rem; }
 
-/* Instruction Grid */
 .instruction-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0 3rem 0; }
 .instruction-card {
     background-color: var(--card-bg); padding: 2rem; border-radius: 8px; border: 1px solid #333; text-align: center;
@@ -198,7 +200,6 @@ details[open] summary::after { content: '-'; }
 .instruction-card:hover { border-color: var(--primary-red); transform: translateY(-3px); transition: 0.3s; }
 .instruction-card i { font-size: 3rem; color: var(--primary-red); margin-bottom: 1rem; }
 
-/* Forms */
 .form-container { background-color: var(--card-bg); padding: 2rem; border-radius: 8px; border: 1px solid #333; }
 .form-container label { display: block; margin-bottom: 0.5rem; font-weight: 700; color: var(--text-secondary); margin-top: 1rem; }
 .form-container input, .form-container textarea {
@@ -208,13 +209,11 @@ details[open] summary::after { content: '-'; }
 }
 .form-container input:focus, .form-container textarea:focus { border-color: var(--primary-red); outline: none; }
 
-/* Dynamic Link Items */
 .link-item { background-color: #151515; padding: 1.5rem; border: 1px solid #333; border-radius: 5px; margin-bottom: 1.5rem; position: relative; }
 .link-item h4 { color: var(--primary-red); margin-bottom: 1rem; text-transform: uppercase; font-size: 0.9rem; }
 .remove-link-btn { position: absolute; top: 10px; right: 10px; background: none; border: none; color: #666; font-size: 1.5rem; cursor: pointer; }
 .remove-link-btn:hover { color: var(--primary-red); }
 
-/* About Text Blocks */
 .about-section { margin-bottom: 3rem; }
 .about-section h2 { color: var(--primary-red); margin-bottom: 1rem; border-bottom: 1px solid #333; padding-bottom: 10px; }
 .about-section p { margin-bottom: 1.5rem; color: var(--text-secondary); }
@@ -233,7 +232,6 @@ footer p { color: var(--text-secondary); font-size: 0.9rem; }
 }
 .messenger-button:hover { transform: scale(1.1); }
 
-/* Responsive */
 @media (max-width: 768px) {
     header { position: relative; }
     header .container { flex-direction: column; gap: 1rem; }
