@@ -15,7 +15,106 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Highlight the Header in Red */
+        .previous-orders h2 {
+            color: var(--primary-red) !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Carousel Wrapper */
+        .carousel-wrapper {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        /* The Scrolling Track */
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 20px 5px; /* Padding for hover effects */
+            width: 100%;
+            /* Hide scrollbars */
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+        }
+        .carousel-track::-webkit-scrollbar { 
+            display: none; 
+        }
+
+        /* Individual Cards */
+        .carousel-item {
+            flex: 0 0 300px; /* Fixed width for cards */
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+            scroll-snap-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .carousel-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .carousel-item h3 {
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 1rem;
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        /* Navigation Buttons */
+        .carousel-btn {
+            background-color: rgba(0,0,0,0.6);
+            border: 1px solid var(--card-bg);
+            color: var(--text-light);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            /* Positioning */
+            position: absolute;
+        }
+        
+        .carousel-btn:hover {
+            background-color: var(--primary-red);
+            border-color: var(--primary-red);
+        }
+
+        .prev-btn { left: -20px; }
+        .next-btn { right: -20px; }
+
+        @media (max-width: 768px) {
+            .carousel-btn { display: none; } /* Hide buttons on mobile, swipe is better */
+            .carousel-item { flex: 0 0 85vw; } /* Cards take up mostly full width on phone */
+            .prev-btn, .next-btn { display: none; }
+        }
+    </style>
 </head>
 <body>
 
@@ -60,24 +159,46 @@
     <section class="previous-orders" id="previous-orders-section">
         <div class="container">
             <h2>Previous Orders</h2>
-            <div class="order-grid">
-                <div class="order-item">
-                    <img src="images/cam_covers.jpg" alt="Skyline Cam Covers">
-                    <h3>RB26 Cam Covers</h3>
+            
+            <div class="carousel-wrapper">
+                <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Scroll Left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="carousel-track" id="track">
+                    
+                    <div class="carousel-item">
+                        <img src="images/cam_covers.jpg" alt="Skyline Cam Covers">
+                        <h3>RB26 Cam Covers</h3>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="images/mugen_fit.jpg" alt="Honda Fit Mugen Bumper">
+                        <h3>Honda Fit Mugen Bumper</h3>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="images/spoon_muffler1.jpg" alt="Spoon Muffler">
+                        <h3>Spoon Honda Fit Muffler</h3>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="images/lip_na.png" alt="NA Miata Lip">
+                        <h3>NA Miata Lip</h3>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="images/cam_covers.jpg" alt="Skyline Cam Covers">
+                        <h3>RB26 Cam Covers (Set 2)</h3>
+                    </div>
+
                 </div>
-                <div class="order-item">
-                    <img src="images/mugen_fit.jpg" alt="Honda Fit Mugen Bumper">
-                    <h3>Honda Fit Mugen Bumper</h3>
-                </div>
-                <div class="order-item">
-                    <img src="images/spoon_muffler1.jpg" alt="Spoon Muffler">
-                    <h3>Spoon Honda Fit Muffler</h3>
-                </div>
-                <div class="order-item">
-                    <img src="images/lip_na.png" alt="NA Miata Lip">
-                    <h3>NA Miata Lip</h3>
-                </div>
+
+                <button class="carousel-btn next-btn" id="nextBtn" aria-label="Scroll Right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
+
         </div>
     </section>
 </main>
@@ -94,6 +215,23 @@
 <a href="https://m.me/820619511130834" class="messenger-button" target="_blank" aria-label="Chat on Messenger">
     <i class="fab fa-facebook-messenger"></i>
 </a>
+
+<script>
+    const track = document.getElementById('track');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    // Scroll width matches item width (300px) + gap (20px)
+    const scrollAmount = 320; 
+
+    nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+</script>
 
 </body>
 </html>
