@@ -3,125 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Frequently Asked Questions about ordering, shipping, and JDM parts export with Redline Motors.">
-    <meta property="og:title" content="FAQ - Redline Motors">
-    <meta property="og:description" content="Common questions about our JDM export process and policies.">
-    <meta property="og:image" content="https://vrasey.github.io/Redline-Motors/images/hero_main.jpeg">
-    <meta property="og:url" content="https://vrasey.github.io/Redline-Motors/faq.html">
-    <meta property="og:type" content="website">
-    <title>FAQ - Redline Motors</title>
+    <title>About Us - Redline Motors</title>
     <link rel="icon" type="image/png" href="images/logo_main.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* Define the Redline Red */
-        :root {
-            --site-red: #CF0A2C; 
-            --card-bg: #1f1f1f; 
-            --card-hover: #2a2a2a; 
-            --text-main: #ffffff;
-            --text-muted: #cccccc;
-        }
-
-        /* Page Title Overrides */
-        .page-header h1 {
-            color: var(--site-red) !important;
-        }
-
-        /* FAQ Section Specifics */
-        .faq-section {
-            padding: 20px 0;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-category {
-            margin-top: 50px;
-            margin-bottom: 25px;
-            font-family: 'Exo 2', sans-serif;
-            font-size: 1.6rem;
-            color: var(--site-red); 
-            border-bottom: 2px solid #333; 
-            padding-bottom: 10px;
-            /* Flexbox ensures the icon and text align perfectly */
-            display: flex;
-            align-items: center;
-            gap: 15px; 
-        }
-
-        /* Specific style for the category icons */
-        .faq-category i {
-            font-size: 1.4rem;
-        }
-
-        /* The Card Container (The <details> tag) */
-        details {
-            background-color: var(--card-bg);
-            margin-bottom: 15px; 
-            border-radius: 8px; 
-            border: 1px solid #333; 
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        /* The Question Bar (The <summary> tag) */
-        summary {
-            padding: 20px 25px;
-            cursor: pointer;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            list-style: none;
-            position: relative;
-            background-color: var(--card-bg);
-            color: var(--text-main);
-            transition: background-color 0.2s ease;
-        }
-
-        summary:hover {
-            background-color: var(--card-hover);
-        }
-
-        summary::-webkit-details-marker {
-            display: none;
-        }
-
-        /* Custom Plus Icon using Site Red */
-        summary::after {
-            content: '+';
-            position: absolute;
-            right: 25px;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--site-red);
-            top: 50%;
-            transform: translateY(-50%);
-            line-height: 1;
-        }
-
-        details[open] summary::after {
-            content: '-';
-        }
-
-        /* The Answer Area */
-        .faq-answer {
-            padding: 0 25px 25px 25px; 
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.7;
-            color: var(--text-muted); 
-            border-top: none; 
-            background-color: var(--card-bg);
-        }
-
-        .warning {
-            color: var(--site-red);
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body>
 
@@ -135,8 +21,8 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="auctions.html">Parts</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="faq.html" class="active">FAQ</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -146,206 +32,13 @@
 <main>
     <div class="page-header">
         <div class="container">
-            <h1>Frequently Asked Questions</h1>
+            <h1>About Us</h1>
         </div>
     </div>
 
     <div class="container page-content">
-        <div class="faq-section">
-
-            <h2 class="faq-category">
-                <i class="fa-solid fa-credit-card"></i> Ordering & Payment
-            </h2>
-            
-            <details>
-                <summary>How do I place an order?</summary>
-                <div class="faq-answer">
-                    Orders are placed after a quote or invoice is approved and paid. Once payment is received, sourcing, bidding, or fulfillment begins.
-                </div>
-            </details>
-
-            <details>
-                <summary>How do I pay?</summary>
-                <div class="faq-answer">
-                    We accept secure online payment via invoice. Payment must be completed in full before any sourcing, bidding, or shipping takes place.
-                </div>
-            </details>
-
-            <details>
-                <summary>Do you require full payment upfront?</summary>
-                <div class="faq-answer">
-                    Yes. Due to the nature of international sourcing and auctions, full payment is required before we place bids, purchase items, or begin fulfillment.
-                </div>
-            </details>
-
-            <h2 class="faq-category">
-                <i class="fa-solid fa-gavel"></i> Auction & Sourced Items
-            </h2>
-
-            <details>
-                <summary>How does payment work for auction or specially sourced items?</summary>
-                <div class="faq-answer">
-                    For auction or custom-sourced items, customers must approve a <strong>maximum authorized purchase amount</strong> and complete payment in full before any bids or purchases are made.
-                </div>
-            </details>
-
-            <details>
-                <summary>What does the maximum authorized amount include?</summary>
-                <div class="faq-answer">
-                    The maximum authorized amount includes the item cost, sourcing and handling services, and estimated downstream costs such as logistics and shipping.
-                </div>
-            </details>
-
-            <details>
-                <summary>What happens if the final purchase price is lower than the authorized amount?</summary>
-                <div class="faq-answer">
-                    Any difference between the maximum authorized amount and the final purchase cost is applied toward shipping or handling costs. Cash refunds are not automatically issued.
-                </div>
-            </details>
-
-            <details>
-                <summary>What happens if the auction exceeds the authorized amount?</summary>
-                <div class="faq-answer">
-                    We do not bid beyond the approved maximum. No purchase is made in that case.
-                </div>
-            </details>
-
-            <h2 class="faq-category">
-                <i class="fa-solid fa-tags"></i> Pricing & Fees
-            </h2>
-
-            <details>
-                <summary>Are your fees itemized separately?</summary>
-                <div class="faq-answer">
-                    No. All pricing includes sourcing, coordination, and handling services. Internal fees are not itemized.
-                </div>
-            </details>
-
-            <details>
-                <summary>Are duties, taxes, or import fees included?</summary>
-                <div class="faq-answer">
-                    No. Import duties, customs fees, and taxes (if applicable) are assessed by customs authorities and are the responsibility of the buyer. These charges vary by item type and declared value and are outside of our control.
-                </div>
-            </details>
-
-            <details>
-                <summary>Can you estimate duties or import costs?</summary>
-                <div class="faq-answer">
-                    We can provide general guidance, but final duties and fees are determined by customs authorities at the time of import and cannot be guaranteed.
-                </div>
-            </details>
-
-            <h2 class="faq-category">
-                <i class="fa-solid fa-truck-fast"></i> Shipping & Delivery
-            </h2>
-
-            <details>
-                <summary>How is shipping calculated?</summary>
-                <div class="faq-answer">
-                    Shipping costs are based on item size, weight, destination, and shipping method. Final shipping costs are confirmed once items are consolidated and ready for export.
-                </div>
-            </details>
-
-            <details>
-                <summary>Do you guarantee shipping prices or delivery dates?</summary>
-                <div class="faq-answer">
-                    No. Shipping costs and delivery timelines are estimates only and may change due to carrier availability, customs processing, fuel costs, or other factors outside our control.
-                </div>
-            </details>
-
-            <details>
-                <summary>How are shipping cost differences handled?</summary>
-                <div class="faq-answer">
-                    Any difference between estimated and final shipping costs is reconciled at the time of shipment.
-                </div>
-            </details>
-
-            <h2 class="faq-category">
-                <i class="fa-solid fa-magnifying-glass"></i> Condition of Parts
-            </h2>
-
-            <details>
-                <summary>Are parts new or used?</summary>
-                <div class="faq-answer">
-                    We offer both new and used components depending on availability. Many items are sourced specifically per customer request.
-                </div>
-            </details>
-
-            <details>
-                <summary>Are used parts tested or inspected?</summary>
-                <div class="faq-answer">
-                    Used parts are visually inspected when possible and described based on available information. Due to the nature of used components, condition may vary. Professional installation is strongly recommended.
-                </div>
-            </details>
-
-            <h2 class="faq-category">
-                <i class="fa-solid fa-gears"></i> Engines & Transmissions
-            </h2>
-
-            <details>
-                <summary>Do engines and transmissions come with a warranty?</summary>
-                <div class="faq-answer">
-                    <span class="warning">No.</span> Engines and transmissions are sold as used components and are provided <strong>as-is</strong>, with no warranty expressed or implied.
-                </div>
-            </details>
-
-            <details>
-                <summary>Can engines or transmissions be returned or exchanged?</summary>
-                <div class="faq-answer">
-                    <span class="warning">No. All engine and transmission sales are final.</span> Compatibility, installation, and compliance are the responsibility of the buyer or installer.
-                </div>
-            </details>
-
-            <h2 class="faq-category">
-                <i class="fa-solid fa-ban"></i> Cancellations, Returns & Refunds
-            </h2>
-
-            <details>
-                <summary>Can I cancel my order?</summary>
-                <div class="faq-answer">
-                    No. Orders cannot be canceled once payment has been made and sourcing or bidding has begun.
-                </div>
-            </details>
-
-            <details>
-                <summary>Do you accept returns or exchanges?</summary>
-                <div class="faq-answer">
-                    <span class="warning">No. All sales are final.</span> We do not accept returns, exchanges, or refunds.
-                </div>
-            </details>
-
-            <details>
-                <summary>Why are all sales final?</summary>
-                <div class="faq-answer">
-                    Items are sourced specifically for each customer and often cannot be returned to the original supplier. For this reason, all orders are considered final once confirmed.
-                </div>
-            </details>
-
-            <h2 class="faq-category">
-                <i class="fa-solid fa-circle-question"></i> General
-            </h2>
-
-            <details>
-                <summary>Are items guaranteed to fit my vehicle?</summary>
-                <div class="faq-answer">
-                    No. Vehicle compatibility is the responsibility of the buyer or installer. We recommend confirming compatibility before purchasing.
-                </div>
-            </details>
-
-            <details>
-                <summary>Do you provide installation or technical support?</summary>
-                <div class="faq-answer">
-                    We can provide general information when available, but we do not offer installation services or technical guarantees. Professional installation is recommended.
-                </div>
-            </details>
-
-            <details>
-                <summary>What if I have questions before ordering?</summary>
-                <div class="faq-answer">
-                    We encourage all customers to ask questions before payment. Once an order is placed and paid, it is considered final.
-                </div>
-            </details>
-
+        <div class="about-section" style="text-align: center;">
+            <p>Content Coming Soon...</p>
         </div>
     </div>
 </main>
@@ -353,15 +46,9 @@
 <footer>
     <div class="container">
         <p>&copy; 2025 Redline Motors. All Rights Reserved. Based in Tokyo, Japan.</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">
-            <a href="terms.html" style="color: var(--text-secondary); text-decoration: underline;">Terms & Conditions</a>
-        </p>
+        <p style="margin-top: 10px;"><a href="terms.html" style="color: var(--text-secondary); text-decoration: underline;">Terms & Conditions</a></p>
     </div>
 </footer>
-
-<a href="https://m.me/820619511130834" class="messenger-button" target="_blank" aria-label="Chat on Messenger">
-    <i class="fab fa-facebook-messenger"></i>
-</a>
-
+<a href="https://m.me/820619511130834" class="messenger-button" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
 </body>
 </html>
