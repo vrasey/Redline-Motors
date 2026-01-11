@@ -18,6 +18,12 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+        /* Page Title Overrides */
+        .page-header h1 {
+            /* CHANGED: Main title color set to red */
+            color: #a31c24 !important;
+        }
+
         /* FAQ Section Specifics */
         .faq-section {
             padding: 20px 0;
@@ -30,13 +36,15 @@
             margin-bottom: 20px;
             font-family: 'Exo 2', sans-serif;
             font-size: 1.5rem;
-            color: #eee; /* Light grey for category titles */
-            border-bottom: 2px solid #444;
+            /* CHANGED: Section headers set to red */
+            color: #a31c24; 
+            /* CHANGED: Underline border set to match the red */
+            border-bottom: 2px solid #a31c24; 
             padding-bottom: 10px;
         }
 
         details {
-            background-color: #fff; /* Keep white for contrast */
+            background-color: #fff; 
             margin-bottom: 10px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -52,8 +60,7 @@
             list-style: none;
             position: relative;
             background-color: #f9f9f9;
-            /* CHANGED: Use a dark grey for the question text */
-            color: #333; 
+            color: #333; /* Question text color (dark grey) */
             transition: background-color 0.3s ease;
         }
 
@@ -73,8 +80,7 @@
             right: 20px;
             font-size: 1.5rem;
             font-weight: bold;
-            /* CHANGED: Use your specific red */
-            color: #a31c24; 
+            color: #a31c24; /* Icon red */
             top: 50%;
             transform: translateY(-50%);
         }
@@ -87,13 +93,12 @@
             padding: 20px;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            color: #555; /* Dark grey for answer text */
+            color: #555; /* Answer text color */
             border-top: 1px solid #eee;
         }
 
         /* Warning text style for "No Refunds" etc. */
         .warning {
-            /* CHANGED: Use your specific red */
             color: #a31c24;
             font-weight: bold;
         }
