@@ -21,8 +21,8 @@
         /* Define the Redline Red */
         :root {
             --site-red: #CF0A2C; 
-            --card-bg: #1f1f1f; /* Dark Grey like your cards */
-            --card-hover: #2a2a2a; /* Slightly lighter for hover */
+            --card-bg: #1f1f1f; 
+            --card-hover: #2a2a2a; 
             --text-main: #ffffff;
             --text-muted: #cccccc;
         }
@@ -45,16 +45,25 @@
             font-family: 'Exo 2', sans-serif;
             font-size: 1.6rem;
             color: var(--site-red); 
-            border-bottom: 2px solid #333; /* Darker subtle underline */
+            border-bottom: 2px solid #333; 
             padding-bottom: 10px;
+            /* Flexbox ensures the icon and text align perfectly */
+            display: flex;
+            align-items: center;
+            gap: 15px; 
+        }
+
+        /* Specific style for the category icons */
+        .faq-category i {
+            font-size: 1.4rem;
         }
 
         /* The Card Container (The <details> tag) */
         details {
             background-color: var(--card-bg);
-            margin-bottom: 15px; /* Spacing between cards */
-            border-radius: 8px; /* Rounded corners like your cards */
-            border: 1px solid #333; /* Subtle border */
+            margin-bottom: 15px; 
+            border-radius: 8px; 
+            border: 1px solid #333; 
             overflow: hidden;
             transition: all 0.3s ease;
         }
@@ -73,12 +82,10 @@
             transition: background-color 0.2s ease;
         }
 
-        /* Hover Effect: Lighten background slightly */
         summary:hover {
             background-color: var(--card-hover);
         }
 
-        /* Hide default triangle */
         summary::-webkit-details-marker {
             display: none;
         }
@@ -102,15 +109,14 @@
 
         /* The Answer Area */
         .faq-answer {
-            padding: 0 25px 25px 25px; /* Padding on sides and bottom */
+            padding: 0 25px 25px 25px; 
             font-family: 'Roboto', sans-serif;
             line-height: 1.7;
-            color: var(--text-muted); /* Softer grey text for reading */
+            color: var(--text-muted); 
             border-top: none; 
             background-color: var(--card-bg);
         }
 
-        /* Warning text style for "No Refunds" etc. */
         .warning {
             color: var(--site-red);
             font-weight: bold;
@@ -147,7 +153,9 @@
     <div class="container page-content">
         <div class="faq-section">
 
-            <h2 class="faq-category">Ordering & Payment</h2>
+            <h2 class="faq-category">
+                <i class="fa-solid fa-credit-card"></i> Ordering & Payment
+            </h2>
             
             <details>
                 <summary>How do I place an order?</summary>
@@ -170,7 +178,9 @@
                 </div>
             </details>
 
-            <h2 class="faq-category">Auction & Sourced Items</h2>
+            <h2 class="faq-category">
+                <i class="fa-solid fa-gavel"></i> Auction & Sourced Items
+            </h2>
 
             <details>
                 <summary>How does payment work for auction or specially sourced items?</summary>
@@ -200,7 +210,9 @@
                 </div>
             </details>
 
-            <h2 class="faq-category">Pricing & Fees</h2>
+            <h2 class="faq-category">
+                <i class="fa-solid fa-tags"></i> Pricing & Fees
+            </h2>
 
             <details>
                 <summary>Are your fees itemized separately?</summary>
@@ -223,7 +235,9 @@
                 </div>
             </details>
 
-            <h2 class="faq-category">Shipping & Delivery</h2>
+            <h2 class="faq-category">
+                <i class="fa-solid fa-truck-fast"></i> Shipping & Delivery
+            </h2>
 
             <details>
                 <summary>How is shipping calculated?</summary>
@@ -246,7 +260,9 @@
                 </div>
             </details>
 
-            <h2 class="faq-category">Condition of Parts</h2>
+            <h2 class="faq-category">
+                <i class="fa-solid fa-magnifying-glass"></i> Condition of Parts
+            </h2>
 
             <details>
                 <summary>Are parts new or used?</summary>
@@ -262,7 +278,9 @@
                 </div>
             </details>
 
-            <h2 class="faq-category">Engines & Transmissions</h2>
+            <h2 class="faq-category">
+                <i class="fa-solid fa-gears"></i> Engines & Transmissions
+            </h2>
 
             <details>
                 <summary>Do engines and transmissions come with a warranty?</summary>
@@ -278,7 +296,9 @@
                 </div>
             </details>
 
-            <h2 class="faq-category">Cancellations, Returns & Refunds</h2>
+            <h2 class="faq-category">
+                <i class="fa-solid fa-ban"></i> Cancellations, Returns & Refunds
+            </h2>
 
             <details>
                 <summary>Can I cancel my order?</summary>
@@ -301,7 +321,9 @@
                 </div>
             </details>
 
-            <h2 class="faq-category">General</h2>
+            <h2 class="faq-category">
+                <i class="fa-solid fa-circle-question"></i> General
+            </h2>
 
             <details>
                 <summary>Are items guaranteed to fit my vehicle?</summary>
