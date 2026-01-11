@@ -85,20 +85,7 @@
             margin-bottom: 0;
         }
 
-        /* Subtle Background Icon Decoration (Optional Cool Factor) */
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(207,10,44,0.1) 0%, rgba(0,0,0,0) 70%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* Ensure text sits above the decoration */
+        /* Ensure text sits above any potential background elements */
         .about-card * {
             position: relative;
             z-index: 1;
