@@ -42,9 +42,8 @@
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
-            padding: 20px 5px; /* Padding for hover effects */
+            padding: 20px 5px;
             width: 100%;
-            /* Hide scrollbars */
             scrollbar-width: none; 
             -ms-overflow-style: none;
         }
@@ -54,7 +53,8 @@
 
         /* Individual Cards */
         .carousel-item {
-            flex: 0 0 300px; /* Fixed width for cards */
+            /* Adjusted width to 350px to show fewer items (approx 2-3) at once */
+            flex: 0 0 350px; 
             background-color: var(--card-bg);
             border-radius: 8px;
             overflow: hidden;
@@ -70,15 +70,15 @@
 
         .carousel-item img {
             width: 100%;
-            height: 220px;
+            height: 250px; /* Slightly taller for better visibility */
             object-fit: cover;
         }
 
         .carousel-item h3 {
             font-family: var(--font-primary);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             text-align: center;
-            padding: 1rem;
+            padding: 1.2rem;
             margin: 0;
             color: var(--text-light);
         }
@@ -97,7 +97,6 @@
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s ease;
-            /* Positioning */
             position: absolute;
         }
         
@@ -110,9 +109,8 @@
         .next-btn { right: -20px; }
 
         @media (max-width: 768px) {
-            .carousel-btn { display: none; } /* Hide buttons on mobile, swipe is better */
-            .carousel-item { flex: 0 0 85vw; } /* Cards take up mostly full width on phone */
-            .prev-btn, .next-btn { display: none; }
+            .carousel-btn { display: none; }
+            .carousel-item { flex: 0 0 85vw; } 
         }
     </style>
 </head>
@@ -191,6 +189,10 @@
                         <img src="images/cam_covers.jpg" alt="Skyline Cam Covers">
                         <h3>RB26 Cam Covers (Set 2)</h3>
                     </div>
+                     <div class="carousel-item">
+                        <img src="images/mugen_fit.jpg" alt="Honda Fit Mugen Bumper">
+                        <h3>Honda Fit Mugen Bumper (Set 2)</h3>
+                    </div>
 
                 </div>
 
@@ -220,17 +222,57 @@
     const track = document.getElementById('track');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    
+    // Width of card (350) + gap (20) = 370
+    const itemWidth = 370; 
+    let autoScrollInterval;
 
-    // Scroll width matches item width (300px) + gap (20px)
-    const scrollAmount = 320; 
+    // Function to scroll right
+    const scrollNext = () => {
+        // Check if we are near the end
+        if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+            // Smoothly go back to start
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            // Scroll one item width
+            track.scrollBy({ left: itemWidth, behavior: 'smooth' });
+        }
+    };
 
+    // Function to scroll left
+    const scrollPrev = () => {
+        track.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+    };
+
+    // Button Event Listeners
     nextBtn.addEventListener('click', () => {
-        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        stopAutoScroll(); // Stop auto scroll if user clicks
+        scrollNext();
+        startAutoScroll(); // Restart timer
     });
 
     prevBtn.addEventListener('click', () => {
-        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        stopAutoScroll();
+        scrollPrev();
+        startAutoScroll();
     });
+
+    // Auto Scroll Logic
+    function startAutoScroll() {
+        // Run scrollNext every 3000ms (3 seconds)
+        autoScrollInterval = setInterval(scrollNext, 3000);
+    }
+
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+
+    // Pause on Hover
+    track.addEventListener('mouseenter', stopAutoScroll);
+    track.addEventListener('mouseleave', startAutoScroll);
+
+    // Start immediately
+    startAutoScroll();
 </script>
 
 </body>
