@@ -465,7 +465,7 @@
         document.getElementById('max-bid-jpy').value = totalJpy;
     }
 
-    // --- REPLACED SUBMIT LOGIC START ---
+    // --- UPDATED SUBMIT LOGIC (CORS FIX) ---
     document.getElementById('invoice-form').addEventListener('submit', async function(e) {
         e.preventDefault();
         const submitBtn = document.getElementById('submit-btn');
@@ -475,15 +475,13 @@
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending...";
 
-        // --- 1. BUILD THE ITEMS ARRAY ---
+        // 1. Build the Structured Array
         const itemRows = document.querySelectorAll('.link-item');
         let itemsArray = [];
 
         itemRows.forEach((row) => {
             const link = row.querySelector('.item-link').value;
             const bid = row.querySelector('.item-bid').value;
-            
-            // Only add if link exists
             if(link) {
                 itemsArray.push({
                     "url": link,
@@ -492,36 +490,38 @@
             }
         });
 
-        // --- 2. CONSTRUCT THE JSON PAYLOAD ---
-        const payload = {
-            "submission_date": new Date().toLocaleDateString(),
-            "customer_name": document.getElementById('name').value,
-            "customer_email": document.getElementById('email').value,
-            "phone": document.getElementById('phone').value,
-            "address": document.getElementById('address').value,
-            "notes": document.getElementById('notes').value,
-            "total_est_usd": document.getElementById('max-bid').value, // Total USD
-            "total_est_jpy": document.getElementById('max-bid-jpy').value, // Total JPY
-            "items": itemsArray 
-        };
+        // 2. Pack everything into URLSearchParams (Form Data)
+        // This format is allowed by browsers without CORS checks
+        const formData = new URLSearchParams();
+        
+        // Basic Fields
+        formData.append('submission_date', new Date().toLocaleDateString());
+        formData.append('customer_name', document.getElementById('name').value);
+        formData.append('customer_email', document.getElementById('email').value);
+        formData.append('phone', document.getElementById('phone').value);
+        formData.append('address', document.getElementById('address').value);
+        formData.append('notes', document.getElementById('notes').value);
+        formData.append('total_est_usd', document.getElementById('max-bid').value);
+        formData.append('total_est_jpy', document.getElementById('max-bid-jpy').value);
+        
+        // THE TRICK: Send the JSON Array as a single string field
+        formData.append('items_json', JSON.stringify(itemsArray));
 
         try {
-            // --- 3. SEND AS JSON ---
+            // 3. Send using 'no-cors'
             await fetch(webhookUrl, { 
                 method: 'POST', 
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload) 
+                body: formData,
+                mode: 'no-cors' 
             });
 
+            // Success (Blind)
             statusDiv.innerHTML = '<p style="color: #4CAF50;">Request Sent! We will contact you shortly.</p>';
             statusDiv.style.display = 'block';
             document.getElementById('invoice-form').reset();
             document.getElementById('usd-estimation').textContent = "Est. Total: $0.00 USD";
             document.getElementById("auction-links-container").innerHTML = '';
             
-            // Optional: Reload after a delay
             setTimeout(() => location.reload(), 2000);
 
         } catch (error) {
@@ -532,7 +532,6 @@
             submitBtn.textContent = "Submit Quote Request";
         }
     });
-    // --- REPLACED SUBMIT LOGIC END ---
 </script>
 </body>
 </html>
