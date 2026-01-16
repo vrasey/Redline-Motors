@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Redline Motors</title>
+    <title>Business Inquiries - Redline Motors</title>
     <link rel="icon" type="image/png" href="images/logo_main.png">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -23,7 +23,7 @@
                 <li><a href="auctions.html">Parts</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="contact.html" class="active">Business Inquiries</a></li>
             </ul>
         </nav>
     </div>
@@ -32,31 +32,40 @@
 <main>
     <div class="page-header">
         <div class="container">
-            <h1>Get In Touch</h1>
+            <h1>Business Inquiries</h1>
         </div>
     </div>
 
     <div class="container page-content">
         <div class="about-section" style="text-align:center;">
-            <p>Have a question or a special request? We're here to help.</p>
+            <p>Looking for wholesale opportunities, partnerships, or bulk sourcing? Reach out to our team directly.</p>
         </div>
 
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; max-width:900px; margin:0 auto;">
             <div class="instruction-card" style="text-align:left;">
-                <h3><i class="fas fa-envelope" style="font-size:1.5rem; margin-right:10px;"></i> Contact Info</h3>
+                <h3><i class="fas fa-briefcase" style="font-size:1.5rem; margin-right:10px;"></i> Direct Contact</h3>
                 <ul style="list-style:none; line-height:2.5;">
                     <li><strong>Email:</strong> redlinemotorsjp@gmail.com</li>
                     <li><strong>Phone:</strong> +81 80-1111-1111</li>
-                    <li><strong>Location:</strong> Tokyo, Japan</li>
+                    <li><strong>HQ:</strong> Tokyo, Japan</li>
                 </ul>
             </div>
 
             <div class="form-container">
                 <form action="https://formspree.io/f/xgvnarvb" method="POST">
-                    <label for="name">Your Name</label><input type="text" id="name" name="name" required>
-                    <label for="email">Your Email</label><input type="email" id="email" name="email" required>
-                    <label for="message">Message</label><textarea id="message" name="message" rows="6" required></textarea>
-                    <button type="submit" class="btn btn-primary" style="margin-top:1rem;">Send Message</button>
+                    <label for="name">Contact Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="company">Company / Organization</label>
+                    <input type="text" id="company" name="company" placeholder="Optional">
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Inquiry Details</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Please describe your business needs..." required></textarea>
+
+                    <button type="submit" class="btn btn-primary" style="margin-top:1rem;">Submit Inquiry</button>
                 </form>
             </div>
         </div>
