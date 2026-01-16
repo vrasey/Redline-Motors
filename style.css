@@ -20,6 +20,29 @@ a { text-decoration: none; color: var(--primary-red); transition: color 0.3s eas
 a:hover { color: #ff3355; }
 img { max-width: 100%; display: block; }
 
+/* --- Custom Scrollbar --- */
+/* Width */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track (Background) */
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+/* Handle (The part you drag) */
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 6px;
+    border: 3px solid var(--dark-bg); /* Creates padding around the handle */
+}
+
+/* Handle on Hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-red);
+}
+
 /* ==========================================================================
    2. Layout & Reusable Components
    ========================================================================== */
@@ -116,7 +139,6 @@ nav a:hover, nav a.active { color: var(--primary-red); background-color: rgba(25
 
 .carousel-wrapper { position: relative; width: 100%; overflow: hidden; display: flex; }
 
-/* Added overflow-x: hidden and scroll-behavior: auto for JS scroll */
 .carousel-track {
     display: flex;
     gap: 20px;
@@ -160,7 +182,6 @@ details {
     overflow: hidden; transition: all 0.3s ease;
 }
 
-/* FIX: Increased padding-right to 65px to prevent text hitting the + icon on mobile */
 summary {
     padding: 20px 65px 20px 25px;
     cursor: pointer;
