@@ -116,7 +116,7 @@ nav a:hover, nav a.active { color: var(--primary-red); background-color: rgba(25
 
 .carousel-wrapper { position: relative; width: 100%; overflow: hidden; display: flex; }
 
-/* FIX: Added overflow-x: hidden and scroll-behavior: auto */
+/* Added overflow-x: hidden and scroll-behavior: auto for JS scroll */
 .carousel-track {
     display: flex;
     gap: 20px;
@@ -159,14 +159,24 @@ details {
     border-radius: 8px; border: 1px solid #333;
     overflow: hidden; transition: all 0.3s ease;
 }
+
+/* FIX: Increased padding-right to 65px to prevent text hitting the + icon on mobile */
 summary {
-    padding: 20px 25px; cursor: pointer; font-family: var(--font-secondary);
-    font-weight: 700; font-size: 1.1rem; list-style: none; position: relative;
-    background-color: var(--card-bg); color: var(--text-light);
+    padding: 20px 65px 20px 25px;
+    cursor: pointer;
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 1.1rem;
+    list-style: none;
+    position: relative;
+    background-color: var(--card-bg);
+    color: var(--text-light);
     transition: background-color 0.2s ease;
 }
+
 summary:hover { background-color: var(--card-hover); }
 summary::-webkit-details-marker { display: none; }
+
 summary::after {
     content: '+'; position: absolute; right: 25px; top: 50%;
     transform: translateY(-50%); font-size: 1.8rem; font-weight: bold;
@@ -214,6 +224,46 @@ details[open] summary::after { content: '-'; }
 .remove-link-btn { position: absolute; top: 10px; right: 10px; background: none; border: none; color: #666; font-size: 1.5rem; cursor: pointer; }
 .remove-link-btn:hover { color: var(--primary-red); }
 
+/* --- About Grid Styling --- */
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+@media (min-width: 992px) {
+    .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+.about-card {
+    background-color: var(--card-bg);
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.about-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-red);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.about-card h2 {
+    color: var(--primary-red);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+}
+.about-card h2 i { font-size: 1.8rem; opacity: 0.9; }
+.about-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+.about-card p:last-child { margin-bottom: 0; }
+.about-card * { position: relative; z-index: 1; }
+
 .about-section { margin-bottom: 3rem; }
 .about-section h2 { color: var(--primary-red); margin-bottom: 1rem; border-bottom: 1px solid #333; padding-bottom: 10px; }
 .about-section p { margin-bottom: 1.5rem; color: var(--text-secondary); }
@@ -240,75 +290,4 @@ footer p { color: var(--text-secondary); font-size: 0.9rem; }
     .page-header { padding-top: 40px; }
     .selection-grid { flex-direction: column; }
     .carousel-item { flex: 0 0 85vw; }
-}
-
-/* ==========================================================================
-   9. About Page Specifics (New Card Grid)
-   ========================================================================== */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-/* Responsive: On desktop, make the bottom two cards sit side-by-side */
-@media (min-width: 992px) {
-    .split-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-    }
-}
-
-/* The Card Design */
-.about-card {
-    background-color: var(--card-bg);
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 3rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover Effect: Pop up + Red Border */
-.about-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary-red);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-/* Headers inside cards */
-.about-card h2 {
-    color: var(--primary-red);
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 15px;
-}
-
-.about-card h2 i {
-    font-size: 1.8rem;
-    opacity: 0.9;
-}
-
-/* Text readability */
-.about-card p {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-    font-size: 1.05rem;
-    line-height: 1.8;
-}
-
-.about-card p:last-child {
-    margin-bottom: 0;
-}
-
-.about-card * {
-    position: relative;
-    z-index: 1;
 }
